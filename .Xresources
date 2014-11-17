@@ -27,33 +27,33 @@ URxvt*scrollBar:                    false
 
 ! ## COLOURS ##
 
-URxvt*background:                   #0B0104
+URxvt*background:                   #171719
 URxvt*foreground:                   #cacaca
 
 ! # black
-URxvt*color0:                       #000000
-! URxvt*color8:                         color
+URxvt*color0:                       #272727
+URxvt*color8:                       #353535
 ! # red
-URxvt*color1:                       #AA1132
-URxvt*color9:                       #CC504D
+URxvt*color1:                       #754751
+URxvt*color9:                       #96636a
 ! # green
-URxvt*color2:                       #1E8109
-URxvt*color10:                      #08A70E
+URxvt*color2:                       #364832
+URxvt*color10:                      #57644b
 ! # yellow
-URxvt*color3:                       #a98b0f
-URxvt*color11:                      #C1AF65
+URxvt*color3:                       #736a45
+URxvt*color11:                      #94865e
 ! # blue
-URxvt*color4:                       #093676
-URxvt*color12:                      #345286
+URxvt*color4:                       #303e50
+URxvt*color12:                      #515a69
 ! # magenta
-URxvt*color5:                       #60266E
-URxvt*color13:                      #763D9D
+URxvt*color5:                       #504054
+URxvt*color13:                      #715c6d
 ! # cyan
-URxvt*color6:                       #70858B
-URxvt*color14:                      #8BA0A4
+URxvt*color6:                       #7a8082
+URxvt*color14:                      #9b9c9b
 ! # white
-URxvt*color7:                       #FFFFFF
-! URxvt*color15:                        color
+URxvt*color7:                       #cacaca
+URxvt*color15:                      #ffffff
 
 
 ! URxvt*colorBD:                        color
@@ -70,8 +70,8 @@ URxvt*color7:                       #FFFFFF
 ! URxvt*pointerColor:                   color
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
-URxvt*font:                         xft:uushi:pixelsize=8:antialias=false:hinting=true,xft:Ricty:size=8
-! URxvt*boldFont:                       fontname
+URxvt*font:                         xft:uushi:pixelsize=10:antialias=false:hinting=true,xft:Ricty:size=8
+URxvt*boldFont:                     xft:uushi:pixelsize=8:antialias=false:hinting=true,xft:Ricty:size=8
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
 ! URxvt*intensityStyles:                boolean
@@ -105,8 +105,8 @@ URxvt*font:                         xft:uushi:pixelsize=8:antialias=false:hintin
 ! URxvt*secondaryScroll:                boolean
 ! URxvt*perl-lib:                       string
 ! URxvt*perl-eval:                      perl-eval
-! URxvt*perl-ext-common:                string
-! URxvt*perl-ext:                       string
+URxvt*perl-ext-common:              default,clipboard
+URxvt*perl-ext:                     default,clipboard 
 ! URxvt*iso14755:                       boolean
 ! URxvt*iso14755_52:                    boolean
 ! URxvt*xrm:                            string

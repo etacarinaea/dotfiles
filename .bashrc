@@ -7,7 +7,6 @@
 
 alias ls='ls --color=auto'
 alias screenfetch='screenfetch -D "Arch Linux"'
-alias colourtest='bash /home/yuki/scripts/colourtest'
 
 # default: PS1='[\u@\h \W]\$ '
 PS1='\W » '

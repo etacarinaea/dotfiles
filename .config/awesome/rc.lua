@@ -1,4 +1,6 @@
-vicious = require("vicious")
+local vicious = require("vicious")
+local lain = require("lain")
+require("myplacesmenu")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -39,11 +41,11 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/inori/theme.lua")
+beautiful.init("/usr/share/awesome/themes/yuki/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
-editor = os.getenv("EDITOR") or "nano"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -67,9 +69,42 @@ local layouts =
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
+    lain.layout.termfair,
+    lain.layout.centerfair,
+    lain.layout.cascade,
+    lain.layout.cascadetile,
+    lain.layout.centerwork,
+    lain.layout.uselessfair,
+    lain.layout.uselesspiral,
+    lain.layout.uselesstile
 }
 -- }}}
+
+-- lain layout
+lain.layout.termfair.nmaster = 3
+lain.layout.termfair.ncol = 1
+
+lain.layout.centerfair.nmaster = 3
+lain.layout.centerfair.ncol = 1
+
+lain.layout.cascade.cascade_offset_x = 64
+lain.layout.cascade.cascade_offset_y = 16
+lain.layout.cascade.nmaster = 50
+
+lain.layout.cascadetile.cascade_offset_x = 2
+lain.layout.cascadetile.cascade_offset_y = 32
+lain.layout.cascadetile.extra_padding = 5
+lain.layout.cascadetile.nmaster = 5
+lain.layout.ncol = 0
+
+lain.layout.centerwork.top_left = 0
+lain.layout.centerwork.top_right = 1
+lain.layout.centerwork.bottom_left = 2
+lain.layout.centerwork.bottom_right = 3
+
+theme.useless_gap_width = 10
+
 
 -- {{{ Wallpaper
 if beautiful.wallpaper then
@@ -82,9 +117,9 @@ end
  -- {{{ Tags
  -- Define a tag table which will hold all screen tags.
  tags = {
-   names  = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 " },
-   layout = { layouts[1], layouts[2], layouts[2], layouts[2], layouts[2],
-              layouts[3], layouts[2] }
+   names  = { "1", "2", "3", "4", "5", "6", "7" },
+   layout = { layouts[1], layouts[20], layouts[20], layouts[20], layouts[20],
+              layouts[2], layouts[2] }
  }
  for s = 1, screen.count() do
      -- Each screen has its own tag table.
@@ -101,7 +136,10 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+mymainmenu = awful.menu({ items = { { "ncmpcpp", terminal .. " -e ncmpcpp" },
+                                    { "irssi", terminal .. " -e irssi" },
+                                    { "files", myplacesmenu.myplacesmenu()},
+                                    { "awesome", myawesomemenu},
                                     { "open terminal", terminal }
                                   }
                         })
@@ -125,20 +163,20 @@ mytextclock = awful.widget.textclock(" %a %d %b %H:%M ", 10)
 
 -- cpu widget
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#AA1132'> ⮦</span> $1%", 3)
+vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#754751'> ⮦</span> $1%", 3)
 
 -- mem widget
 memwidget = wibox.widget.textbox()
-vicious.register(memwidget, vicious.widgets.mem, "<span color='#AA1132'> ⮡</span> $1%", 10)
+vicious.register(memwidget, vicious.widgets.mem, "<span color='#754751'> ⮡</span> $1%", 10)
 
 -- mpd widget
 mpdwidget = wibox.widget.textbox()
 vicious.register(mpdwidget, vicious.widgets.mpd,
                     function (mpdwidget, args)
                         if args["{state}"] == "Stop" then
-                            return "<span color='#AA1132'> ⮔</span>"
+                            return "<span color='#754751'> ⮔</span>"
                         else
-                            return "<span color='#AA1132'> ⮕</span> " .. args["{Artist}"] .. " - " .. args["{Title}"]
+                            return "<span color='#754751'> ⮕</span> " .. args["{Artist}"] .. " - " .. args["{Title}"]
                         end
                     end, 10)
 
