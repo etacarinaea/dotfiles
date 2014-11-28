@@ -34,14 +34,14 @@ mpd_music_dir = "~/music"
 
 ##### music visualizer #####
 
-visualizer_in_stereo = "no"
+visualizer_in_stereo = "yes"
 visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "fifo"
 
 visualizer_sync_interval = "30"
 
-visualizer_type = "wave" (spectrum/wave)
-visualizer_look = "◆▋"
+visualizer_type = "spectrum" (spectrum/wave)
+visualizer_look = "◆▎"
 
 
 
@@ -128,18 +128,19 @@ message_delay_time = "3"
 ## e.g. {$b%t$/b}|{$r%f$/r} will display bolded title tag or filename
 ## with reversed colors.
 ##
-#
-#alternative_header_first_line_format = "$b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b"
-#
-#alternative_header_second_line_format = "{{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}"
-#
+
+alternative_header_first_line_format = "$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9"
+
+alternative_header_second_line_format = "{{$9$b%a}{ - %b}{ (%y)}$/b}|{%D}"
+
 ##
 ## Note: Below variables also supports
 ## text attributes listed above.
 ##
-#
-#now_playing_prefix = "$b"
-#
+
+now_playing_prefix = "$b"
+
+
 #now_playing_suffix = "$/b"
 #
 #browser_playlist_prefix = "$2playlist$9 "
@@ -187,9 +188,11 @@ message_delay_time = "3"
 ##   tag and then composer and performer if previous ones are
 ##   not available.
 ##
-#
-#song_columns_list_format = "(7f)[green]{l} (25)[cyan]{a} (40)[]{t|f} (30)[red]{b}"
-#
+
+song_columns_list_format = "(7f)[black]{l} (60)[red]{t|f} (30)[yellow]{ar}"
+
+#song_columns_list_format = "(7f)[black]{l} (25)[cyan]{a} (40)[yellow]{t|f} (30)[red]{br}"
+
 ##### various settings #####
 #
 ##
@@ -205,7 +208,7 @@ message_delay_time = "3"
 #
 #playlist_shorten_total_times = "no"
 
-playlist_separate_albums = "yes"
+playlist_separate_albums = "no"
 
 playlist_display_mode = "columns" (classic/columns)
 
@@ -220,7 +223,7 @@ browser_display_mode = "columns" (classic/columns)
 #incremental_seeking = "yes"
 #
 #seek_time = "1"
-#
+
 autocenter_mode = "yes"
 
 centered_cursor = "yes"
@@ -229,7 +232,8 @@ centered_cursor = "yes"
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
 ##
-progressbar_look = "▃▃ "
+
+progressbar_look = "── "
 
 #default_place_to_search_in = "database" (database/playlist)
 
@@ -318,11 +322,10 @@ locked_screen_width_part = "60"
 ## Note: You can define startup screen for ncmpcpp
 ## by choosing screen number from the list above.
 ##
-startup_screen = "2"
 
 jump_to_now_playing_song_at_start = "yes"
 
-ask_before_clearing_main_playlist = "yes"
+# ask_before_clearing_main_playlist = "yes"
 
 clock_display_seconds = "no"
 
@@ -342,9 +345,9 @@ display_remaining_time = "no"
 #ignore_leading_the = "no"
 #
 #block_search_constraints_change_if_items_found = "yes"
-#
-#mouse_support = "yes"
-#
+
+mouse_support = "no"
+
 #mouse_list_scroll_whole_page = "yes"
 #
 #empty_tag_marker = "<empty>"
@@ -356,9 +359,9 @@ display_remaining_time = "no"
 #media_library_display_empty_tag = "yes"
 #
 #media_library_disable_two_column_mode = "no"
-#
-#enable_window_title = "yes"
-#
+
+enable_window_title = "no"
+
 ##
 ## Note: You can choose default search mode for search
 ## engine. Available modes are:
@@ -378,43 +381,39 @@ display_remaining_time = "no"
 ## remove files and directories from your hdd using
 ## ncmpcpp's browser screen.
 ##
-#
-#allow_physical_files_deletion = "no"
-#
-#allow_physical_directories_deletion = "no"
-#
 #external_editor = ""
 #
 #use_console_editor = "no" (set to yes, if your editor is console app)
 #
 ##### colors definitions #####
-#
-#colors_enabled = "yes"
-#
-#empty_tag_color = "cyan"
-#
-#header_window_color = "default"
+
+colors_enabled = "yes"
+
+empty_tag_color = "cyan"
+
+header_window_color = "red"
 
 volume_color = "red"
 
-#state_line_color = "default"
-#
-#state_flags_color = "default"
-#
-#main_window_color = "yellow"
-#
+state_line_color = "default"
+
+state_flags_color = "default"
+
+main_window_color = "black"
+
 #color1 = "white"
 #
 #color2 = "green"
 #
 #main_window_highlight_color = "yellow"
-#
-#progressbar_color = "default"
-#
-#statusbar_color = "default"
-#
-#alternative_ui_separator_color = "black"
-#
+
+progressbar_color = "black"
+progressbar_elapsed_color = "black"
+
+statusbar_color = "default"
+
+alternative_ui_separator_color = "black"
+
 #active_column_color = "red"
 
 visualizer_color = "red"

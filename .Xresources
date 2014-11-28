@@ -34,20 +34,20 @@ URxvt*foreground:                   #cacaca
 URxvt*color0:                       #272727
 URxvt*color8:                       #353535
 ! # red
-URxvt*color1:                       #754751
-URxvt*color9:                       #96636a
+URxvt*color1:                       #8D2036
+URxvt*color9:                       #CE0A31
 ! # green
-URxvt*color2:                       #364832
-URxvt*color10:                      #57644b
+URxvt*color2:                       #34502B
+URxvt*color10:                      #5b8c4b
 ! # yellow
-URxvt*color3:                       #736a45
-URxvt*color11:                      #94865e
+URxvt*color3:                       #8F917A
+URxvt*color11:                      #EBEFC9
 ! # blue
 URxvt*color4:                       #303e50
 URxvt*color12:                      #515a69
 ! # magenta
-URxvt*color5:                       #504054
-URxvt*color13:                      #715c6d
+URxvt*color5:                       #5C5863
+URxvt*color13:                      #9C98A3
 ! # cyan
 URxvt*color6:                       #7a8082
 URxvt*color14:                      #9b9c9b
@@ -70,8 +70,8 @@ URxvt*color15:                      #ffffff
 ! URxvt*pointerColor:                   color
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
-URxvt*font:                         xft:uushi:pixelsize=10:antialias=false:hinting=true,xft:Ricty:size=8
-URxvt*boldFont:                     xft:uushi:pixelsize=8:antialias=false:hinting=true,xft:Ricty:size=8
+URxvt*font:                         xft:uushi:pixelsize=10:antialias=false:hinting=true,xft:Ricty
+URxvt*boldFont:                     xft:uushi:pixelsize=10:antialias=false:hinting=true,xft:Ricty
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
 ! URxvt*intensityStyles:                boolean

@@ -10,4 +10,3 @@ alias screenfetch='screenfetch -D "Arch Linux"'
 
 # default: PS1='[\u@\h \W]\$ '
 PS1='\W » '
-

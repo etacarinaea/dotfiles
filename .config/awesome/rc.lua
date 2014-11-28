@@ -136,8 +136,10 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "ncmpcpp", terminal .. " -e ncmpcpp" },
+mymainmenu = awful.menu({ items = { { "vim", terminal .. " -e vim" },
+                                    { "ncmpcpp", terminal .. " -e ncmpcpp" },
                                     { "irssi", terminal .. " -e irssi" },
+									{ "htop", terminal .. " -e htop" },
                                     { "files", myplacesmenu.myplacesmenu()},
                                     { "awesome", myawesomemenu},
                                     { "open terminal", terminal }
@@ -163,20 +165,20 @@ mytextclock = awful.widget.textclock(" %a %d %b %H:%M ", 10)
 
 -- cpu widget
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#754751'> ⮦</span> $1%", 3)
+vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#8D2036'> ⮦</span> $1%", 3)
 
 -- mem widget
 memwidget = wibox.widget.textbox()
-vicious.register(memwidget, vicious.widgets.mem, "<span color='#754751'> ⮡</span> $1%", 10)
+vicious.register(memwidget, vicious.widgets.mem, "<span color='#8D2036'> ⮡</span> $1%", 10)
 
 -- mpd widget
 mpdwidget = wibox.widget.textbox()
 vicious.register(mpdwidget, vicious.widgets.mpd,
                     function (mpdwidget, args)
                         if args["{state}"] == "Stop" then
-                            return "<span color='#754751'> ⮔</span>"
+                            return "<span color='#8D2036'> ⮔</span>"
                         else
-                            return "<span color='#754751'> ⮕</span> " .. args["{Artist}"] .. " - " .. args["{Title}"]
+                            return "<span color='#8D2036'> ⮕</span> " .. args["{Artist}"] .. " - " .. args["{Title}"]
                         end
                     end, 10)
 
