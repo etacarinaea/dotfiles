@@ -10,6 +10,7 @@ alias screenfetch='screenfetch -D "Arch Linux"'
 
 export VISUAL=vim
 export EDITOR=vim
+export PATH=$PATH:$HOME/bin
 
 # default: PS1='[\u@\h \W]\$ '
 PS1='\W » '
