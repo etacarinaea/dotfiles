@@ -1,6 +1,5 @@
 local vicious = require("vicious")
 local lain = require("lain")
-require("myplacesmenu")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -140,9 +139,7 @@ mymainmenu = awful.menu({ items = { { "vim", terminal .. " -e vim" },
                                     { "ncmpcpp", terminal .. " -e ncmpcpp" },
                                     { "irssi", terminal .. " -e irssi" },
 									{ "htop", terminal .. " -e htop" },
-                                    { "files", myplacesmenu.myplacesmenu()},
-                                    { "awesome", myawesomemenu},
-                                    { "open terminal", terminal }
+                                    { "awesome", myawesomemenu}
                                   }
                         })
 
