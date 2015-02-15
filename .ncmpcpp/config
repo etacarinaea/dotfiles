@@ -314,7 +314,7 @@ header_visibility = "no"
 ## Acceptable values are from 20 to 80.
 ##
 
-locked_screen_width_part = "60"
+locked_screen_width_part = "70"
 
 #ask_for_locked_screen_width_part = "yes"
 #

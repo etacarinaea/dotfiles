@@ -43,7 +43,7 @@ end
 beautiful.init("/usr/share/awesome/themes/yuki/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "urxvt -lsp 2"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -137,6 +137,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "vim", terminal .. " -e vim" },
                                     { "ncmpcpp", terminal .. " -e ncmpcpp" },
+									{ "toxic", terminal .. " -e toxic"},
                                     { "irssi", terminal .. " -e irssi" },
 									{ "htop", terminal .. " -e htop" },
                                     { "awesome", myawesomemenu}
@@ -433,7 +434,9 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
+                     buttons = clientbuttons
+				     -- size_hints_honor = false } },
+					} },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },

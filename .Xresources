@@ -1,5 +1,5 @@
 ! URxvt*termName:                       string
-! URxvt*geometry:                       geometry
+URxvt*geometry:                     80x17
 ! URxvt*chdir:                          string
 ! URxvt*reverseVideo:                   boolean
 ! URxvt*loginShell:                     boolean
@@ -28,7 +28,7 @@ URxvt*scrollBar:                    false
 ! ## COLOURS ##
 
 URxvt*background:                   #171719
-URxvt*foreground:                   #cacaca
+URxvt*foreground:                   #aaaaaa 
 
 ! # black
 URxvt*color0:                       #272727
@@ -70,8 +70,8 @@ URxvt*color15:                      #ffffff
 ! URxvt*pointerColor:                   color
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
-URxvt*font:                         xft:uushi:pixelsize=10:antialias=false:hinting=true,xft:Ricty
-URxvt*boldFont:                     xft:uushi:pixelsize=10:antialias=false:hinting=true,xft:Ricty
+URxvt*font:                         xft:lemon:pixelsize=10:antialias=false:hinting=true,xft:Ricty
+URxvt*boldFont:                     xft:lemon:pixelsize=10:antialias=false:hinting=true,xft:Ricty
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
 ! URxvt*intensityStyles:                boolean
@@ -89,7 +89,7 @@ URxvt*boldFont:                     xft:uushi:pixelsize=10:antialias=false:hinti
 ! URxvt*override-redirect:              boolean
 ! URxvt*hold:                           boolean
 ! URxvt*externalBorder:                 number
-! URxvt*internalBorder:                 number
+URxvt*internalBorder:                 4
 ! URxvt*borderLess:                     boolean
 ! URxvt*lineSpace:                      number
 ! URxvt*letterSpace:                    number

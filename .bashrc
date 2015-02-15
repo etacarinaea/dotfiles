@@ -7,10 +7,10 @@
 
 alias ls='ls --color=auto'
 alias screenfetch='screenfetch -D "Arch Linux"'
+alias scrot='scrot -e "mv \$f ~/images/screenshots/"'
 
 export VISUAL=vim
 export EDITOR=vim
 export PATH=$PATH:$HOME/bin
 
-# default: PS1='[\u@\h \W]\$ '
 PS1='\W » '
