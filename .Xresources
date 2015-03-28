@@ -1,5 +1,5 @@
 ! URxvt*termName:                       string
-URxvt*geometry:                     80x17
+URxvt*geometry:                     83x21
 ! URxvt*chdir:                          string
 ! URxvt*reverseVideo:                   boolean
 ! URxvt*loginShell:                     boolean
@@ -27,8 +27,8 @@ URxvt*scrollBar:                    false
 
 ! ## COLOURS ##
 
-URxvt*background:                   #171719
-URxvt*foreground:                   #aaaaaa 
+URxvt*background:                   #19191b
+URxvt*foreground:                   #999999
 
 ! # black
 URxvt*color0:                       #272727
@@ -37,17 +37,17 @@ URxvt*color8:                       #353535
 URxvt*color1:                       #8D2036
 URxvt*color9:                       #CE0A31
 ! # green
-URxvt*color2:                       #34502B
-URxvt*color10:                      #5b8c4b
+URxvt*color2:                       #3A9F2F
+URxvt*color10:                      #C0E6A9
 ! # yellow
-URxvt*color3:                       #8F917A
+URxvt*color3:                       #695719
 URxvt*color11:                      #EBEFC9
 ! # blue
 URxvt*color4:                       #303e50
 URxvt*color12:                      #515a69
 ! # magenta
-URxvt*color5:                       #5C5863
-URxvt*color13:                      #9C98A3
+URxvt*color5:                       #331E23
+URxvt*color13:                      #52222D
 ! # cyan
 URxvt*color6:                       #7a8082
 URxvt*color14:                      #9b9c9b
@@ -70,8 +70,8 @@ URxvt*color15:                      #ffffff
 ! URxvt*pointerColor:                   color
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
-URxvt*font:                         xft:lemon:pixelsize=10:antialias=false:hinting=true,xft:Ricty
-URxvt*boldFont:                     xft:lemon:pixelsize=10:antialias=false:hinting=true,xft:Ricty
+URxvt*font:                         xft:tewi:pixelsize=10:antialias=false:hinting=true,xft:Ricty
+URxvt*boldFont:                     xft:tewi:pixelsize=10:antialias=false:hinting=true,xft:Ricty
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
 ! URxvt*intensityStyles:                boolean
