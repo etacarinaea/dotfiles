@@ -103,9 +103,9 @@ message_delay_time = "3"
 ##
 ## Note: colors can be nested.
 ##
-#
-#song_list_format = "{%a - }{%t}|{$8%f$9}$R{$3(%l)$9}"
-#
+
+song_list_format = "{$6%a - $2%t$9}|{$1%f}$R$4%l$9"
+
 #song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
 #
 #song_library_format = "{%n - }{%t}|{%f}"
@@ -150,9 +150,9 @@ now_playing_prefix = "$b"
 #selected_item_suffix = "$9"
 #
 ## colors are not supported for below variable
-#
-#song_window_title_format = "{%a - }{%t}|{%f}"
-#
+
+song_window_title_format = "{%a - }{%t}|{%f}"
+
 ##### columns settings #####
 ##
 ## syntax of song columns list format is "column column etc."
@@ -210,9 +210,9 @@ song_columns_list_format = "(7f)[black]{l} (60)[red]{t|f} (30)[yellow]{ar}"
 
 playlist_separate_albums = "no"
 
-playlist_display_mode = "columns" (classic/columns)
+playlist_display_mode = "classic" (classic/columns)
 
-browser_display_mode = "columns" (classic/columns)
+browser_display_mode = "classic" (classic/columns)
 
 #search_engine_display_mode = "classic" (classic/columns)
 #
@@ -237,7 +237,7 @@ progressbar_look = "── "
 
 #default_place_to_search_in = "database" (database/playlist)
 
-user_interface = "alternative" (classic/alternative)
+user_interface = "classic" (classic/alternative)
 
 #media_library_left_column = "a" (possible values: a,y,g,c,p, legend above)
 #

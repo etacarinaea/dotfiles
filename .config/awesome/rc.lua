@@ -154,11 +154,11 @@ mytextclock = awful.widget.textclock(" %a %d %b %H:%M ", 10)
 
 -- cpu widget
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#8D2036'> ⮦</span> $1%", 3)
+vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#8D2036'> CPU $1%</span>", 3)
 
 -- mem widget
 memwidget = wibox.widget.textbox()
-vicious.register(memwidget, vicious.widgets.mem, "<span color='#8D2036'> ⮡</span> $1%", 10)
+vicious.register(memwidget, vicious.widgets.mem, "<span color='#8D2036'> RAM $1%</span>", 10)
 
 -- mpd widget
 mpdwidget = wibox.widget.textbox()
@@ -252,8 +252,6 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     -- if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mpdwidget)
-    right_layout:add(separator)
     right_layout:add(memwidget)
     right_layout:add(separator)
     right_layout:add(cpuwidget)
