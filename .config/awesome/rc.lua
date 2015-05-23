@@ -13,13 +13,16 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
---<< Error handling
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
                      text = awesome.startup_errors })
 end
 
+-- Handle runtime errors after startup
 do
     local in_error = false
     awesome.connect_signal("debug::error", function (err)
@@ -33,17 +36,26 @@ do
         in_error = false
     end)
 end
+-- }}}
 
+-- {{{ Variable definitions
+-- Themes define colours, icons, font and wallpapers.
+confdir = awful.util.getdir("config")
+beautiful.init(confdir .. "/yuki/theme.lua")
 
---<< Variable definitions
-beautiful.init("/usr/share/awesome/themes/yuki/theme.lua")
-
+-- This is used later as the default terminal and editor to run.
 terminal = "urxvt -lsp 0"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
+-- Default modkey.
+-- Usually, Mod4 is the key with a logo between Control and Alt.
+-- If you do not like this or do not have such a key,
+-- I suggest you to remap Mod4 to another key using xmodmap or other tools.
+-- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
+-- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
     awful.layout.suit.floating,
@@ -67,72 +79,81 @@ local layouts =
     lain.layout.uselesspiral,
     lain.layout.uselesstile
 }
+-- }}}
 
+-- lain layout
 lain.layout.termfair.nmaster = 3
 lain.layout.termfair.ncol = 1
+
 lain.layout.centerfair.nmaster = 3
 lain.layout.centerfair.ncol = 1
+
 lain.layout.cascade.cascade_offset_x = 64
 lain.layout.cascade.cascade_offset_y = 16
 lain.layout.cascade.nmaster = 50
+
 lain.layout.cascadetile.cascade_offset_x = 2
 lain.layout.cascadetile.cascade_offset_y = 32
 lain.layout.cascadetile.extra_padding = 5
 lain.layout.cascadetile.nmaster = 5
 lain.layout.ncol = 0
+
 lain.layout.centerwork.top_left = 0
 lain.layout.centerwork.top_right = 1
 lain.layout.centerwork.bottom_left = 2
 lain.layout.centerwork.bottom_right = 3
+
 theme.useless_gap_width = 10
 
 
+-- {{{ Wallpaper
 if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
     end
 end
+-- }}}
 
---<< Tags
+-- {{{ Tags
+-- Define a tag table which will hold all screen tags.
 tags = {
   names  = { "1", "2", "3", "4", "5", "6", "7" },
-  layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1],
-             layouts[20], layouts[2] }
+  layout = { layouts[2], layouts[20], layouts[1], layouts[1], layouts[1],
+             layouts[1], layouts[1] }
 }
 for s = 1, screen.count() do
+    -- Each screen has its own tag table.
     tags[s] = awful.tag(tags.names, s, tags.layout)
 end
+-- }}}
 
---<< Menu
+-- {{{ Menu
+-- Create a laucher widget and a main menu
 myawesomemenu = {
-	{ "htop", terminal .. " -e htop" },
-	{ "edit config", editor_cmd .. " " .. awesome.conffile },
-	{ "manual", terminal .. " -e man awesome" },
-	{ "restart", awesome.restart },
-	{ "quit", awesome.quit }
+    { "htop", terminal .. " -e htop" },
+    { "edit config", editor_cmd .. " " .. awesome.conffile },
+    { "restart", awesome.restart },
+    { "quit", awesome.quit }
 }
-
 graphicsmenu = {
-	{ "gpick", "gpick" },
-	{ "gimp", "gimp" },
-	{ "Inkscape", "inkscape" },
-	{ "MyPaint", "mypaint" },
-	{ "Krtia", "krita" }
+    { "gpick", "gpick" },
+    { "gimp", "gimp" },
+    { "Inkscape", "inkscape" },
+    { "MyPaint", "mypaint" },
+    { "Krtia", "krita" }
 }
-
 commmenu = {
-	{ "rtorrent", terminal .. " -e rtorrent" },
-	{ "irssi", terminal .. " -e irssi" },
-	{ "toxic", terminal .. " -e toxic" }
+    { "rtorrent", terminal .. " -e rtorrent" },
+    { "irssi", terminal .. " -e irssi" },
+    { "toxic", terminal .. " -e toxic" }
 }
-
 
 mymainmenu = awful.menu({ items = { { "firefox", "firefox" },
-									{ "vim", terminal .. " -e vim" },
+                                    { "vim", terminal .. " -e vim" },
                                     { "ncmpcpp", terminal .. " -e ncmpcpp" },
-									{ "images", terminal .. " -geometry 150x40 -e ranger /home/yuki/images/" },
-									{ "graphics", graphicsmenu },
-									{ "comms", commmenu },
+                                    { "images", terminal .. " -geometry 150x40 -e ranger /home/yuki/images/" },
+                                    { "graphics", graphicsmenu },
+                                    { "comms", commmenu },
                                     { "awesome", myawesomemenu }
                                   }
                         })
@@ -140,10 +161,12 @@ mymainmenu = awful.menu({ items = { { "firefox", "firefox" },
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
 
+-- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- }}}
 
 
---<< Wibox
+-- {{{ Wibox
 
 -- seperator
 separator = wibox.widget.textbox()
@@ -154,11 +177,11 @@ mytextclock = awful.widget.textclock(" %a %d %b %H:%M ", 10)
 
 -- cpu widget
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#8D2036'> CPU $1%</span>", 3)
+vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#8D2036'> ⮦</span> $1%", 3)
 
 -- mem widget
 memwidget = wibox.widget.textbox()
-vicious.register(memwidget, vicious.widgets.mem, "<span color='#8D2036'> RAM $1%</span>", 10)
+vicious.register(memwidget, vicious.widgets.mem, "<span color='#8D2036'> ⮡</span> $1%", 10)
 
 -- mpd widget
 mpdwidget = wibox.widget.textbox()
@@ -252,6 +275,8 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     -- if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(mpdwidget)
+    right_layout:add(separator)
     right_layout:add(memwidget)
     right_layout:add(separator)
     right_layout:add(cpuwidget)
@@ -267,17 +292,17 @@ for s = 1, screen.count() do
 
     mywibox[s]:set_widget(layout)
 end
+-- }}}
 
-
---<< Mouse bindings
+-- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
+-- }}}
 
-
---<< Key bindings
+-- {{{ Key bindings
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
@@ -411,9 +436,9 @@ clientbuttons = awful.util.table.join(
 
 -- Set keys
 root.keys(globalkeys)
+-- }}}
 
-
---<< Rules
+-- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -424,7 +449,7 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons
-					 -- size_hints_honor = false } },
+				     -- size_hints_honor = false } },
 					} },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
@@ -438,9 +463,10 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
 }
+-- }}}
 
 
---<< Signals
+-- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
     -- Enable sloppy focus
@@ -511,4 +537,5 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
 

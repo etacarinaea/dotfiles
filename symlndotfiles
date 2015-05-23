@@ -4,10 +4,11 @@
 # Files in this directory may not have a dot prefix.
 
 # List of files and directories to ignore, including this script.
-# Directories should end with "/". This will not delete existing symlinks!
+# This will not delete existing symlinks!
 ignore=(
 ${0##*/}
-.git/
+*.git/*
+*.swp*
 )
 
 files=$(find $PWD -type f)
@@ -18,7 +19,7 @@ for file in $files; do
     dir=${dir#*/}
 
     for ex in ${ignore[@]}; do
-        [[ ${file#*$PWD/} == "$ex"* ]] && ig=true && break || ig=false 
+        [[ ${file#*$PWD/} == $ex ]] && ig=true && break || ig=false 
     done
     [[ $ig = true ]] && continue
 
