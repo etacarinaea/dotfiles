@@ -233,7 +233,7 @@ centered_cursor = "yes"
 ## be used to build 'empty' part of progressbar.
 ##
 
-progressbar_look = "── "
+progressbar_look = "─╸ "
 
 #default_place_to_search_in = "database" (database/playlist)
 
@@ -249,10 +249,10 @@ user_interface = "classic" (classic/alternative)
 #
 #default_tag_editor_pattern = "%n - %t"
 
-header_visibility = "no"
+header_visibility = "yes"
 
-#statusbar_visibility = "yes"
-#
+statusbar_visibility = "no"
+
 #titles_visibility = "yes"
 #
 #header_text_scrolling = "yes"
@@ -391,13 +391,13 @@ colors_enabled = "yes"
 
 empty_tag_color = "cyan"
 
-header_window_color = "red"
+header_window_color = "default"
 
 volume_color = "red"
 
-state_line_color = "default"
+state_line_color = "black"
 
-state_flags_color = "default"
+state_flags_color = "red"
 
 main_window_color = "black"
 
