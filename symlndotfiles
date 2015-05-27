@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # Creates symbolic links for dotfiles.
-# Files in this directory may not have a dot prefix.
 
 # List of files and directories to ignore, including this script.
 # This will not delete existing symlinks!
