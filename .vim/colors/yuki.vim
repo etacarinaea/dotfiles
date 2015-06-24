@@ -12,7 +12,7 @@ hi ErrorMsg		ctermfg=White		ctermbg=DarkRed
 hi FoldColumn	ctermfg=DarkBlue	ctermbg=Grey
 hi Folded		ctermbg=Grey		ctermfg=DarkBlue
 hi IncSearch	cterm=reverse	   
-hi LineNr		ctermfg=235		ctermbg=233
+hi LineNr		ctermfg=DarkGrey		ctermbg=Black
 hi ModeMsg		cterm=bold
 hi MoreMsg		ctermfg=DarkGreen
 hi NonText		ctermfg=Blue

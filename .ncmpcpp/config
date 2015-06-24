@@ -41,7 +41,7 @@ visualizer_output_name = "fifo"
 visualizer_sync_interval = "30"
 
 visualizer_type = "spectrum" (spectrum/wave)
-visualizer_look = "◆▎"
+visualizer_look = "●▎"
 
 
 
@@ -141,7 +141,7 @@ alternative_header_second_line_format = "{{$9$b%a}{ - %b}{ (%y)}$/b}|{%D}"
 now_playing_prefix = "$b"
 
 
-#now_playing_suffix = "$/b"
+now_playing_suffix = "$2 <<<<$/b$9"
 #
 #browser_playlist_prefix = "$2playlist$9 "
 #
@@ -189,7 +189,7 @@ song_window_title_format = "{%a - }{%t}|{%f}"
 ##   not available.
 ##
 
-song_columns_list_format = "(7f)[black]{l} (60)[red]{t|f} (30)[yellow]{ar}"
+song_columns_list_format = "(60)[red]{t|f} (30)[magenta]{ar}(5f)[white]{lr}"
 
 #song_columns_list_format = "(7f)[black]{l} (25)[cyan]{a} (40)[yellow]{t|f} (30)[red]{br}"
 
@@ -210,7 +210,7 @@ song_columns_list_format = "(7f)[black]{l} (60)[red]{t|f} (30)[yellow]{ar}"
 
 playlist_separate_albums = "no"
 
-playlist_display_mode = "classic" (classic/columns)
+playlist_display_mode = "columns" (classic/columns)
 
 browser_display_mode = "classic" (classic/columns)
 
@@ -253,7 +253,7 @@ header_visibility = "yes"
 
 statusbar_visibility = "no"
 
-#titles_visibility = "yes"
+titles_visibility = "no"
 #
 #header_text_scrolling = "yes"
 #
