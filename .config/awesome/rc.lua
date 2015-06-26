@@ -192,9 +192,9 @@ mpdwidget = wibox.widget.textbox()
 vicious.register(mpdwidget, vicious.widgets.mpd,
                     function (mpdwidget, args)
                         if args["{state}"] == "Stop" then
-                            return "<span color='#8D2036'> ⮔</span>"
+                            return "<span color='#8D2036'> ■</span>"
                         else
-                            return "<span color='#8D2036'> ⮕</span> " .. args["{Artist}"] .. " - " .. args["{Title}"]
+                            return "<span color='#8D2036'> ♫</span> " .. args["{Artist}"] .. " - " .. args["{Title}"]
                         end
                     end, 10)
 
