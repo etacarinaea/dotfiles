@@ -187,6 +187,19 @@ memicon:set_image(confdir .. "/yuki/icons/ram.png")
 memwidget = wibox.widget.textbox()
 vicious.register(memwidget, vicious.widgets.mem, "$1%", 10)
 
+-- mpd widget
+mpdwidget = wibox.widget.textbox()
+vicious.register(mpdwidget, vicious.widgets.mpd,
+                    function (mpdwidget, args)
+                        if args["{state}"] == "Stop" then
+                            return "<span color='#8D2036'> ⮔</span>"
+                        else
+                            return "<span color='#8D2036'> ⮕</span> " .. args["{Artist}"] .. " - " .. args["{Title}"]
+                        end
+                    end, 10)
+
+
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -266,6 +279,8 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     -- if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(mpdwidget)
+    right_layout:add(separator)
     right_layout:add(memicon)
     right_layout:add(memwidget)
     right_layout:add(separator)
