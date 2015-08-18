@@ -15,4 +15,4 @@ fi
 
 xset r rate 300 30
 
-exec awesome
+exec i3

@@ -10,36 +10,51 @@ ${0##*/}
 *.swp*
 )
 
-files=$(find $PWD -type f)
+USAGE="Usage: $0 [options]
+Options:
+  -h   Show usage
+  -n   Do not use ln -sf for all matches
+  -f   Use ln -sf for all matches
 
-for file in $files; do
-    dir=${file%/*}
-    dir=${dir#*$PWD}
-    dir=${dir#*/}
+If -n or -f are omitted you will be asked whether or not to use
+force (deleting the file at the destination) for creating a symlink,
+if a file at the destination already exists.
+"
 
-    for ex in ${ignore[@]}; do
-        [[ ${file#*$PWD/} == $ex ]] && ig=true && break || ig=false 
+if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+    printf "$USAGE"
+    exit
+else
+    files=$(find $PWD -type f)
+
+    for file in $files; do
+        dir=${file%/*}
+        dir=${dir#*$PWD}
+        dir=${dir#*/}
+
+        for ex in ${ignore[@]}; do
+            [[ ${file#*$PWD/} == $ex ]] && ig=true && break || ig=false 
+        done
+        [[ $ig == true ]] && continue
+
+        file=${file##*/}
+        if [[ $dir == "" ]]; then
+            path=$HOME/$file
+        else
+            dir=$dir/
+            path=$HOME/$dir$file
+        fi
+
+        echo "Creating Symlink to $dir$file at $path"
+        [[ $1 == "-f" ]] && ln -sf "$PWD/$dir$file" "$path" || ln -s "$PWD/$dir$file" "$path"
+        
+        # just to be safe
+        if [[ $? > "0"  ]] && [[ ! $1 == "-f" ]] && [[ ! $1 == "-n" ]]; then
+            read -p "Use force? [Y/N]: " uforce
+            case $uforce in
+                [Yy]* ) ln -sf "$PWD/$dir$file" "$path" && echo Done;;
+                [Nn]* | * ) echo "Skipping.." && continue;;
+            esac
+        fi
     done
-    [[ $ig = true ]] && continue
-
-    file=${file##*/}
-    if [[ $dir = "" ]]; then
-        path=$HOME/$file
-    else
-        dir=$dir/
-        path=$HOME/$dir$file
-    fi
-
-    echo "Creating Symlink to $dir$file at $path"
-    [[ $1 = "-f" ]] && ln -sf "$PWD/$dir$file" "$path" || ln -s "$PWD/$dir$file" "$path"
-    
-    # just to be safe
-    if [[ $? > "0"  ]] && [[ ! $1 = "-f" ]]; then
-        read -p "Use force? [Y/N]: " uforce
-        case $uforce in
-            [Yy]* ) ln -sf "$PWD/$dir$file" "$path" && echo Done;;
-            [Nn]* ) echo "Skipping.." && continue;;
-        esac
-    fi
-done
-
+fi
