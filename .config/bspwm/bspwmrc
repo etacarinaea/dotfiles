@@ -1,0 +1,26 @@
+#!/bin/bash
+
+xres=$(xrdb -query)
+function getXRes {
+    echo "$xres" | grep "$1:" | grep -Eo "#[0-9a-fA-F]{6}" 
+}
+
+bspc config focus_follows_pointer true
+
+bspc config border_width        5
+bspc config window_gap         20
+
+bspc config focused_border_color "$(getXRes color0)"
+bspc config normal_border_color  "$(getXRes color0)"
+
+bspc config split_ratio         0.5
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+bspc config focus_by_distance   true
+
+bspc monitor -d I II III IV V VI VII # • • • • • • •
+
+bspc rule -a Gimp follow=on floating=on
+bspc rule -a mpv floating=on
+
+bash ~/.config/bspwm/panel &

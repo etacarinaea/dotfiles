@@ -1,8 +1,5 @@
 #!/bin/sh
 #
-# ~/.xinitrc
-#
-# Executed by startx (run your window manager from here)
 
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
     for f in /etc/X11/xinit/xinitrc.d/*; do
@@ -14,5 +11,14 @@ fi
 [[ -s ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 xset r rate 300 30
+xset m 1 1
 
-exec i3
+sxhkd &
+pkill panel &
+
+# get _CURRENT_ wallpaper from ~/images/wallpapers independent of file ending
+# if _CURRENT_ matches more than one file the first match is used
+wallpath="$(find ~/images/wallpapers/ -name _CURRENT_* | head -n 1)"
+feh --bg-scale $wallpath &
+
+exec bspwm
