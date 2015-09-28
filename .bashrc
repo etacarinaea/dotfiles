@@ -17,4 +17,5 @@ export VISUAL=vim
 export EDITOR=vim
 export PATH=$PATH:$HOME/bin
 
-PS1='\W » '
+PS1='\W \[\e[0;31m\]»\[\e[0m\] '
+
