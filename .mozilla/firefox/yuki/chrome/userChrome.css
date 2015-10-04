@@ -1,0 +1,99 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root {
+  --tab-background: #131115;
+  --tab-foreground: #999999;
+  --tab-background-selected: #0e0c10;
+  --tab-foreground-selected: #999999;
+  --tab-height: 15px;
+}
+
+
+
+/* TABBAR */
+#TabsToolbar {
+    height: var(--tab-height)!important;
+}
+#TabsToolbar * {
+    background-image: none!important;
+}    
+#tabbrowser-tabs .tabbrowser-tab:not([pinned]) {
+    text-align:center!important;
+    color: var(--tab-foreground)!important;
+    background-color: var(--tab-background)!important;
+}
+.tabbrowser-tab[selected] > * {
+    color: var(--tab-foreground-selected)!important;
+    background-color: var(--tab-background-selected)!important;
+}
+.tabbrowser-tab[selected] .tab-background-middle {
+    background-color: var(--tab-background-selected)!important;
+}
+.box-inherit.scrollbox-innerbox {
+    margin: -15px!important;
+}
+.tab-background,
+.tabs-newtab-button {
+    -moz-margin-end: 0px!important;
+    -moz-margin-start: 0px!important;
+}
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+    display: none!important;
+}
+
+/* URLBAR/NAVBAR */
+
+#nav-bar {
+    box-shadow: none!important;
+}
+#nav-bar,
+#nav-bar * {
+    border: none!important;
+    background-image: none!important;
+    background-color: var(--tab-background-selected)!important;
+    height: var(--tab-height)!important;
+}
+
+#urlbar {
+    color: var(--tab-foreground-selected)!important;
+    margin-left: 10px!important;
+}
+
+
+
+/* CONTENT DECK */
+
+#content-deck {
+    margin-top: -1px!important;
+}
+
+tabbrowser tabpanels {
+    background-color: var(--tab-background)!important;
+}
+  
+/* HIDDEN */
+
+  
+.tab-background-start,
+.tab-background-end {
+    visibility: hidden!important;
+}
+
+#TabsToolbar .tabs-newtab-button,
+#TabsToolbar .scrollbutton-up,
+#TabsToolbar .scrollbutton-down,
+#TabsToolbar .chromeclass-toolbar-additional,
+.tabbrowser-tab .tab-throbber,
+.tabbrowser-tab:not([pinned]) .tab-icon-image,
+.tab-close-button,
+#urlbar-container #back-button,
+#urlbar #notification-popup-box,
+#urlbar #identity-box,
+#urlbar #urlbar-icons,
+#urlbar .chromeclass-toolbar-additional,
+.autocomplete-history-dropmarker.urlbar-history-dropmarker,
+#nav-bar #search-container,
+#nav-bar .chromeclass-toolbar-additional {
+    display: none!important;
+}
