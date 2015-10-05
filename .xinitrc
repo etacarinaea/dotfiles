@@ -13,12 +13,9 @@ fi
 xset r rate 300 30
 xset m 1 1
 
-sxhkd &
-pkill panel &
-
 # get _CURRENT_ wallpaper from ~/images/wallpapers independent of file ending
 # if _CURRENT_ matches more than one file the first match is used
 wallpath="$(find ~/images/wallpapers/ -name _CURRENT_* | head -n 1)"
 feh --bg-scale $wallpath &
 
-exec bspwm
+exec awesome

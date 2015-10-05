@@ -103,7 +103,7 @@ lain.layout.centerwork.top_right = 1
 lain.layout.centerwork.bottom_left = 2
 lain.layout.centerwork.bottom_right = 3
 
-theme.useless_gap_width = 10
+theme.useless_gap_width = 15
 
 
 -- {{{ Wallpaper
@@ -118,7 +118,7 @@ end
 -- Define a tag table which will hold all screen tags.
 tags = {
   names  = { "1", "2", "3", "4", "5", "6", "7" },
-  layout = { layouts[2], layouts[20], layouts[1], layouts[1], layouts[1],
+  layout = { layouts[20], layouts[20], layouts[1], layouts[1], layouts[1],
              layouts[1], layouts[1] }
 }
 for s = 1, screen.count() do
@@ -144,8 +144,7 @@ graphicsmenu = {
 }
 commmenu = {
     { "rtorrent", terminal .. " -e rtorrent" },
-    { "irssi", terminal .. " -e irssi" },
-    { "toxic", terminal .. " -e toxic" }
+    { "irssi", terminal .. " -e irssi" }
 }
 
 mymainmenu = awful.menu({ items = { { "firefox", "firefox" },
@@ -358,6 +357,9 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    
+    -- dmenu
+    awful.key({ modkey },            "d",     function () awful.util.spawn("dmenu_run -fn 'tewi' -nb '#19191b' -nf '#999999' -sb '#8d2036' -sf '#fff'") end),
 
     awful.key({ modkey }, "x",
               function ()
