@@ -11,6 +11,7 @@ ${0##*/}
 )
 
 USAGE="Usage: $(basename "$0") [options]
+
 Options:
   -h   Show usage
   -l   List all files exluding ignored ones
