@@ -47,8 +47,8 @@ URxvt*color7:           #3f3f3f
 URxvt*color15:          #cacaca
 
 
-URxvt*font:             xft:tewi:pixelsize=10,xft:IPAGothic
-URxvt*boldFont:         xft:tewi:pixelsize=10,xft:IPAGothic
+URxvt*font:             xft:tewi:pixelsize=10
+URxvt*boldFont:         xft:tewi:pixelsize=10
 
 
 URxvt*internalBorder:   0

@@ -29,7 +29,7 @@
 .tabbrowser-tab[selected] .tab-background-middle {
     background-color: var(--tab-background-selected)!important;
 }
-.box-inherit.scrollbox-innerbox {
+#TabsToolbar .box-inherit.scrollbox-innerbox {
     margin: -15px!important;
 }
 .tab-background,
