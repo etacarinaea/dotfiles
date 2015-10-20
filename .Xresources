@@ -10,12 +10,12 @@ URxvt*geometry:         83x21
 URxvt*scrollBar:        false
 
 
-URxvt*foreground:       #999999
-URxvt*background:       #19191b
-URxvt*cursorColor:      #999999
+URxvt*foreground:       #aaaaaa
+URxvt*background:       #1f1f22
+URxvt*cursorColor:      #aaaaaa
 
 ! black
-URxvt*color0:           #121212
+URxvt*color0:           #151517
 URxvt*color8:           #272727
 
 ! red

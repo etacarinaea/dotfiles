@@ -1,0 +1,12 @@
+:root {
+    --background: #1f1f22;
+}
+
+/*@-moz-document regexp("((.*\\.(png|apng|jpg|jpeg|gif|tiff|bmp))|(^data:image\\/.*))(\\?([^#]*))?(#(.*))?") {*/
+@-moz-document regexp("(https?://|file:///)(.*)\\.(jpeg|jpg|gif|png|apng|svg|bmp|webm|webp)") {
+    body {
+        background-color: var(--background)!important;
+        background-image: none!important;
+    }
+}
+
