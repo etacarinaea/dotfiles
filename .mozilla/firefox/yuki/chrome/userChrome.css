@@ -87,6 +87,7 @@ tabbrowser tabpanels {
 .tabbrowser-tab .tab-throbber,
 .tabbrowser-tab:not([pinned]) .tab-icon-image,
 .tab-close-button,
+.tab-icon-sound,
 #urlbar-container #back-button,
 #urlbar #notification-popup-box,
 #urlbar #identity-box,
