@@ -11,11 +11,11 @@ URxvt*scrollBar:        false
 
 
 URxvt*foreground:       #aaaaaa
-URxvt*background:       #1f1f22
+URxvt*background:       #19191b
 URxvt*cursorColor:      #aaaaaa
 
 ! black
-URxvt*color0:           #151517
+URxvt*color0:           #121212
 URxvt*color8:           #272727
 
 ! red

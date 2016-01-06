@@ -1,9 +1,9 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 :root {
-  --tab-background: #151517;
+  --tab-background: #121212;
   --tab-foreground: #aaaaaa;
-  --tab-background-selected: #1f1f22;
+  --tab-background-selected: #19191b;
   --tab-foreground-selected: #aaaaaa;
   --tab-height: 15px;
 }
