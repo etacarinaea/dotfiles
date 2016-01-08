@@ -93,6 +93,7 @@ tabbrowser tabpanels {
 #urlbar #identity-box,
 #urlbar #urlbar-icons,
 #urlbar .chromeclass-toolbar-additional,
+#abp-toolbarbutton,
 .autocomplete-history-dropmarker.urlbar-history-dropmarker,
 #nav-bar #search-container,
 #nav-bar .chromeclass-toolbar-additional {

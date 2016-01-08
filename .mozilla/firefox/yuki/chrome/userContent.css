@@ -1,12 +1,134 @@
 :root {
-    --background: #1f1f22;
+  --background: #121212;
+  --foreground: #aaaaaa;
+  --background-selected: #19191b;
+  --red: #ce0a31;
 }
 
-/*@-moz-document regexp("((.*\\.(png|apng|jpg|jpeg|gif|tiff|bmp))|(^data:image\\/.*))(\\?([^#]*))?(#(.*))?") {*/
 @-moz-document regexp("(https?://|file:///)(.*)\\.(jpeg|jpg|gif|png|apng|svg|bmp|webm|webp)") {
     body {
-        background-color: var(--background)!important;
+        background-color: var(--background-selected)!important;
         background-image: none!important;
+    }
+}
+
+@-moz-document domain(youtube.com){
+    * {
+        color: var(--foreground)!important;
+        box-shadow: none!important;
+        border:none!important;
+        border-color: var(--background)!important;
+        border-radius: 0!important;
+    }
+
+    hr {
+        display: none!important;
+    }
+
+    #masthead-positioner #yt-masthead-container,
+    #guide-container,
+    /* video info panels */
+    #watch7-content #watch-header,
+    #watch7-content #action-panel-details,
+    #watch7-content #watch-action-panels,
+    /* comments */
+    #watch7-content #watch-discussion,
+    #watch7-content #watch-discussion .all-comments,
+    #watch7-content #watch-discussion .user-name.g-hovercard,
+    #watch7-sidebar-contents,
+    /* footer */
+    #footer-container,
+    #body-container {
+        background-color: var(--background-selected)!important;
+    }
+
+    #page,
+    .yt-uix-menu-content,
+    #watch7-content #watch-action-panels .yt-uix-form-input-text,
+    /* comments */
+    #watch7-content #watch-discussion #yt-comments-sb-standin .box,
+    #watch7-content #watch-discussion .yt-uix-menu-indicate-selected *,
+    #watch7-content #watch-discussion #yt-comments-paginator,
+    /* footer */
+    #footer-container .yt-uix-button {
+        background-image: none!important;
+        background-color: var(--background)!important;
+    }
+
+    #masthead-positioner #yt-masthead-container {
+        border-bottom: 1px solid var(--background-selected)!important;
+    }
+
+    #guide-container {
+        border: 0 solid var(--background)!important;
+        border-width: 0 1px 1px 0!important;
+    }
+
+    #content,
+    #masthead-search #masthead-search-terms,
+    #masthead-search #search-btn,
+    #upload-btn {
+        border: none!important;
+        background-color: var(--background)!important;
+    }
+
+    .yt-uix-checkbox-on-off input[type="checkbox"]:checked + label {
+        background-color: var(--red)!important;
+    }
+
+    /* subscribe */
+    .yt-uix-subscription-button,
+    .yt-uix-subscription-preferences-button,
+    .yt-subscriber-count {
+        border: 1px solid var(--background)!important;
+        background-color: var(--background)!important;
+    }
+
+    /* because the play symbol in the youtube logo on the subscribe button is
+     * part of the image and not transparent
+     * eg just setting the background-color to blue wont affect the red part in the logo
+     * therefore use a filter
+     */
+    .yt-uix-button-subscribe-branded {
+        background-color: #e62117!important;
+        filter: hue-rotate(345deg) saturate(110.9%) brightness(0.84)!important;
+    }
+    .yt-uix-button-subscribe-branded * {
+        filter: saturate(90.1%) brightness(1.16)!important;
+    }
+
+    /* like/dislike */
+    /* filter:
+     * #1b6aa9 (default yt thumbs up img colour)
+     * -> 207° 72% 38% HSL
+     * #ce0a31 (red)
+     * -> 348° 91% 42% HSL
+     * 348-207, 91/72, 42/38
+     * H: 141, S 1.263, L 1.1
+     */
+    .video-extras-sparkbar-likes {
+        background-color: var(--red)!important;
+    }
+    .video-extras-sparkbar-dislikes {
+        background-color: var(--foreground)!important;
+    }
+    .like-button-renderer-like-button-clicked:before {
+        filter: hue-rotate(141deg) saturate(126.3%) brightness(1.1)!important;
+    }
+
+    /* PLAYER */
+    #player-mole-container {
+        margin-top: 10px!important;
+    }
+    .ytp-swatch-background-color,
+    .ytp-hover-progress {
+        background-color: var(--red)!important;
+    }
+    .ytp-scrubber-button {
+        width: 5px!important;
+        height: 11px!important;
+        margin-top: 1px!important;
+        margin-left: 0px!important;
     }
 }
 
