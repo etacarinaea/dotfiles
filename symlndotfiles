@@ -10,15 +10,17 @@ ${0##*/}
 *.swp*
 )
 
-USAGE="Usage: $(basename "$0") [options]
+USAGE="Usage: $(basename "$0") [options] [regex]
 
 Options:
   -h   Show usage
+  -v   invert regex matches
   -l   List all files exluding ignored ones
   -n   Never use ln -sf, don't even ask
   -f   Use ln -sf for all matches
   -o   Hide errors
 
+[regex] is optional. If specified, will only symlink matches.
 If -n or -f are omitted you will be asked whether or not to use
 force (deleting the file at the destination) for creating a symlink,
 if a file at the destination already exists.
@@ -31,11 +33,14 @@ lnopt="s"
 lnsuf=""
 stderrdir=""
 
-while getopts "hlnfo" opt; do
+while getopts "hvlnfo" opt; do
     case $opt in
         h)
             echo "$USAGE"
             exit
+            ;;
+        v)
+            invertregex=true
             ;;
         l)
             list=true
@@ -56,9 +61,20 @@ while getopts "hlnfo" opt; do
     esac
 done
 
-
+# make sure we're in ~/dotfiles/
 cd ~/dotfiles/
-files=$(find $PWD -type f)
+
+
+# get operands
+num=$#
+shift $((num - 1))
+
+if [[ $invertregex ]]; then
+    echo Exluding $@
+    files=$(find $PWD -type f | grep -v "$@")
+else
+    files=$(find $PWD -type f | grep "$@")
+fi
 
 for file in $files; do
     dir=${file%/*}
