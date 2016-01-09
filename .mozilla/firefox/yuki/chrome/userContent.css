@@ -64,6 +64,10 @@
         border-width: 0 1px 1px 0!important;
     }
 
+    #logo-container {
+        filter: grayscale(100%) invert(100%)!important;
+    }
+
     #content,
     #masthead-search #masthead-search-terms,
     #masthead-search #search-btn,
