@@ -43,6 +43,7 @@
     }
 
     #page,
+    #theater-background,
     .yt-uix-menu-content,
     #watch7-content #watch-action-panels .yt-uix-form-input-text,
     /* comments */
@@ -132,7 +133,7 @@
         width: 5px!important;
         height: 11px!important;
         margin-top: 1px!important;
-        margin-left: 0px!important;
+        margin-left: -2px!important;
     }
 }
 
