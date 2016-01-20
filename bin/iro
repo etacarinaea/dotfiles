@@ -2,8 +2,8 @@
 #
 
 # expect a file as input
-if [ ! -r $1 ]; then
-    echo "File containing colours is required. Aborting..."
+if [ ! $1 ] || [ ! -r $1 ]; then
+    echo "File is required. Aborting..."
     exit 1
 fi
 
