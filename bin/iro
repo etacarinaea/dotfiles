@@ -1,7 +1,47 @@
 #!/bin/bash
 #
-# this is a mess, I need to rework this sometime
-# use at your own risk
+
+# expect a file as input
+if [ ! -r $1 ]; then
+    echo "File containing colours is required. Aborting..."
+    exit 1
+fi
+
+
+# semantic name
+configfile=$1
+
+# assign variable values from file to "values" array
+for num in {0..23}; do
+    # if true = normal terminal colour
+    if (( $num <= 15 )); then
+        # matches the whole line color$num appears in
+        # I don't expect any comments/etc on the same line or
+        # color$num appearing somwhere else
+        values[$num]=$(grep -Eo "^color$num:.*" $configfile)
+        # remove everything but the hex code
+        values[$num]=${values[$num]##* }
+    else
+        case $num in
+            16 ) pattern="foreground";;
+            17 ) pattern="background";;
+            18 ) pattern="cursorColor";;
+            19 ) pattern="font";;
+            20 ) pattern="size";;
+            21 ) pattern="pixelsize";;
+            22 ) pattern="borderwidth";;
+            23 ) pattern="wallpaper";;
+        esac
+        values[$num]=$(grep -Eo "^$pattern:.*" $configfile)
+        values[$num]=${values[$num]##* }
+    fi
+done
+
+# just do it
+changewall "${values[23]}"
+
+# === old === #
+# there's probably a better way but I'm too tired to come up with one right now
 
 #variable replacement
 function awesome {
@@ -19,164 +59,113 @@ function css {
         $HOME/.mozilla/firefox/yuki/chrome/$3
 }
 #img color
-function steam {
-    convert $HOME/.local/share/Steam/skins/Deshou\ STEAM/graphics/$1 \
-        -alpha extract -threshold 0 -transparent black -fill "$2" \
-        -opaque white $HOME/.local/share/Steam/skins/Deshou\ STEAM/graphics/$1
-}
+#function steam {
+#    convert $HOME/.local/share/Steam/skins/Deshou\ STEAM/graphics/$1 \
+#        -alpha extract -threshold 0 -transparent black -fill "$2" \
+#        -opaque white $HOME/.local/share/Steam/skins/Deshou\ STEAM/graphics/$1
+#}
 #variable color
-function steamstyle {
-    sed -i --follow-symlinks "s/$1=\".*/$1=\"$2\"\r/g" \
-        $HOME/.local/share/Steam/skins/Deshou\ STEAM/resource/styles/steam.styles
-}
+#function steamstyle {
+#    sed -i --follow-symlinks "s/$1=\".*/$1=\"$2\"\r/g" \
+#        $HOME/.local/share/Steam/skins/Deshou\ STEAM/resource/styles/steam.styles
+#}
 #variable value(color)
 function appchanx {
     sed -i --follow-symlinks "s/\"$1\":.*/\"$1\": \"$2\",/g" $HOME/.appchanx-theme.json
 }
 
 
-if [ ! -r $1 ]; then
-    echo "File containing colours is required."
-    exit 1
-fi
 for num in {0..19}; do
-    # .Xresources and variable init
-    if (( $num <= 15 )); then
-        hex=$(grep -Eo ".*color$num:\s*#[0-9a-fA-F]{6}" $1)
-        hex=${hex##* }
-
-
-        # .Xresources
-        (( $num > 9 )) && rep="color$num:          $hex" || rep="color$num:           $hex"
-        sed -i --follow-symlinks "s/^URxvt\*color$num:.*/URxvt\*$rep/g" $HOME/.Xresources
-
-    else
-        anum=$num
-        case $anum in
-            16 ) anum="foreground";;
-            17 ) anum="background";;
-            18 ) anum="cursorColor";;
-        esac
-        hex=$(grep -Eo ".*$anum:\s*#[0-9a-fA-F]{6}" $1)
-        hex=${hex##* }
-
-        font=$(grep -Eo ".*font:.*" $1)
-        font=${font#*\"}
-        font=${font%\"*}
-
-        size=$(grep -Eo "^size:.*" $1)
-        size=${size##* }
-
-        pixelsize=$(grep -Eo ".*pixelsize:.*" $1)
-        pixelsize=${pixelsize##* }
-
-
-        # .Xresources
-        (( $num == 18 )) && rep="$anum:      $hex" || rep="$anum:       $hex"
-        sed -i --follow-symlinks "s/^URxvt\*$anum:.*/URxvt\*$rep/g" $HOME/.Xresources
-        sed -i --follow-symlinks "s/^URxvt\*font:.*,/URxvt\*font:             xft:$font:pixelsize=$pixelsize,/g" \
-            $HOME/.Xresources
-        sed -i --follow-symlinks "s/^URxvt\*boldFont:.*,/URxvt\*boldFont:         xft:$font:pixelsize=$pixelsize,/g" \
-            $HOME/.Xresources
-    fi
-
-
     # .config/awesome/yuki/theme.lua
     case $num in
-        0 ) whitespace=" " && awesome "theme.border_normal" $hex
-            whitespace="  " && awesome "theme.border_focus" $hex
-            whitespace=" " && awesome "theme.border_marked" $hex
-            whitespace="     " && awesome "theme.bg_normal" $hex
-            whitespace="      " && awesome "theme.bg_focus" $hex;;
-        1 ) whitespace="      " && awesome "theme.fg_focus" $hex;;
-        16) whitespace="     " && awesome "theme.fg_normal" $hex;;
-        17) whitespace="   " && awesome "theme.bg_minimize" $hex;;
-        19) whitespace="          " && awesome "theme.font" "$font $size" ;;
+        0 ) whitespace=" " && awesome "theme.border_normal" ${values[$num]}
+            whitespace="  " && awesome "theme.border_focus" ${values[$num]}
+            whitespace=" " && awesome "theme.border_marked" ${values[$num]}
+            whitespace="     " && awesome "theme.bg_normal" ${values[$num]}
+            whitespace="      " && awesome "theme.bg_focus" ${values[$num]};;
+        1 ) whitespace="      " && awesome "theme.fg_focus" ${values[$num]};;
+        16) whitespace="     " && awesome "theme.fg_normal" ${values[$num]};;
+        17) whitespace="   " && awesome "theme.bg_minimize" ${values[$num]};;
+        19) whitespace="          " &&
+            awesome "theme.font" "${values[$num]} ${values[$num+1]}" ;;
+        22) whitespace="  " && awesome "theme.border_width" ${values[$num]};;
     esac
 
     # Startpage config.json
     case $num in
-        1 ) whitespace="        " && json "heading_color" $hex
-            whitespace="         " && json "border_color" $hex;;
-        0 ) whitespace="           " && json "foreground" $hex;;
-        16) whitespace="           " && json "link_color" $hex;;
-        17) whitespace="           " && json "background" $hex;;
-        19) whitespace="         " && json "heading_font" "$font"
-            whitespace="            " && json "link_font" "$font"
-            whitespace="    " && json "heading_font_size" "${pixelsize}px"
-            whitespace="       " && json "link_font_size" "${pixelsize}px";;
+        1 ) whitespace="        " && json "heading_color" ${values[$num]}
+            whitespace="         " && json "border_color" ${values[$num]} ;;
+        0 ) whitespace="           " && json "foreground" ${values[$num]} ;;
+        16) whitespace="           " && json "link_color" ${values[$num]} ;;
+        17) whitespace="           " && json "background" ${values[$num]} ;;
+        19) whitespace="         " && json "heading_font" ${values[$num]}
+            whitespace="            " && json "link_font" ${values[$num]};;
+        21) whitespace="    " && json "heading_font_size" "${values[$num]}px"
+            whitespace="       " && json "link_font_size" "${values[$num]}px";;
     esac
 
     # Firefox userChrome.css
-    f="userChrome.css"
+    file="userChrome.css"
     case $num in
-        0 ) css "--tab-background" $hex $f;;
-        16) css "--tab-foreground" $hex $f
-            css "--tab-foreground-selected" $hex $f;;
-        17) css "--tab-background-selected" $hex $f;;
+        0 ) css "--tab-background" ${values[$num]} $file;;
+        16) css "--tab-foreground" ${values[$num]} $file
+            css "--tab-foreground-selected" ${values[$num]} $file;;
+        17) css "--tab-background-selected" ${values[$num]} $file;;
     esac
 
     # Firefox userContent.css
-    f="userContent.css"
+    file="userContent.css"
     case $num in
-        17) css "--background" $hex $f;;
+        0 ) css "--background" ${values[$num]} $file;;
+        16) css "--tab-foreground" ${values[$num]} $file;;
+        17) css "--background-selected" ${values[$num]} $file;;
     esac
 
     # appchanx theme
     case $num in
-        0 ) appchanx "Checkbox Background" $hex;;
-        5 ) appchanx "Hovered Links" $hex;;
-        9 ) appchanx "Names" $hex
-            appchanx "Sage" $hex
-            appchanx "Tripcodes" $hex
-            appchanx "Post Numbers" $hex
-            appchanx "Warnings" $hex;;
-        13) appchanx "Highlighted Reply Border" $hex
-            appchanx "Backlinked Reply Outline" $hex
-            appchanx "Quotelinks" $hex
-            appchanx "Backlinks" $hex;;
-        15) appchanx "Hovered Navigation Links" $hex;;
-        16) appchanx "Links" $hex
-            appchanx "Navigation Links" $hex
-            appchanx "Text" $hex
-            appchanx "Board Title" $hex
-            appchanx "Timestamps" $hex
-            appchanx "Inputs" $hex;;
-        17) appchanx "Background Color" $hex
-            appchanx "Dialog Background" $hex
-            appchanx "Reply Background" $hex
-            appchanx "Highlighted Reply Background" $hex
-            appchanx "Input Background" $hex
-            appchanx "Buttons Background" $hex
-            appchanx "Navigation Background" $hex;;
+        0 ) appchanx "Checkbox Background" ${values[$num]};;
+        5 ) appchanx "Hovered Links" ${values[$num]};;
+        9 ) appchanx "Names" ${values[$num]}
+            appchanx "Sage" ${values[$num]}
+            appchanx "Tripcodes" ${values[$num]}
+            appchanx "Post Numbers" ${values[$num]}
+            appchanx "Warnings" ${values[$num]};;
+        13) appchanx "Highlighted Reply Border" ${values[$num]}
+            appchanx "Backlinked Reply Outline" ${values[$num]}
+            appchanx "Quotelinks" ${values[$num]}
+            appchanx "Backlinks" ${values[$num]};;
+        15) appchanx "Hovered Navigation Links" ${values[$num]};;
+        16) appchanx "Links" ${values[$num]}
+            appchanx "Navigation Links" ${values[$num]}
+            appchanx "Text" ${values[$num]}
+            appchanx "Board Title" ${values[$num]}
+            appchanx "Timestamps" ${values[$num]}
+            appchanx "Inputs" ${values[$num]};;
+        17) appchanx "Background Color" ${values[$num]}
+            appchanx "Dialog Background" ${values[$num]}
+            appchanx "Reply Background" ${values[$num]}
+            appchanx "Highlighted Reply Background" ${values[$num]}
+            appchanx "Input Background" ${values[$num]}
+            appchanx "Buttons Background" ${values[$num]}
+            appchanx "Navigation Background" ${values[$num]};;
     esac
 
 
     # Steam
-    rh=$(echo "$hex"|cut -c2-3)
-    gh=$(echo "$hex"|cut -c4-5)
-    bh=$(echo "$hex"|cut -c6-7)
-    
-    rgba="$((16#$rh)) $((16#$gh)) $((16#$bh)) 255"
-
-    case $num in
-        1 ) steam avatarBorderOnline.tga $hex
-            steam achievementbg_recent.tga $hex
-            steamstyle "baseHighlight" "$rgba";;
-        9 ) steam avatarBorderInGame.tga $hex
-            steamstyle "baseInGame" "$rgba";;
-        15) steamstyle "baseLight" "$rgba";;
-        17) steamstyle "baseBackground" "$rgba";;
-    esac
+    #rh=$(echo "$hex"|cut -c2-3)
+    #gh=$(echo "$hex"|cut -c4-5)
+    #bh=$(echo "$hex"|cut -c6-7)
+    # 
+    #rgba="$((16#$rh)) $((16#$gh)) $((16#$bh)) 255"
+    #
+    #case $num in
+    #    1 ) steam avatarBorderOnline.tga $hex
+    #        steam achievementbg_recent.tga $hex
+    #        steamstyle "baseHighlight" "$rgba";;
+    #    9 ) steam avatarBorderInGame.tga $hex
+    #        steamstyle "baseInGame" "$rgba";;
+    #    15) steamstyle "baseLight" "$rgba";;
+    #    17) steamstyle "baseBackground" "$rgba";;
+    #esac
 done
-
-read -p "Change Wallpaper? [Y/N]: " changewall
-case $changewall in
-    [Yy]* )
-        wallpaper=$(grep -Eo ".*wallpaper:.*" $1)
-        wallpaper=${wallpaper#* }
-        changewall $wallpaper;;
-esac
-
-xrdb -merge $HOME/.Xresources
 
