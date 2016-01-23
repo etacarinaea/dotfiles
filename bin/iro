@@ -208,4 +208,4 @@ for num in {0..23}; do
     #esac
 done
 
-xrdb -merge .Xresources
+xrdb -merge $HOME/.Xresources
