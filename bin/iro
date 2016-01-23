@@ -75,7 +75,7 @@ function appchanx {
 }
 
 
-for num in {0..19}; do
+for num in {0..23}; do
     # .config/awesome/yuki/theme.lua
     case $num in
         0 ) whitespace=" " && awesome "theme.border_normal" ${values[$num]}
