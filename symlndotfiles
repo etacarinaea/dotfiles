@@ -67,13 +67,14 @@ cd ~/dotfiles/
 
 # get operands
 num=$#
-shift $((num - 1))
-
-if [[ $invertregex ]]; then
-    echo Exluding $@
-    files=$(find $PWD -type f | grep -v "$@")
-else
-    files=$(find $PWD -type f | grep "$@")
+if [[ $num != 0 ]]; then
+    shift $((num - 1))
+    if [[ $invertregex ]]; then
+        echo Exluding $@
+        files=$(find $PWD -type f | grep -v "$@")
+    else
+        files=$(find $PWD -type f | grep "$@")
+    fi
 fi
 
 for file in $files; do
