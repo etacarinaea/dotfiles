@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+# values  0-15: color
+#        16-18: foreground, background, cursorColor
+#        19-21: font, size, pixelsize
+#           22: borderwidth
+#           23: wallpaper
+
 
 # expect a file as input
 if [ ! $1 ] || [ ! -r $1 ]; then
@@ -44,6 +50,14 @@ changewall "${values[23]}"
 # there's probably a better way but I'm too tired to come up with one right now
 
 #variable replacement
+function xresources {
+    sed -i --follow-symlinks "s/$1:.*/$1:$whitespace$2/g" \
+        $HOME/.Xresources
+}
+function xresfont {
+    sed -i --follow-symlinks "s/$1:.*/$1:${whitespace}xft:$2:pixelsize=$3/g" \
+        $HOME/.Xresources
+}
 function awesome {
     sed -i --follow-symlinks "s/^$1.*/$1$whitespace= \"$2\"/g" \
         $HOME/.config/awesome/yuki/theme.lua
@@ -75,7 +89,32 @@ function appchanx {
 }
 
 
+# I think I'm using a loop here to make editing easier, but it looks stupid to me
 for num in {0..23}; do
+    # .Xresources
+    case $num in
+        0 ) whitespace="           " && xresources "color0" ${values[$num]};;
+        1 ) whitespace="           " && xresources "color1" ${values[$num]};;
+        2 ) whitespace="           " && xresources "color2" ${values[$num]};;
+        3 ) whitespace="           " && xresources "color3" ${values[$num]};;
+        4 ) whitespace="           " && xresources "color4" ${values[$num]};;
+        5 ) whitespace="           " && xresources "color5" ${values[$num]};;
+        6 ) whitespace="           " && xresources "color6" ${values[$num]};;
+        7 ) whitespace="           " && xresources "color7" ${values[$num]};;
+        8 ) whitespace="           " && xresources "color8" ${values[$num]};;
+        9 ) whitespace="           " && xresources "color9" ${values[$num]};;
+        10) whitespace="          " && xresources "color10" ${values[$num]};;
+        11) whitespace="          " && xresources "color11" ${values[$num]};;
+        12) whitespace="          " && xresources "color12" ${values[$num]};;
+        13) whitespace="          " && xresources "color13" ${values[$num]};;
+        14) whitespace="          " && xresources "color14" ${values[$num]};;
+        15) whitespace="          " && xresources "color15" ${values[$num]};;
+        16) whitespace="       " && xresources "foreground" ${values[$num]};;
+        17) whitespace="       " && xresources "background" ${values[$num]};;
+        18) whitespace="      " && xresources "cursorColor" ${values[$num]};;
+        19) whitespace="             " && xresfont "font" ${values[$num]} ${values[$num+2]}
+            whitespace="         " && xresfont "boldFont" ${values[$num]} ${values[$num+2]};;
+    esac
     # .config/awesome/yuki/theme.lua
     case $num in
         0 ) whitespace=" " && awesome "theme.border_normal" ${values[$num]}
@@ -169,3 +208,4 @@ for num in {0..23}; do
     #esac
 done
 
+xrdb -merge .Xresources
