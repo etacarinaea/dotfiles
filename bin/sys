@@ -2,6 +2,11 @@
 #
 
 
+function funcexit {
+    tput rmcup
+    tput cnorm
+}
+
 # echo with displacement
 l=0
 function echodis {
@@ -13,8 +18,8 @@ function echodis {
 
 tput smcup
 tput civis
-trap 'tput rmcup; tput cnorm; echo An error occured on line $LINENO; exit 1' ERR
-trap "tput rmcup; tput cnorm; echo Aborting.; exit" INT
+trap 'funcexit; echo An error occured on line $LINENO; exit 1' ERR
+trap "funcexit; echo Aborting.; exit" INT
 clear
 
 # get displacement
@@ -90,5 +95,4 @@ imgprev ~/images/wallpapers/_CURRENT_.png ${IMGWIDTH}x${IMGHEIGHT}
 
 # wait for input to continue
 read -sn 1 i
-tput rmcup
-tput cnorm
+funcexit

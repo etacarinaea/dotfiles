@@ -23,7 +23,7 @@ height=$(echo $DIM | awk -F"x" '{ print $2 }')
 
 
 if [[ $1 != "-i" ]];then
-    FINAL=~/test.png
+    FINAL=/tmp/imgprevtmp.png
     # crop out square from image center
     convert $IMG -gravity center -crop ${IMGHEIGHT}x+0+0 +repage $FINAL &
     echo -e "0;1;0;0;$width;$height;;;;;$FINAL\n4;\n3;" | $W3MIMGDISPLAY 1>/dev/null
