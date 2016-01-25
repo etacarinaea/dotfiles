@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+# $(basename "$0") [options] [file] [WIDTHxHEIGHT]
+
+[ ! $1 ] && echo File required. && exit 1
+[ ! $2 ] && echo Width and height required. && exit 1
+
+
+W3MIMGDISPLAY="/usr/lib/w3m/w3mimgdisplay"
+if [[ $1 == "-i" ]];then
+    IMG=$2
+    DIM=$3
+else
+    IMG=$1
+    DIM=$2
+fi
+IMGDIMENSIONS=$(identify $IMG | awk '{ print $3 }')
+#IMGWIDTH=$(echo $IMGDIMENSIONS | awk -F"x" '{ print $1 }')
+IMGHEIGHT=$(echo $IMGDIMENSIONS | awk -F"x" '{ print $2 }')
+width=$(echo $DIM | awk -F"x" '{ print $1 }')
+height=$(echo $DIM | awk -F"x" '{ print $2 }')
+
+
+
+if [[ $1 != "-i" ]];then
+    FINAL=~/test.png
+    # crop out square from image center
+    convert $IMG -gravity center -crop ${IMGHEIGHT}x+0+0 +repage $FINAL &
+    echo -e "0;1;0;0;$width;$height;;;;;$FINAL\n4;\n3;" | $W3MIMGDISPLAY 1>/dev/null
+else
+    # term col width in px
+    colwidth=6
+    lineheight=12
+    # minimum displacement (in characters) for text so it won't overlap the image
+    coldisplace=$(awk -v width=$width -v colwidth=$colwidth 'BEGIN { print (width + 2) / colwidth }')
+    linedisplace=$(awk -v height=$height -v lineheight=$lineheight 'BEGIN { print (height + 2) / lineheight }')
+    # round
+    coldisplace=$((${coldisplace%.*} + 1))
+    linedisplace=$((${linedisplace%.*} + 1))
+    echo "${coldisplace}x${linedisplace}"
+fi
+
