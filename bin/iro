@@ -4,7 +4,8 @@
 #        16-18: foreground, background, cursorColor
 #        19-21: font, size, pixelsize
 #           22: borderwidth
-#           23: wallpaper
+#           23: gapwidth
+#           24: wallpaper
 
 
 # expect a file as input
@@ -18,11 +19,9 @@ fi
 configfile=$1
 
 # assign variable values from file to "values" array
-for num in {0..23}; do
+for num in {0..24}; do
     # if true = normal terminal colour
-    if (( $num <= 15 )); then
-        # matches the whole line color$num appears in
-        # I don't expect any comments/etc on the same line or
+    if (( $num <= 15 )); then # matches the whole line color$num appears in # I don't expect any comments/etc on the same line or
         # color$num appearing somwhere else
         values[$num]=$(grep -Eo "^color$num:.*" $configfile)
         # remove everything but the hex code
@@ -36,7 +35,8 @@ for num in {0..23}; do
             20 ) pattern="size";;
             21 ) pattern="pixelsize";;
             22 ) pattern="borderwidth";;
-            23 ) pattern="wallpaper";;
+            23 ) pattern="gapwidth";;
+            24 ) pattern="wallpaper";;
         esac
         values[$num]=$(grep -Eo "^$pattern:.*" $configfile)
         values[$num]=${values[$num]##* }
@@ -44,7 +44,7 @@ for num in {0..23}; do
 done
 
 # just do it
-changewall "${values[23]}"
+changewall "${values[24]}"
 
 # === old === #
 # there's probably a better way but I'm too tired to come up with one right now
@@ -59,12 +59,12 @@ function xresfont {
         $HOME/.Xresources
 }
 function awesome {
-    sed -i --follow-symlinks "s/^$1.*/$1$whitespace= \"$2\"/g" \
-        $HOME/.config/awesome/yuki/theme.lua
+    [ ! $3 ] && file="$HOME/.config/awesome/yuki/theme.lua" || file="$3"
+    sed -i --follow-symlinks "s/^$1.*/$1$whitespace= \"$2\"/g" $file
 }
 #variable replacement
 function json {
-    sed -i --follow-symlinks "s/$1\":.*/$1\":$whitespace\"$2\",/g" \
+    sed -i --follow-symlinks "s/$1\":.*\"/$1\":$whitespace\"$2\"/g" \
         $HOME/workspace/startpage/config.json
 }
 #variable replacement file
@@ -115,6 +115,7 @@ for num in {0..23}; do
         19) whitespace="             " && xresfont "font" ${values[$num]} ${values[$num+2]}
             whitespace="         " && xresfont "boldFont" ${values[$num]} ${values[$num+2]};;
     esac
+
     # .config/awesome/yuki/theme.lua
     case $num in
         0 ) whitespace=" " && awesome "theme.border_normal" ${values[$num]}
@@ -125,18 +126,20 @@ for num in {0..23}; do
         1 ) whitespace="      " && awesome "theme.fg_focus" ${values[$num]};;
         16) whitespace="     " && awesome "theme.fg_normal" ${values[$num]};;
         17) whitespace="   " && awesome "theme.bg_minimize" ${values[$num]};;
-        19) whitespace="          " &&
-            awesome "theme.font" "${values[$num]} ${values[$num+1]}" ;;
+        19) whitespace="          " && awesome "theme.font" "${values[$num]} ${values[$num+1]}" ;;
         22) whitespace="  " && awesome "theme.border_width" ${values[$num]};;
+        23) whitespace=" " && awesome "theme.useless_gap_width" ${values[$num]} "$HOME/.config/awesome/rc.lua";;
     esac
 
     # Startpage config.json
     case $num in
+        0 ) whitespace="           " && json "foreground" ${values[$num]};;
         1 ) whitespace="        " && json "heading_color" ${values[$num]}
-            whitespace="         " && json "border_color" ${values[$num]} ;;
-        0 ) whitespace="           " && json "foreground" ${values[$num]} ;;
-        16) whitespace="           " && json "link_color" ${values[$num]} ;;
-        17) whitespace="           " && json "background" ${values[$num]} ;;
+            whitespace="         " && json "border_color" ${values[$num]};;
+        16) whitespace="           " && json "link_color" ${values[$num]}
+            whitespace="         " && json "search_color" ${values[$num]}
+            whitespace="      " && json "search_bg_color" "rgba(110,110,110,0.1)";;
+        17) whitespace="           " && json "background" ${values[$num]};;
         19) whitespace="         " && json "heading_font" ${values[$num]}
             whitespace="            " && json "link_font" ${values[$num]};;
         21) whitespace="    " && json "heading_font_size" "${values[$num]}px"
@@ -156,7 +159,7 @@ for num in {0..23}; do
     file="userContent.css"
     case $num in
         0 ) css "--background" ${values[$num]} $file;;
-        16) css "--tab-foreground" ${values[$num]} $file;;
+        16) css "--foreground" ${values[$num]} $file;;
         17) css "--background-selected" ${values[$num]} $file;;
     esac
 
