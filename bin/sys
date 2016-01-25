@@ -3,7 +3,6 @@
 
 
 # echo with displacement
-l=0
 function echodis {
     tput cup $l $cols
     echo -e "$1"
