@@ -19,7 +19,6 @@ function echodis {
 tput smcup
 tput civis
 trap 'funcexit; echo An error occured on line $LINENO; exit 1' ERR
-trap "funcexit; echo Aborting.; exit" INT
 clear
 
 # get displacement
@@ -37,6 +36,12 @@ WHITESPACE="  "
 
 
 #--- misc
+if [[ $1 == "-d" ]]; then
+    echodis "${WHITESPACE}COL: $( echo $2 | awk -F"/" '{ print $NF }')"
+fi
+
+# Distro
+echodis "${WHITESPACE}OS:  $( lsb_release -d | awk -F":\\\s*" '{ print $2 }')"
 
 # WM
 WMNAMES=("awesome" "i3")
@@ -44,7 +49,7 @@ for wmname in $WMNAMES; do
     wmpid=$(pgrep -U $UID $wmname)
     if [ $wmpid ]; then
         wm=$(ps -p $wmpid -o comm=)
-        echodis "${WHITESPACE}WM:  "${wm^}
+        echodis "${WHITESPACE}WM:  ${wm^}"
         break
     fi
 done
@@ -57,23 +62,23 @@ fi
 echodis "${WHITESPACE}FNT: ${font^}"
 
 # Resolution
-echodis "${WHITESPACE}RES: "$(xdpyinfo | awk '/dimensions:/ { print $2; exit }')
+echodis "${WHITESPACE}RES: $(xdpyinfo | awk '/dimensions:/ { print $2; exit }')"
 
 
 #--- hw
 
 # cpu model name
-echodis "${WHITESPACE}CPU: "$(
-    awk -F": " '/model name/ { print $2; exit }' /proc/cpuinfo |
+echodis "${WHITESPACE}CPU: $(
+    awk -F":\\\s*" '/model name/ { print $2; exit }' /proc/cpuinfo |
         sed "s/\s*Processor\s*//"
-)
+)"
 
 # mem usage
-echodis "${WHITESPACE}MEM: "$(
+echodis "${WHITESPACE}MEM: $(
     awk '/MemTotal/ {total=int($2/1024)}
          /MemFree/ {free=int($2/1024)}
          END { print free "/" total "MiB" }' /proc/meminfo
-)
+)"
 
 # uptime
 uptime=$(</proc/uptime)
@@ -94,5 +99,7 @@ termcolours
 imgprev ~/images/wallpapers/_CURRENT_.png ${IMGWIDTH}x${IMGHEIGHT}
 
 # wait for input to continue
-read -sn 1 i
-funcexit
+if [[ $1 != "-d" ]]; then
+    read -sn 1 i
+    funcexit
+fi

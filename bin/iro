@@ -8,15 +8,18 @@
 #           24: wallpaper
 
 
+trap 'echo "Error on line $LINENO; exit 1' ERR
+
 # expect a file as input
-if [ ! $1 ] || [ ! -r $1 ]; then
+if [ $1 == "-u" ]; then
+    configfile=$2
+elif [ ! $1 ] || [ ! -r $1 ]; then
     echo "File is required. Aborting..."
     exit 1
+else
+    configfile=$1
 fi
 
-
-# semantic name
-configfile=$1
 
 # assign variable values from file to "values" array
 for num in {0..24}; do
@@ -209,6 +212,19 @@ for num in {0..23}; do
     #    15) steamstyle "baseLight" "$rgba";;
     #    17) steamstyle "baseBackground" "$rgba";;
     #esac
+
 done
+
+# if -u apply colors in current terminal
+# https://code.google.com/archive/p/mintty/wikis/Tips.wiki
+if [ $1 == "-u" ]; then
+    for num in {0..15}; do
+        echo "$num - ${values[$num]}"
+        echo -e "\e]4;$num;${values[$num]}\a"
+    done
+    for num in {16..19}; do
+        echo -e "\e]$num;${values[$num]}\a"
+    done
+fi
 
 xrdb -merge $HOME/.Xresources

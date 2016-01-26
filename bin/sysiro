@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+
+for file in $(find ~/colors -maxdepth 1 -mindepth 1 -type f); do
+    colorschemes[a++]=$file
+done
+
+function next {
+    length=${#colorschemes[@]}
+    colorschemes[$length]=${colorschemes[0]}
+    for num in $(seq 0 $((length - 1))); do
+        colorschemes[$num]=${colorschemes[$num + 1]}
+    done
+    unset colorschemes[$length]
+}
+
+function prev {
+    length=${#colorschemes[@]}
+    for num in $(seq $length -1 0); do
+        colorschemes[$num]=${colorschemes[$num - 1]}
+    done
+    colorschemes[0]=${colorschemes[$length]}
+    unset colorschemes[$length]
+}
+
+while : ; do
+    iro -u "${colorschemes[0]}" &&
+    sys -d "${colorschemes[0]}"
+
+    read -sn 1 key
+    case $key in
+        "," )
+            prev;;
+        "." )
+            next;;
+        "q" )
+            tput rmcup
+            tput cnorm
+            break;;
+    esac
+    unset key
+done
+
