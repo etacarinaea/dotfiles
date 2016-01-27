@@ -8,8 +8,6 @@
 #           24: wallpaper
 
 
-trap 'echo "Error on line $LINENO; exit 1' ERR
-
 # expect a file as input
 if [ $1 == "-u" ]; then
     configfile=$2
@@ -62,8 +60,12 @@ function xresfont {
         $HOME/.Xresources
 }
 function awesome {
-    [ ! $3 ] && file="$HOME/.config/awesome/yuki/theme.lua" || file="$3"
-    sed -i --follow-symlinks "s/^$1.*/$1$whitespace= \"$2\"/g" $file
+    sed -i --follow-symlinks "s/^$1.*/$1$whitespace= \"$2\"/g" \
+        $HOME/.config/awesome/yuki/theme.lua
+}
+function awesomerc {
+    sed -i --follow-symlinks "s/^$1.*/$1$whitespace= \"$2\"/g" \
+        $HOME/.config/awesome/rc.lua
 }
 #variable replacement
 function json {
@@ -131,7 +133,7 @@ for num in {0..23}; do
         17) whitespace="   " && awesome "theme.bg_minimize" ${values[$num]};;
         19) whitespace="          " && awesome "theme.font" "${values[$num]} ${values[$num+1]}" ;;
         22) whitespace="  " && awesome "theme.border_width" ${values[$num]};;
-        23) whitespace=" " && awesome "theme.useless_gap_width" ${values[$num]} "$HOME/.config/awesome/rc.lua";;
+        23) whitespace=" " && awesomerc "theme.useless_gap_width" ${values[$num]};;
     esac
 
     # Startpage config.json
