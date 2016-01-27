@@ -220,13 +220,14 @@ done
 # if -u apply colors in current terminal
 # https://code.google.com/archive/p/mintty/wikis/Tips.wiki
 if [ $1 == "-u" ]; then
+    test=""
     for num in {0..15}; do
-        echo "$num - ${values[$num]}"
-        echo -e "\e]4;$num;${values[$num]}\a"
+        test=$test"\033]4;$num;${values[$num]}\007"
     done
-    for num in {16..19}; do
-        echo -e "\e]$num;${values[$num]}\a"
+    for num in {10..12}; do
+        test=$test"\033]$num;${values[$num + 6]}\007"
     done
+    echo -ne "$test"
 fi
 
 xrdb -merge $HOME/.Xresources
