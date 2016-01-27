@@ -103,7 +103,7 @@ lain.layout.centerwork.top_right = 1
 lain.layout.centerwork.bottom_left = 2
 lain.layout.centerwork.bottom_right = 3
 
-theme.useless_gap_width = 15
+theme.useless_gap_width = "20"
 
 
 -- {{{ Wallpaper
@@ -151,6 +151,7 @@ mymainmenu = awful.menu({ items = { { "firefox", "firefox" },
                                     { "vim", terminal .. " -e vim" },
                                     { "ncmpcpp", terminal .. " -e ncmpcpp" },
                                     { "images", terminal .. " -geometry 150x40 -e ranger /home/yuki/images/" },
+                                    { "sys", terminal .. " -geometry 72x16 -e sys" },
                                     { "graphics", graphicsmenu },
                                     { "comms", commmenu },
                                     { "awesome", myawesomemenu }
