@@ -110,7 +110,7 @@ for file in $files; do
     # create folders in case they don't exist
     mkdir --parents $HOME/$dir
 
-    echo "Creating Symlink to $dir$file at $path"
+    echo " - Creating Symlink to $dir$file at $path"
 
     if [[ $stderrdir == "" ]]; then
         ln -$lnopt "$PWD/$dir$file" "$path"

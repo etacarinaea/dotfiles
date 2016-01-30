@@ -217,7 +217,7 @@ for num in {0..23}; do
 
 done
 
-# if -u apply colors in current terminal
+# if -u apply colors in all terminals
 # https://code.google.com/archive/p/mintty/wikis/Tips.wiki
 if [ $1 == "-u" ]; then
     test=""
@@ -227,7 +227,9 @@ if [ $1 == "-u" ]; then
     for num in {10..12}; do
         test=$test"\033]$num;${values[$num + 6]}\007"
     done
-    echo -ne "$test"
+    for file in /dev/pts/*; do
+        [[ $file != "/dev/pts/ptmx" ]] && echo -ne "$test" > $file
+    done
 fi
 
 xrdb -merge $HOME/.Xresources
