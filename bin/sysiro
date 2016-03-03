@@ -1,7 +1,9 @@
 #!/bin/bash
 #
 
-for file in $(find ~/colors -maxdepth 1 -mindepth 1 -type f); do
+CURRENT=$(<$HOME/colors/.current)
+
+for file in $(find ~/colors -maxdepth 1 -mindepth 1 -type f ! -name ".current"); do
     colorschemes[a++]=$file
 done
 
@@ -23,15 +25,20 @@ function prev {
     unset colorschemes[$length]
 }
 
+while [[ ${colorschemes[0]} != $CURRENT ]]; do
+    next
+done
+
 while : ; do
+    CURRENT="${colorschemes[0]}"
     iro -u "${colorschemes[0]}" &&
     sys -d "${colorschemes[0]}"
 
     read -sn 1 key
     case $key in
-        "," )
+        "j" )
             prev;;
-        "." )
+        "k" )
             next;;
         "q" )
             tput rmcup
@@ -41,3 +48,4 @@ while : ; do
     unset key
 done
 
+echo $CURRENT > $HOME/colors/.current
