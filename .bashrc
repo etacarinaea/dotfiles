@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias ls='ls -N --color=auto'
 alias du='cdu -idh'
 
 alias screenfetch='screenfetch -D "Arch Linux"'
