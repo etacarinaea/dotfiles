@@ -1,0 +1,36 @@
+foreground:     #aaaaaa
+background:     #171722
+cursorColor:    #aaaaaa
+# black
+color0:         #070915
+color8:         #272727
+# red
+color1:         #8d2036
+color9:         #ce0a31
+# green
+color2:         #30362f
+color10:        #67735e
+# yellow
+color3:         #776e53
+color11:        #b7a876
+# blue
+color4:         #364150
+color12:        #515a69
+# magenta
+color5:         #443337
+color13:        #613e46
+# cyan
+color6:         #525c5d
+color14:        #8f9293
+# white
+color7:         #3f3f3f
+color15:        #cacaca
+
+font:           tewi
+size:           8
+pixelsize:      10
+
+borderwidth:    7
+gapwidth:       20
+
+wallpaper:      /home/yuki/images/wallpapers/anime/mononoke2.png
