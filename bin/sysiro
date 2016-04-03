@@ -3,7 +3,7 @@
 
 CURRENT=$(<$HOME/colors/.current)
 
-for file in $(find ~/colors -maxdepth 1 -mindepth 1 -type f ! -name ".current"); do
+for file in $(find ~/colors -maxdepth 1 -mindepth 1 ! -type d ! -name ".current"); do
     colorschemes[a++]=$file
 done
 
