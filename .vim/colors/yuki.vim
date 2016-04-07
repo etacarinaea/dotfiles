@@ -39,3 +39,5 @@ hi PreProc      cterm=NONE ctermfg=DarkMagenta
 hi Special      cterm=NONE ctermfg=LightRed
 hi Statement    cterm=bold ctermfg=Yellow
 hi Type         cterm=NONE ctermfg=DarkRed
+
+hi SignColumn   ctermbg=Black
