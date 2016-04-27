@@ -40,4 +40,8 @@ hi Special      cterm=NONE ctermfg=LightRed
 hi Statement    cterm=bold ctermfg=Yellow
 hi Type         cterm=NONE ctermfg=DarkRed
 
-hi SignColumn   ctermbg=Black
+hi SignColumn         ctermbg=Black
+hi SyntasticErrorSign ctermbg=Black
+hi SyntasticWarningSign ctermbg=Black
+hi SyntasticStyleErrorSign ctermbg=Black
+hi SyntasticStyleWarningSign ctermbg=Black
