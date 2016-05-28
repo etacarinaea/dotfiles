@@ -189,7 +189,7 @@ song_window_title_format = "{%a - }{%t}|{%f}"
 ##   not available.
 ##
 
-song_columns_list_format = "(60)[red]{t|f} (30)[magenta]{ar}(5f)[white]{lr}"
+song_columns_list_format = "(60)[red]{t|f} (30)[yellow]{ar}(5f)[white]{lr}"
 
 #song_columns_list_format = "(7f)[black]{l} (25)[cyan]{a} (40)[yellow]{t|f} (30)[red]{br}"
 
@@ -391,11 +391,11 @@ colors_enabled = "yes"
 
 empty_tag_color = "cyan"
 
-header_window_color = "magenta"
+header_window_color = "red"
 
 volume_color = "red"
 
-state_line_color = "magenta"
+state_line_color = "black"
 
 state_flags_color = "red"
 
@@ -407,8 +407,8 @@ main_window_color = "magenta"
 #
 #main_window_highlight_color = "yellow"
 
-progressbar_color = "magenta"
-progressbar_elapsed_color = "magenta"
+progressbar_color = "red"
+progressbar_elapsed_color = "red"
 
 statusbar_color = "default"
 
