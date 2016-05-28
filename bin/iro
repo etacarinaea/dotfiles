@@ -164,6 +164,7 @@ for num in {0..23}; do
     file="userContent.css"
     case $num in
         0 ) css "--background" ${values[$num]} $file;;
+        1 ) css "--red" ${values[$num]} $file;;
         16) css "--foreground" ${values[$num]} $file;;
         17) css "--background-selected" ${values[$num]} $file;;
     esac
