@@ -103,7 +103,7 @@ lain.layout.centerwork.top_right = 1
 lain.layout.centerwork.bottom_left = 2
 lain.layout.centerwork.bottom_right = 3
 
-theme.useless_gap_width = "20"
+theme.useless_gap_width = "35"
 
 
 -- {{{ Wallpaper

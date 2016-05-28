@@ -1,8 +1,8 @@
 :root {
-  --background: #121212;
+  --background: #1a1a1a;
   --foreground: #aaaaaa;
-  --background-selected: #19191b;
-  --red: #ce0a31;
+  --background-selected: #212121;
+  --red: #7e1f41;
 }
 
 @-moz-document regexp("(https?://|file:///)(.*)\\.(jpeg|jpg|gif|png|apng|svg|bmp|webm|webp)") {
@@ -19,10 +19,45 @@
         border:none!important;
         border-color: var(--background)!important;
         border-radius: 0!important;
+        font-family: tewi!important;
+        font-size: 10px!important;
+    }
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        background-color: var(--background)!important;
     }
 
     hr {
         display: none!important;
+    }
+
+
+    #eow-title {
+        color: var(--red)!important;
+    }
+
+    /* not ideal but it just works for the most part */
+    #watch7-main-container {
+        max-width:100vw!important;
+    }
+
+    #watch-appbar-playlist {
+        width: 245px!important;
+        margin-left: 55px!important;
+    }
+
+    #player {
+        margin-left: -55px!important;
+    }
+
+    #placeholder-player > div {
+        background-color: var(--background)!important;
     }
 
     #masthead-positioner #yt-masthead-container,
