@@ -65,4 +65,4 @@ let g:airline_powerline_fonts = 1
 
 
 " Colorscheme
-colorscheme yuki
+colorscheme yuki-alt
