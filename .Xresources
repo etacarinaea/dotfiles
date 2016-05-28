@@ -11,40 +11,40 @@ URxvt*scrollBar:        false
 
 
 URxvt*foreground:       #aaaaaa
-URxvt*background:       #19191b
+URxvt*background:       #212121
 URxvt*cursorColor:      #aaaaaa
 
 ! black
-URxvt*color0:           #121212
+URxvt*color0:           #1a1a1a
 URxvt*color8:           #272727
 
 ! red
-URxvt*color1:           #8d2036
-URxvt*color9:           #ce0a31
+URxvt*color1:           #7e1f41
+URxvt*color9:           #7e1f41
 
 ! green
-URxvt*color2:           #30362f
-URxvt*color10:          #67735e
+URxvt*color2:           #7e1f41
+URxvt*color10:          #7e1f41
 
 ! yellow
-URxvt*color3:           #776e53
-URxvt*color11:          #b7a876
+URxvt*color3:           #d2c495
+URxvt*color11:          #d2c495
 
 ! blue
-URxvt*color4:           #364150
-URxvt*color12:          #515a69
+URxvt*color4:           #2f4d60
+URxvt*color12:          #2f4d60
 
 ! magenta
-URxvt*color5:           #443337
-URxvt*color13:          #613e46
+URxvt*color5:           #253e4f
+URxvt*color13:          #253e4f
 
 ! cyan
-URxvt*color6:           #525c5d
-URxvt*color14:          #8f9293
+URxvt*color6:           #7e1f41
+URxvt*color14:          #7e1f41
 
 ! white
-URxvt*color7:           #3f3f3f
-URxvt*color15:          #cacaca
+URxvt*color7:           #7e1f41
+URxvt*color15:          #7e1f41
 
 
 URxvt*font:             xft:tewi:pixelsize=10
