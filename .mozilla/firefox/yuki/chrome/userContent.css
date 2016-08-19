@@ -1,7 +1,7 @@
 :root {
-  --background: #1a1a1a;
+  --background: #2b323b;
   --foreground: #aaaaaa;
-  --background-selected: #212121;
+  --background-selected: #22272e;
   --red: #7e1f41;
 }
 
@@ -42,18 +42,30 @@
         color: var(--red)!important;
     }
 
+    .yt-thumb-clip > img {
+        margin-left: 5px!important;
+    }
+
     /* not ideal but it just works for the most part */
     #watch7-main-container {
         max-width:100vw!important;
     }
 
-    #watch-appbar-playlist {
-        width: 245px!important;
-        margin-left: 55px!important;
+    #watch-appbar-playlist * {
+        background-color: var(--background-selected)!important;
+    }
+    #watch-appbar-playlist .yt-uix-scroller-scroll-unit.currently-playing {
+        background-color: rgba(255,255,255,0.1)!important;
+    }
+    #watch-appbar-playlist .yt-uix-scroller-scroll-unit.currently-playing * {
+        background: none!important;
+    }
+    #watch-appbar-playlist .main-content {
+        width: 100%!important;
     }
 
     #player {
-        margin-left: -55px!important;
+        /*margin-left: -55px!important;*/
     }
 
     #placeholder-player > div {

@@ -39,6 +39,11 @@ set lbr
 set undofile
 set undodir=/home/yuki/.vimundo/
 
+" Jump to last position on reopening a file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " Plugins
 execute pathogen#infect()
 map <F1> :TagbarToggle<CR>
