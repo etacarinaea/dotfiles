@@ -53,7 +53,7 @@
     #feed .compact-shelf .yt-uix-button {
         background-color: var(--background-selected)!important;
     }
-    #feed #grid-819187 .yt-shelf-grid-item {
+    #feed .shelf-content.yt-uix-expander-body .yt-shelf-grid-item {
         margin: 0 5px 12px 0!important;
     }
 
