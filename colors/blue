@@ -1,0 +1,36 @@
+foreground:     #aaaaaa
+background:     #22272e
+cursorColor:    #aaaaaa
+# black
+color0:         #2b323b
+color8:         #272727
+# red
+color1:         #7e1f41
+color9:         #7e1f41
+# green
+color2:         #7e1f41
+color10:        #7e1f41
+# yellow
+color3:         #d2c495
+color11:        #d2c495
+# blue
+color4:         #2f4d60
+color12:        #2f4d60
+# magenta
+color5:         #253e4f
+color13:        #253e4f
+# cyan
+color6:         #7e1f41
+color14:        #7e1f41
+# white
+color7:         #7e1f41
+color15:        #7e1f41
+
+font:           tewi
+size:           8
+pixelsize:      10
+
+borderwidth:    7
+gapwidth:       35
+
+wallpaper:      /home/yuki/images/wallpapers/Untitled.png
