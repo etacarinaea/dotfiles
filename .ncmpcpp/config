@@ -395,7 +395,7 @@ header_window_color = "red"
 
 volume_color = "red"
 
-state_line_color = "black"
+state_line_color = "yellow"
 
 state_flags_color = "red"
 
