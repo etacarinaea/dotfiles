@@ -8,6 +8,10 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" Enable mouse
+set mouse=a
+let g:NERDTreeMouseMode=3
+
 " Indent automatically depending on filetype
 filetype indent on
 set autoindent
