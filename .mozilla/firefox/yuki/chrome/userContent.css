@@ -46,11 +46,18 @@
         margin-left: 5px!important;
     }
 
+    #content {
+        margin-bottom: 10px!important;
+    }
+
     #appbar-nav,
     #feed,
     #feed .yt-lockup-title a,
     #feed .yt-lockup-description,
-    #feed .compact-shelf .yt-uix-button {
+    #feed .compact-shelf .yt-uix-button,
+    #feed .yt-uix-button,
+    #feed .yt-short-subscriber-count,
+    .yt-card.clearfix {
         background-color: var(--background-selected)!important;
     }
     #feed .shelf-content.yt-uix-expander-body .yt-shelf-grid-item {
@@ -122,7 +129,8 @@
         border-width: 0 1px 1px 0!important;
     }
 
-    #logo-container {
+    #logo-container,
+    .footer-logo-icon.yt-sprite {
         filter: grayscale(100%) invert(100%)!important;
     }
 
