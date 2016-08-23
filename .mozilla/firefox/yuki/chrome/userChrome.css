@@ -17,6 +17,9 @@
 #TabsToolbar * {
     background-image: none!important;
 }    
+#TabsToolbar #tabbrowser-tabs {
+    background-color: var(--tab-background)!important;
+}
 #tabbrowser-tabs .tabbrowser-tab:not([pinned]) {
     text-align:center!important;
     color: var(--tab-foreground)!important;
