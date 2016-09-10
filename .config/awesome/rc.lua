@@ -129,11 +129,26 @@ end
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-myawesomemenu = {
+systemmenu = {
+    { "info", terminal .. " -geometry 72x16 -e sys" },
     { "htop", terminal .. " -e htop" },
-    { "edit config", editor_cmd .. " " .. awesome.conffile },
-    { "restart", awesome.restart },
-    { "quit", awesome.quit }
+    { "awesome", {
+        { "edit config", editor_cmd .. " " .. awesome.conffile },
+        { "restart", awesome.restart },
+        { "quit", awesome.quit }
+    }}
+}
+bookmarkmenu = {
+    { "workspace", terminal .. " -geometry 150x40 -e ranger /home/yuki/workspace/" },
+    { "images", terminal .. " -geometry 150x40 -e ranger /home/yuki/images/" },
+    { "videos", terminal .. " -geometry 150x40 -e ranger /home/yuki/videos/" }
+}
+gamesmenu = {
+    { "TES III: Morrowind", {
+        { "Steam", "openmw_steam" },
+        { "SA", "openmw" }
+    }},
+    { "Dwarf Fortress", "dwarffortress" }
 }
 graphicsmenu = {
     { "gpick", "gpick" },
@@ -143,18 +158,22 @@ graphicsmenu = {
     { "Krtia", "krita" }
 }
 commmenu = {
-    { "rtorrent", terminal .. " -e rtorrent" },
+    { "discord", "discord" },
+    { "BitTorrent", {
+        { "qBittorrent", "qbittorrent" },
+        { "rtorrent", terminal .. " -e rtorrent" }
+    }},
     { "irssi", terminal .. " -e irssi" }
 }
 
 mymainmenu = awful.menu({ items = { { "firefox", "firefox" },
                                     { "vim", terminal .. " -e vim" },
                                     { "ncmpcpp", terminal .. " -e ncmpcpp" },
-                                    { "images", terminal .. " -geometry 150x40 -e ranger /home/yuki/images/" },
-                                    { "sys", terminal .. " -geometry 72x16 -e sys" },
+                                    { "bookmarks", bookmarkmenu },
+                                    { "games", gamesmenu },
                                     { "graphics", graphicsmenu },
-                                    { "comms", commmenu },
-                                    { "awesome", myawesomemenu }
+                                    { "comm", commmenu },
+                                    { "system", systemmenu}
                                   }
                         })
 
@@ -358,7 +377,7 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-    
+
     -- dmenu
     awful.key({ modkey },            "d",     function () awful.util.spawn("dmenu_run -fn 'tewi' -nb '#19191b' -nf '#999999' -sb '#8d2036' -sf '#fff'") end),
 
@@ -458,8 +477,8 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons
-				     -- size_hints_honor = false } },
-					} },
+                     -- size_hints_honor = false } },
+                    } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },

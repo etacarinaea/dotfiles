@@ -7,6 +7,7 @@
 
 alias ls='ls -N --color=auto'
 alias du='cdu -idh'
+alias tree='tree --dirsfirst'
 
 alias screenfetch='screenfetch -D "Arch Linux"'
 alias scrot='scrot -e "mv \$f ~/images/screenshots/"'

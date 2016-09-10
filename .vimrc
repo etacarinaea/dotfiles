@@ -1,3 +1,7 @@
+" Cycle through buffers
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
 " Disable arrow keys
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
@@ -52,16 +56,17 @@ endif
 execute pathogen#infect()
 map <F1> :TagbarToggle<CR>
 map <F2> :NERDTreeToggle<CR>
+
 " Syntastic
 map <F3> :lopen<CR>
 map <F4> :lclose<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_error_symbol = "∙Δ"
-let g:syntastic_warning_symbol = "∙!"
-let g:syntastic_style_error_symbol = "∘Δ"
-let g:syntastic_style_warning_symbol = "∘!"
+let g:syntastic_error_symbol = "Δ"
+let g:syntastic_warning_symbol = "!"
+let g:syntastic_style_error_symbol = "Δ"
+let g:syntastic_style_warning_symbol = "!"
 let g:syntastic_loc_list_height = 4
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -71,7 +76,7 @@ let g:syntastic_check_on_wq = 0
 set laststatus=2
 let g:airline_theme = "yuki"
 let g:airline_powerline_fonts = 1
-
+let g:airline#extensions#tagbar#enabled = 0
 
 " Colorscheme
 colorscheme yuki-alt

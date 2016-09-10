@@ -6,19 +6,19 @@ theme = {}
 
 theme.font          = "tewi 8"
 
-theme.bg_normal     = "#2b323b"
-theme.bg_focus      = "#2b323b"
+theme.bg_normal     = "#1a1a1a"
+theme.bg_focus      = "#1a1a1a"
 theme.bg_urgent     = "#8D0000"
-theme.bg_minimize   = "#22272e"
+theme.bg_minimize   = "#212121"
 theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = "#7e1f41"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#555555"
 
 theme.border_width  = "7"
-theme.border_normal = "#2b323b"
-theme.border_focus  = "#2b323b"
-theme.border_marked = "#2b323b"
+theme.border_normal = "#1a1a1a"
+theme.border_focus  = "#1a1a1a"
+theme.border_marked = "#1a1a1a"
 
 theme.taglist_squares_sel   = confdir .. "/yuki/icons/taglist/squarefw.png"
 theme.taglist_squares_unsel = confdir .. "/yuki/icons/taglist/squarew.png"
