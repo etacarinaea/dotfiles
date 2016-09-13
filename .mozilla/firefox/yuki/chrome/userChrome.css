@@ -16,7 +16,7 @@
 }
 #TabsToolbar * {
     background-image: none!important;
-}    
+}
 #TabsToolbar #tabbrowser-tabs {
     background-color: var(--tab-background)!important;
 }
@@ -64,6 +64,43 @@
 }
 
 
+/* SIDEBAR */
+
+#sidebar-splitter,
+.textbox-search-icons {
+    display: none!important;
+}
+#sidebar-search-container,
+#sidebar-box * {
+    color: var(--tab-foreground)!important;
+    background-color: var(--tab-background-selected)!important;
+}
+
+#sidebar-header,
+#sidebar-search-container {
+    padding: 6px!important;
+}
+#sidebar-title {
+    margin-left:2px!important;
+}
+
+#search-box,
+#search-box * {
+    -moz-appearance: none!important;
+    background-color: var(--tab-background)!important;
+    border: none!important;
+}
+
+#bookmarks-view {
+    -moz-appearance: none!important;
+    border: 6px solid var(--tab-background-selected)!important;
+    padding: 10px!important;
+}
+#bookmarks-view,
+#bookmarks-view * {
+    color: var(--tab-foreground)!important;
+    background-color: var(--tab-background)!important;
+}
 
 /* CONTENT DECK */
 
@@ -74,10 +111,10 @@
 tabbrowser tabpanels {
     background-color: var(--tab-background-selected)!important;
 }
-  
+
 /* HIDDEN */
 
-  
+
 .tab-background-start,
 .tab-background-end {
     visibility: hidden!important;
