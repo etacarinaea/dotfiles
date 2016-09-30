@@ -12,6 +12,9 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" Enable filetype plugin
+filetype plugin on
+
 " Enable mouse
 set mouse=a
 let g:NERDTreeMouseMode=3
@@ -28,6 +31,9 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+
+set list
+set listchars=tab:>-
 
 syntax on
 
@@ -72,6 +78,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Disable for rst files
+let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
 " Airline
 set laststatus=2
 let g:airline_theme = "yuki"
