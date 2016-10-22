@@ -3,15 +3,15 @@ set background=dark
 set t_Co=256
 let g:colors_name = "yuki-alt"
 
-hi CursorLine   cterm=NONE ctermbg=Black
-hi CursorLineNr ctermfg=NONE ctermbg=Black
+hi CursorLine   cterm=NONE          ctermbg=Black
+hi CursorLineNr ctermfg=NONE        ctermbg=Black
 
 hi DiffAdd      ctermbg=LightBlue
 hi DiffChange   ctermbg=LightMagenta
 hi DiffDelete   ctermfg=Blue        ctermbg=LightCyan
-hi DiffText     ctermbg=Red     cterm=bold
+hi DiffText     cterm=bold          ctermbg=Red
 hi Directory    ctermfg=DarkBlue
-hi ErrorMsg     ctermfg=White       ctermbg=DarkRed
+hi ErrorMsg     ctermfg=NONE        ctermbg=DarkRed
 hi FoldColumn   ctermfg=DarkBlue    ctermbg=Grey
 hi Folded       ctermbg=Grey        ctermfg=DarkBlue
 hi IncSearch    cterm=reverse
@@ -19,30 +19,32 @@ hi LineNr       ctermfg=NONE        ctermbg=NONE
 hi ModeMsg      cterm=bold
 hi MoreMsg      ctermfg=DarkGreen
 hi NonText      ctermfg=Blue
-hi PmenuSel     ctermfg=White       ctermbg=DarkBlue
 hi Question     ctermfg=DarkGreen
+
+hi Pmenu        cterm=NONE          ctermfg=NONE        ctermbg=Black
+hi PmenuSel     cterm=NONE          ctermfg=Red         ctermbg=Black
 
 hi Search       cterm=reverse
 hi SpecialKey   ctermfg=DarkBlue
-hi StatusLine   cterm=bold      ctermbg=233 ctermfg=yellow
-hi StatusLineNC cterm=bold      ctermbg=233 ctermfg=black
+hi StatusLine   cterm=bold          ctermfg=yellow      ctermbg=233
+hi StatusLineNC cterm=bold          ctermfg=black       ctermbg=233
 hi Title        ctermfg=DarkMagenta
 hi VertSplit    cterm=reverse
-hi Visual       ctermbg=NONE        cterm=reverse
+hi Visual       cterm=reverse       ctermbg=NONE
 hi VisualNOS    cterm=underline,bold
-hi WarningMsg   ctermfg=DarkRed
+hi WarningMsg   ctermfg=DarkRed     ctermbg=NONE
 hi WildMenu     ctermfg=Black       ctermbg=Yellow
 
-hi Comment      cterm=NONE ctermfg=238
-hi Constant     cterm=NONE ctermfg=DarkRed
-hi Identifier   cterm=NONE ctermfg=DarkCyan
-hi PreProc      cterm=NONE ctermfg=DarkMagenta
-hi Special      cterm=NONE ctermfg=LightRed
-hi Statement    cterm=bold ctermfg=Yellow
-hi Type         cterm=NONE ctermfg=DarkRed
+hi Comment      cterm=NONE          ctermfg=238
+hi Constant     cterm=NONE          ctermfg=DarkRed
+hi Identifier   cterm=NONE          ctermfg=DarkCyan
+hi PreProc      cterm=NONE          ctermfg=DarkMagenta
+hi Special      cterm=NONE          ctermfg=LightRed
+hi Statement    cterm=bold          ctermfg=Yellow
+hi Type         cterm=NONE          ctermfg=DarkRed
 
-hi SignColumn         ctermbg=Black
-hi SyntasticErrorSign ctermbg=Black
-hi SyntasticWarningSign ctermbg=Black
-hi SyntasticStyleErrorSign ctermbg=Black
-hi SyntasticStyleWarningSign ctermbg=Black
+hi SignColumn                   ctermbg=Black
+hi SyntasticErrorSign           ctermbg=Black
+hi SyntasticWarningSign         ctermbg=Black
+hi SyntasticStyleErrorSign      ctermbg=Black
+hi SyntasticStyleWarningSign    ctermbg=Black

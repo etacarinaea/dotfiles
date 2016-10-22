@@ -46,6 +46,9 @@ set hls
 " Highlight current line
 set cursorline
 
+" Highlight column 81
+set colorcolumn=81
+
 " Wrap text instead of being on one line
 set lbr
 
@@ -54,9 +57,7 @@ set undofile
 set undodir=/home/yuki/.vimundo/
 
 " Jump to last position on reopening a file
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Plugins
 execute pathogen#infect()
@@ -80,6 +81,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Disable for rst files
 let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
+
+" YouCompleteMe
+" let g:ycm_global_ycm_extra_conf = "/home/yuki/.vim/.ycm_extra_conf.py"
+
 " Airline
 set laststatus=2
 let g:airline_theme = "yuki"
