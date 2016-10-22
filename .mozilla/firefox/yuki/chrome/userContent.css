@@ -1,7 +1,7 @@
 :root {
-  --background: #1a1a1a;
+  --background: #2b323b;
   --foreground: #aaaaaa;
-  --background-selected: #212121;
+  --background-selected: #22272e;
   --red: #7e1f41;
 }
 
@@ -204,3 +204,71 @@
     }
 }
 
+@-moz-document domain(danbooru.donmai.us){
+    #notice,
+    #tos-notice,
+    #page-footer,
+    #top {
+        display:none!important;
+    }
+
+
+    * {
+        background-color: var(--background)!important;
+        color: var(--foreground)!important;
+        font-family: tewi!important;
+        font-size: 10px!important;
+        font-style: initial!important;
+    }
+
+    #sidebar > section:nth-child(1) > form:nth-child(2) * {
+        border: none!important;
+        background-color: var(--background-selected)!important;
+        -moz-appearance: none!important;
+    }
+
+    #content #post-sections {
+        color: var(--foreground)!important;
+        margin-top: 20px!important;
+        margin-bottom: 15px!important;
+    }
+
+
+    /* IMAGES */
+    #content .post-preview {
+        margin: 5px!important;
+        float: left!important;
+        display: block!important;
+        width: initial!important;
+        height: 154px!important;
+        transition: filter 0.2s!important;
+    }
+    #content #image-container {
+        width: calc(100vw - 190px)!important;
+    }
+    #content #image-container img {
+        width: 100%!important;
+        height: initial!important;
+    }
+    #content #posts img {
+        border: 2px solid rgba(0,0,0,0)!important;
+        width: initial!important;
+        height: 150px!important;
+    }
+    #content .post-preview:hover {
+        filter: brightness(130%)!important;
+    }
+    #content .post-preview.post-status-has-children img {
+        border: 2px solid #34502B!important;
+    }
+    #content .post-preview.post-status-has-parent img {
+        border: 2px solid #EBEFC9!important;
+    }
+
+
+    .paginator a {
+        border: 0!important;
+        background-color: var(--background-selected)!important;
+        padding: 10px!important;
+    }
+}

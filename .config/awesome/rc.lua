@@ -155,7 +155,8 @@ graphicsmenu = {
     { "gimp", "gimp" },
     { "Inkscape", "inkscape" },
     { "MyPaint", "mypaint" },
-    { "Krtia", "krita" }
+    { "Krtia", "krita" },
+    { "aseprite", "aseprite" }
 }
 commmenu = {
     { "discord", "discord" },
