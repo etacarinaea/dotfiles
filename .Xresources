@@ -23,8 +23,8 @@ URxvt*color1:           #7e1f41
 URxvt*color9:           #7e1f41
 
 ! green
-URxvt*color2:           #7e1f41
-URxvt*color10:          #7e1f41
+URxvt*color2:           #5f6b5b
+URxvt*color10:          #5f6b5b
 
 ! yellow
 URxvt*color3:           #d2c495
@@ -35,8 +35,8 @@ URxvt*color4:           #2f4d60
 URxvt*color12:          #2f4d60
 
 ! magenta
-URxvt*color5:           #253e4f
-URxvt*color13:          #253e4f
+URxvt*color5:           #454757
+URxvt*color13:          #454757
 
 ! cyan
 URxvt*color6:           #7e1f41

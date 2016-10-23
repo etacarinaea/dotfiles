@@ -8,8 +8,8 @@ color8:         #272727
 color1:         #7e1f41
 color9:         #7e1f41
 # green
-color2:         #7e1f41
-color10:        #7e1f41
+color2:         #5f6b5b
+color10:        #5f6b5b
 # yellow
 color3:         #d2c495
 color11:        #d2c495
@@ -17,8 +17,8 @@ color11:        #d2c495
 color4:         #2f4d60
 color12:        #2f4d60
 # magenta
-color5:         #253e4f
-color13:        #253e4f
+color5:         #454757
+color13:        #454757
 # cyan
 color6:         #7e1f41
 color14:        #7e1f41

@@ -13,7 +13,7 @@ hi DiffText     cterm=bold          ctermbg=Red
 hi Directory    ctermfg=DarkBlue
 hi ErrorMsg     ctermfg=NONE        ctermbg=DarkRed
 hi FoldColumn   ctermfg=DarkBlue    ctermbg=Grey
-hi Folded       ctermbg=Grey        ctermfg=DarkBlue
+hi Folded       ctermfg=DarkBlue    ctermbg=Grey
 hi IncSearch    cterm=reverse
 hi LineNr       ctermfg=NONE        ctermbg=NONE
 hi ModeMsg      cterm=bold
@@ -25,7 +25,7 @@ hi Pmenu        cterm=NONE          ctermfg=NONE        ctermbg=Black
 hi PmenuSel     cterm=NONE          ctermfg=Red         ctermbg=Black
 
 hi Search       cterm=reverse
-hi SpecialKey   ctermfg=DarkBlue
+hi SpecialKey   ctermfg=238
 hi StatusLine   cterm=bold          ctermfg=yellow      ctermbg=233
 hi StatusLineNC cterm=bold          ctermfg=black       ctermbg=233
 hi Title        ctermfg=DarkMagenta
