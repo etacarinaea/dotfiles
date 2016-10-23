@@ -1,0 +1,65 @@
+snippet if "if .. else statement"
+if(${1:condition}){
+	${2:// then}
+}else{
+	${3:// else}
+}
+endsnippet
+
+snippet switch "switch statement"
+switch(${1:expression}){
+	case ${2:value}:
+		${3:// case}
+		${4:break;}
+	default:
+		${5:// case}
+		break;
+}
+endsnippet
+
+snippet class "class definition"
+class ${1:Name}{
+private:
+	${2:// private}
+
+public:
+	$1($3);
+	${4:// public}
+};
+endsnippet
+
+snippet header "class header"
+#ifndef ${1/.*/\U$0\E/}_H
+#define ${1/.*/\U$0\E/}_H
+
+class ${1:Name} {
+private:
+	${2:// private}
+
+public:
+	$1($3);
+	${4:// public}
+};
+
+#endif
+endsnippet
+
+snippet headerns "namespaced class header"
+#ifndef ${1/.*/\U$0\E/}_H
+#define ${1/.*/\U$0\E/}_H
+
+namespace ${2:Namespace} {
+
+class ${1:Name} {
+private:
+	${3:// private}
+
+public:
+	$1($4);
+	${5:// public}
+};
+
+}
+
+#endif
+endsnippet

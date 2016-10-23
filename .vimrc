@@ -59,7 +59,10 @@ set undodir=/home/yuki/.vimundo/
 " Jump to last position on reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+
 " Plugins
+" -------
+
 execute pathogen#infect()
 map <F1> :TagbarToggle<CR>
 map <F2> :NERDTreeToggle<CR>
@@ -84,6 +87,12 @@ let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
 
 " YouCompleteMe
 " let g:ycm_global_ycm_extra_conf = "/home/yuki/.vim/.ycm_extra_conf.py"
+
+" UltiSnips
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " Airline
 set laststatus=2
