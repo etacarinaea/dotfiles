@@ -1,6 +1,8 @@
+let mapleader = (" ")
+
 " Cycle through buffers
 nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+noremap <S-Tab> :bprevious<CR>
 
 " Disable arrow keys
 inoremap <Up> <NOP>
@@ -26,6 +28,9 @@ set autoindent
 " Turn on line numbering. Turn it off with "set nonu"
 set number
 
+" Don't force to write buffer when switching
+set hidden
+
 " Indentation
 set tabstop=4
 set shiftwidth=4
@@ -38,7 +43,7 @@ set listchars=tab:>-
 syntax on
 
 " Case insensitive search
-set ic
+" set ic
 
 " Highlight search
 set hls
@@ -57,7 +62,7 @@ set undofile
 set undodir=/home/yuki/.vimundo/
 
 " Jump to last position on reopening a file
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
 " Plugins
@@ -85,20 +90,27 @@ let g:syntastic_check_on_wq = 0
 " Disable for rst files
 let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
 
+let g:NERDSpaceDelims = 1
+
 " YouCompleteMe
-" let g:ycm_global_ycm_extra_conf = "/home/yuki/.vim/.ycm_extra_conf.py"
+let g:ycm_extra_conf_globlist = ["~/workspace/*"]
 
 " UltiSnips
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
+let g:UltiSnipsExpandTrigger = "<c-l>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 " Airline
 set laststatus=2
 let g:airline_theme = "yuki"
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffers_label = 'bufs'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#buffer_min_count = 2
 
 " Colorscheme
 colorscheme yuki-alt

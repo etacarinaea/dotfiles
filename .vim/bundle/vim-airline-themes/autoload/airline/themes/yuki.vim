@@ -58,8 +58,8 @@ let g:airline#themes#yuki#palette.replace.airline_a = [ s:I2[0]   , '#af0000' , 
 let g:airline#themes#yuki#palette.replace_modified = g:airline#themes#dark#palette.insert_modified
 
 
-let s:V1 = [ '#000000' , '#ffaf00' , 238  , 79  ]
-let s:V2 = [ '#000000' , '#ff5f00' , 79 , 238  ]
+let s:V1 = [ '#000000' , '#ffaf00' , 238  , 229  ]
+let s:V2 = [ '#000000' , '#ff5f00' , 229 , 238  ]
 let s:V3 = [ '#ffffff' , '#5f0000' , 1  , 234  ]
 let g:airline#themes#yuki#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
 let g:airline#themes#yuki#palette.visual_modified = {

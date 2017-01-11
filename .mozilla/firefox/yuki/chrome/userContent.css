@@ -63,6 +63,10 @@
         margin: 0 5px 12px 0!important;
     }
 
+    #feed .yt-lockup-byline {
+        background-color: var(--background-selected)!important;
+    }
+
     #feed .yt-thumb.video-thumb {
         background-color: rgba(255,255,255,0.1)!important;
     }
@@ -263,6 +267,11 @@
     }
     #content .post-preview.post-status-has-parent img {
         border: 2px solid #EBEFC9!important;
+    }
+
+    #content .note-box {
+        opacity: 0.3!important;
+        border: 1px solid #000!important;
     }
 
 

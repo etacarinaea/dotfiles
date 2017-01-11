@@ -140,6 +140,7 @@ systemmenu = {
 }
 bookmarkmenu = {
     { "workspace", terminal .. " -geometry 150x40 -e ranger /home/yuki/workspace/" },
+    { "books", terminal .. " -geometry 150x40 -e ranger /home/yuki/books/" },
     { "images", terminal .. " -geometry 150x40 -e ranger /home/yuki/images/" },
     { "videos", terminal .. " -geometry 150x40 -e ranger /home/yuki/videos/" }
 }
@@ -148,6 +149,7 @@ gamesmenu = {
         { "Steam", "openmw_steam" },
         { "SA", "openmw" }
     }},
+    { "Mount & Blade: Warband", "mountandblade_wb_steam" },
     { "Dwarf Fortress", "dwarffortress" }
 }
 graphicsmenu = {

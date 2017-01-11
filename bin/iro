@@ -70,7 +70,7 @@ function awesomerc {
 #variable replacement
 function json {
     sed -i --follow-symlinks "s/$1\":.*\"/$1\":$whitespace\"$2\"/g" \
-        $HOME/workspace/startpage/config.json
+        $HOME/startpage/config.json
 }
 #variable replacement file
 function css {
@@ -203,7 +203,7 @@ for num in {0..23}; do
     #rh=$(echo "$hex"|cut -c2-3)
     #gh=$(echo "$hex"|cut -c4-5)
     #bh=$(echo "$hex"|cut -c6-7)
-    # 
+    #
     #rgba="$((16#$rh)) $((16#$gh)) $((16#$bh)) 255"
     #
     #case $num in

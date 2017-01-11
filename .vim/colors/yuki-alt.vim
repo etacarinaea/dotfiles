@@ -1,6 +1,5 @@
 set background=dark
 
-set t_Co=256
 let g:colors_name = "yuki-alt"
 
 hi CursorLine   cterm=NONE          ctermbg=Black
@@ -43,8 +42,11 @@ hi Special      cterm=NONE          ctermfg=LightRed
 hi Statement    cterm=bold          ctermfg=Yellow
 hi Type         cterm=NONE          ctermfg=DarkRed
 
-hi SignColumn                   ctermbg=Black
-hi SyntasticErrorSign           ctermbg=Black
-hi SyntasticWarningSign         ctermbg=Black
-hi SyntasticStyleErrorSign      ctermbg=Black
-hi SyntasticStyleWarningSign    ctermbg=Black
+hi SignColumn                       ctermbg=Black
+hi SyntasticErrorSign               ctermbg=Black
+hi SyntasticWarningSign             ctermbg=Black
+hi SyntasticStyleErrorSign          ctermbg=Black
+hi SyntasticStyleWarningSign        ctermbg=Black
+
+hi SpellBad     cterm=NONE          ctermbg=DarkRed ctermfg=248
+hi SpellCap     cterm=NONE          ctermbg=DarkRed ctermfg=248
