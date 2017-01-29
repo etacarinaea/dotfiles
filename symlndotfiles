@@ -55,8 +55,8 @@ while getopts "hr:vlnfo" opt; do
         n)
             nosf=true
             ;;
-        f)    
-            lnopt="sf" 
+        f)
+            lnopt="sf"
             ;;
         o)
             stderrdir=/dev/null
@@ -92,7 +92,8 @@ for file in $files; do
 
     # check if file at current iteration is in ignore list
     for ex in ${ignore[@]}; do
-        [[ ${file#*$PWD/} == $ex ]] && isignored=true && break || isignored=false 
+        [[ ${file#*$PWD/} == $ex ]] && isignored=true && break\
+                                    || isignored=false
     done
 
     [[ $isignored == true ]] && continue
