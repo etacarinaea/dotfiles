@@ -54,7 +54,8 @@ URxvt*boldFont:         xft:tewi:pixelsize=10
 URxvt*internalBorder:   0
 
 
-URxvt*perl-ext-common:  default,clipboard
-URxvt*perl-ext:         default,clipboard
-
+URxvt*perl-ext-common:  default,matcher,clipboard
+URxvt*perl-ext:         default,matcher,clipboard
+URxvt*url-launcher:     /usr/bin/xdg-open
+URxvt*matcher.button:   1
 
