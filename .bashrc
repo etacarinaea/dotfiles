@@ -18,5 +18,8 @@ export VISUAL=vim
 export EDITOR=vim
 export PATH=$PATH:$HOME/bin
 
-PS1='\W \[\e[0;31m\]»\[\e[0m\] '
+source /usr/share/git/completion/git-completion.bash
+source /usr/share/git/completion/git-prompt.sh
+
+PS1='\W \[\e[0;34m\]$(__git_ps1 "(%s)") \[\e[0;31m\]»\[\e[0m\] '
 
