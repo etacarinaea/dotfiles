@@ -3,6 +3,7 @@ set background=dark
 let g:colors_name = "yuki-alt"
 
 hi CursorLine   cterm=NONE          ctermbg=Black
+hi ColorColumn  ctermbg=Black
 hi CursorLineNr ctermfg=NONE        ctermbg=Black
 
 hi DiffAdd      ctermbg=LightBlue
@@ -10,7 +11,8 @@ hi DiffChange   ctermbg=LightMagenta
 hi DiffDelete   ctermfg=Blue        ctermbg=LightCyan
 hi DiffText     cterm=bold          ctermbg=Red
 hi Directory    ctermfg=DarkBlue
-hi ErrorMsg     ctermfg=NONE        ctermbg=DarkRed
+hi Error        cterm=reverse       ctermbg=NONE ctermfg=DarkRed
+hi ErrorMsg     cterm=reverse       ctermbg=NONE ctermfg=DarkRed
 hi FoldColumn   ctermfg=DarkBlue    ctermbg=Grey
 hi Folded       ctermfg=DarkBlue    ctermbg=Grey
 hi IncSearch    cterm=reverse
@@ -35,7 +37,7 @@ hi WarningMsg   ctermfg=DarkRed     ctermbg=NONE
 hi WildMenu     ctermfg=Black       ctermbg=Yellow
 
 hi Comment      cterm=NONE          ctermfg=238
-hi Constant     cterm=NONE          ctermfg=DarkRed
+hi Constant     cterm=NONE          ctermfg=DarkMagenta
 hi Identifier   cterm=NONE          ctermfg=DarkCyan
 hi PreProc      cterm=NONE          ctermfg=DarkMagenta
 hi Special      cterm=NONE          ctermfg=LightRed
@@ -48,5 +50,5 @@ hi SyntasticWarningSign             ctermbg=Black
 hi SyntasticStyleErrorSign          ctermbg=Black
 hi SyntasticStyleWarningSign        ctermbg=Black
 
-hi SpellBad     cterm=NONE          ctermbg=DarkRed ctermfg=248
-hi SpellCap     cterm=NONE          ctermbg=DarkRed ctermfg=248
+hi SpellBad     cterm=underline ctermbg=NONE ctermfg=DarkRed
+hi SpellCap     cterm=underline ctermbg=NONE ctermfg=DarkRed 

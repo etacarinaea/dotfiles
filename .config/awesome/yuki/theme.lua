@@ -4,21 +4,21 @@
 
 theme = {}
 
-theme.font          = "tewi 8"
+theme.font          = "DejaVu Sans Mono for Powerline 8"
 
-theme.bg_normal     = "#2b323b"
-theme.bg_focus      = "#2b323b"
+theme.bg_normal     = "#27272e"
+theme.bg_focus      = "#27272e"
 theme.bg_urgent     = "#8D0000"
-theme.bg_minimize   = "#22272e"
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#7e1f41"
+theme.bg_minimize   = "#202026"
+theme.fg_normal     = "#b7b7b7"
+theme.fg_focus      = "#c54763"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#555555"
 
 theme.border_width  = "7"
-theme.border_normal = "#2b323b"
-theme.border_focus  = "#2b323b"
-theme.border_marked = "#2b323b"
+theme.border_normal = "#27272e"
+theme.border_focus  = "#27272e"
+theme.border_marked = "#27272e"
 
 theme.taglist_squares_sel   = confdir .. "/yuki/icons/taglist/squarefw.png"
 theme.taglist_squares_unsel = confdir .. "/yuki/icons/taglist/squarew.png"

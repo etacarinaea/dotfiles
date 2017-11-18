@@ -1,5 +1,8 @@
 let mapleader = (" ")
 
+" swap files
+set directory=~/.vim/swapfiles//
+
 " Cycle through buffers
 nnoremap <Tab> :bnext<CR>
 noremap <S-Tab> :bprevious<CR>
@@ -17,9 +20,15 @@ noremap <Right> <NOP>
 " Enable filetype plugin
 filetype plugin on
 
+" Enable spellchecking
+set spell spelllang=en_gb
+
 " Enable mouse
 set mouse=a
 let g:NERDTreeMouseMode=3
+
+" Use "+ register by default
+set clipboard=unnamedplus
 
 " Indent automatically depending on filetype
 filetype indent on
@@ -61,6 +70,9 @@ set lbr
 set undofile
 set undodir=/home/yuki/.vimundo/
 
+" Don't use preview window
+set completeopt="menu"
+
 " Jump to last position on reopening a file
 " au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -93,13 +105,14 @@ let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
 let g:NERDSpaceDelims = 1
 
 " YouCompleteMe
+let g:ycm_server_python_interpreter = "/bin/python3"
 let g:ycm_extra_conf_globlist = ["~/workspace/*"]
 
 " UltiSnips
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
 let g:UltiSnipsExpandTrigger = "<c-l>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Airline
 set laststatus=2
@@ -112,5 +125,21 @@ let g:airline#extensions#tabline#buffers_label = 'bufs'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_min_count = 2
 
+let g:tagbar_type_rst = {
+    \ 'ctagstype': 'rst',
+    \ 'ctagsbin' : 'rst2ctags',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
 " Colorscheme
 colorscheme yuki-alt
+

@@ -114,6 +114,8 @@ gamesmenu = {
         { "SA", "openmw" }
     }},
     { "Mount & Blade: Warband", "mountandblade_wb_steam" },
+    { "HoMM III", "vcmilauncher" },
+    { "NEO Scavenger", "sh /home/yuki/GOGGames/NEOScavenger/start.sh" },
     { "Dwarf Fortress", "dwarffortress" }
 }
 graphicsmenu = {
@@ -326,6 +328,11 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 theme = beautiful.get()
 globalkeys = awful.util.table.join(
+    awful.key({ modkey,           }, "v",   function() awful.tag.incgap(5) end,
+              {description="increase gap", group="gap"}),
+    awful.key({ modkey,           }, "b",   function() awful.tag.incgap(-5) end,
+              {description="decrease gap", group="gap"}),
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
