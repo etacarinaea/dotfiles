@@ -45,8 +45,8 @@ public:
 endsnippet
 
 snippet headerns "namespaced class header"
-#ifndef ${1/.*/\U$0\E/}_H
-#define ${1/.*/\U$0\E/}_H
+#ifndef ${2/.*/\U$0\E/}_${1/.*/\U$0\E/}_H
+#define ${2/.*/\U$0\E/}_${1/.*/\U$0\E/}_H
 
 namespace ${2:Namespace} {
 
