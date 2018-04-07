@@ -68,14 +68,18 @@ set lbr
 
 " Persistent undo
 set undofile
-set undodir=/home/yuki/.vimundo/
+set undodir=/home/yuki/.vim/undo/
 
 " Don't use preview window
 set completeopt="menu"
 
 " Jump to last position on reopening a file
-" au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Enable automatic folds
+set foldmethod=syntax
+set foldlevelstart=20
+" set foldcolumn=3
 
 " Plugins
 " -------
@@ -105,7 +109,7 @@ let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
 let g:NERDSpaceDelims = 1
 
 " YouCompleteMe
-let g:ycm_server_python_interpreter = "/bin/python3"
+let g:ycm_server_python_interpreter = "/bin/python2"
 let g:ycm_extra_conf_globlist = ["~/workspace/*"]
 
 " UltiSnips
@@ -118,10 +122,14 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 set laststatus=2
 let g:airline_theme = "yuki"
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ""
+let g:airline_right_sep = ""
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffers_label = 'bufs'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_min_count = 2
 
