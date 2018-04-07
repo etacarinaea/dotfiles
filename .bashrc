@@ -7,7 +7,7 @@
 
 alias ls='ls -N --color=auto'
 alias du='cdu -idh'
-alias tree='tree -C --dirsfirst'
+alias tree='tree -C --dirsfirst -I ".git|node_modules"'
 alias ctx='grep -TnrC 1'
 
 alias screenfetch='screenfetch -D "Arch Linux"'
