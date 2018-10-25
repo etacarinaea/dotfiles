@@ -109,7 +109,7 @@ let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
 let g:NERDSpaceDelims = 1
 
 " YouCompleteMe
-let g:ycm_server_python_interpreter = "/bin/python2"
+let g:ycm_server_python_interpreter = "/bin/python"
 let g:ycm_extra_conf_globlist = ["~/workspace/*"]
 
 " UltiSnips
@@ -119,6 +119,10 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
 set laststatus=2
 let g:airline_theme = "yuki"
 let g:airline_powerline_fonts = 1
@@ -132,6 +136,8 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_min_count = 2
+
+let g:airline_symbols.linenr = ''
 
 let g:tagbar_type_rst = {
     \ 'ctagstype': 'rst',
