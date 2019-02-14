@@ -1,5 +1,4 @@
 let mapleader = (" ")
-
 " swap files
 set directory=~/.vim/swapfiles//
 
@@ -81,6 +80,25 @@ set foldmethod=syntax
 set foldlevelstart=20
 " set foldcolumn=3
 
+
+" Custom commands
+" ---------------
+
+" Changes all expanded tabs with length initial to length final
+function Tabtotab(initial, final)
+  let &ts=a:initial
+  let &sts=a:initial
+  setlocal noet
+  retab!
+  let &ts=a:final
+  let &sts=a:final
+  setlocal et
+  retab
+endfunction
+
+command -nargs=+ Retab call Tabtotab(<f-args>)
+
+
 " Plugins
 " -------
 
@@ -140,18 +158,18 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline_symbols.linenr = ''
 
 let g:tagbar_type_rst = {
-    \ 'ctagstype': 'rst',
-    \ 'ctagsbin' : 'rst2ctags',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
+  \ 'ctagstype': 'rst',
+  \ 'ctagsbin' : 'rst2ctags',
+  \ 'ctagsargs' : '-f - --sort=yes',
+  \ 'kinds' : [
+    \ 's:sections',
+    \ 'i:images'
+  \ ],
+  \ 'sro' : '|',
+  \ 'kind2scope' : {
+    \ 's' : 'section',
+  \ },
+  \ 'sort': 0,
 \ }
 
 " Colorscheme
