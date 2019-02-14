@@ -1,61 +1,49 @@
-Xft.dpi:                96
-Xft.antialias:          false
-Xft.hinting:            true
-Xft.rgba:               rgb
-Xft.autohint:           false
-Xft.hintstyle:          hintfull
-Xft.lcdfilter:          lcddefault
-
-URxvt*geometry:         83x21
-URxvt*scrollBar:        false
+*geometry:          83x21
+*scrollBar:         false
 
 
-URxvt*foreground:       #aaaaaa
-URxvt*background:       #22272e
-URxvt*cursorColor:      #aaaaaa
+*foreground:        #D9D0CA
+*background:        #181412
+*cursorColor:       #b9b0aa
 
-! black
-URxvt*color0:           #2b323b
-URxvt*color8:           #272727
+*color0:            #100b08
+*color8:            #736155
 
-! red
-URxvt*color1:           #7e1f41
-URxvt*color9:           #7e1f41
+*color1:            #415C56
+*color9:            #415C56
 
-! green
-URxvt*color2:           #5f6b5b
-URxvt*color10:          #5f6b5b
+*color2:            #537266
+*color10:           #537266
 
-! yellow
-URxvt*color3:           #d2c495
-URxvt*color11:          #d2c495
+*color3:            #87691b
+*color11:           #87691b
 
-! blue
-URxvt*color4:           #2f4d60
-URxvt*color12:          #2f4d60
+*color4:            #807c42
+*color12:           #807c42
 
-! magenta
-URxvt*color5:           #454757
-URxvt*color13:          #454757
+*color5:            #c2cf97
+*color13:           #c2cf97
 
-! cyan
-URxvt*color6:           #7e1f41
-URxvt*color14:          #7e1f41
+*color6:            #ddd08f
+*color14:           #ddd08f
 
-! white
-URxvt*color7:           #7e1f41
-URxvt*color15:          #7e1f41
+*color7:            #b9b0aa
+*color15:           #b9b0aa
+
+*color66:           #100b08
 
 
-URxvt*font:             xft:tewi:pixelsize=10
-URxvt*boldFont:         xft:tewi:pixelsize=10
+*font:              xft:gohufont:pixelsize=14, xft:Anonymous Pro for Powerline:pixelsize=14
+*boldFont:          xft:gohufont:pixelsize=14, xft:Anonymous Pro for Powerline:pixelsize=14
 
 
-URxvt*internalBorder:   0
+*letterSpace:       1
+*lineSpace:         2
+
+*internalBorder:    50
 
 
-URxvt*perl-ext-common:  default,matcher,clipboard
-URxvt*perl-ext:         default,matcher,clipboard
-URxvt*url-launcher:     /usr/bin/xdg-open
-URxvt*matcher.button:   1
+URxvt*perl-ext-common:      default,url-select,keyboard-select,selection-to-clipboard
+URxvt*url-select.launcher:  /usr/bin/xdg-open
+URxvt*url-select.underline: true
 

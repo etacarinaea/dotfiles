@@ -11,10 +11,10 @@ hi DiffChange   ctermbg=LightMagenta
 hi DiffDelete   ctermfg=Blue        ctermbg=LightCyan
 hi DiffText     cterm=bold          ctermbg=Red
 hi Directory    ctermfg=DarkBlue
-hi Error        cterm=reverse       ctermbg=NONE ctermfg=DarkRed
-hi ErrorMsg     cterm=reverse       ctermbg=NONE ctermfg=DarkRed
-hi FoldColumn   ctermfg=DarkBlue    ctermbg=Grey
-hi Folded       ctermfg=DarkBlue    ctermbg=Grey
+hi Error        cterm=reverse       ctermbg=Black ctermfg=DarkRed
+hi ErrorMsg     cterm=reverse       ctermbg=Black ctermfg=DarkRed
+hi FoldColumn   ctermfg=240         ctermbg=Black
+hi Folded       ctermfg=240         ctermbg=Black
 hi IncSearch    cterm=reverse
 hi LineNr       ctermfg=NONE        ctermbg=NONE
 hi ModeMsg      cterm=bold
@@ -36,7 +36,7 @@ hi VisualNOS    cterm=underline,bold
 hi WarningMsg   ctermfg=DarkRed     ctermbg=NONE
 hi WildMenu     ctermfg=Black       ctermbg=Yellow
 
-hi Comment      cterm=NONE          ctermfg=238
+hi Comment      cterm=NONE          ctermfg=246
 hi Constant     cterm=NONE          ctermfg=DarkMagenta
 hi Identifier   cterm=NONE          ctermfg=DarkCyan
 hi PreProc      cterm=NONE          ctermfg=DarkMagenta
@@ -51,4 +51,6 @@ hi SyntasticStyleErrorSign          ctermbg=Black
 hi SyntasticStyleWarningSign        ctermbg=Black
 
 hi SpellBad     cterm=underline ctermbg=NONE ctermfg=DarkRed
-hi SpellCap     cterm=underline ctermbg=NONE ctermfg=DarkRed 
+hi SpellCap     cterm=underline ctermbg=NONE ctermfg=DarkRed
+hi SpellLocal   cterm=underline ctermbg=NONE ctermfg=DarkRed
+hi SpellRare    cterm=underline ctermbg=NONE ctermfg=DarkRed

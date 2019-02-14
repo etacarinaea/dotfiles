@@ -47,7 +47,7 @@ set softtabstop=4
 set expandtab
 
 set list
-set listchars=tab:>-
+set listchars=tab:>-,nbsp:⋄,trail:×
 
 syntax on
 

@@ -12,6 +12,8 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
+local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -36,6 +38,8 @@ do
     end)
 end
 -- }}}
+--
+naughty.config.defaults['icon_size'] = 50
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -152,9 +156,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 
@@ -291,7 +292,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 16 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -305,9 +306,9 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             -- wibox.widget.systray(),
-            mpdwidget, separator,
+            spotify_widget, separator,
+            -- mpdwidget, separator,
             memicon, memwidget, separator,
             cpuicon, cpuwidget, separator,
             textclock,
@@ -328,6 +329,10 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 theme = beautiful.get()
 globalkeys = awful.util.table.join(
+    awful.key({ modkey,           }, "e", function() awful.util.spawn("scrot -e \"xclip -t image/png -selection clipboard \\$f && mv \\$f ~/images/screenshots/\"") end,
+              {description="take screenshot of entire screen", group="screenshots"}),
+    awful.key({ modkey,           }, "q", function() awful.util.spawn("scrot -ue \"xclip -t image/png -selection clipboard \\$f && mv \\$f ~/images/screenshots/\"") end,
+              {description="take screenshot of focused window", group="screenshots"}),
     awful.key({ modkey,           }, "v",   function() awful.tag.incgap(5) end,
               {description="increase gap", group="gap"}),
     awful.key({ modkey,           }, "b",   function() awful.tag.incgap(-5) end,
@@ -536,6 +541,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
+                     size_hints_honor = false,
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,

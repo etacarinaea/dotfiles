@@ -2,23 +2,27 @@
 --  yuki awesome theme  --
 --------------------------
 
+local beautiful = require("beautiful")
+
+xrdbtheme = beautiful.xresources.get_current_theme()
+
 theme = {}
 
-theme.font          = "DejaVu Sans Mono for Powerline 8"
+theme.font          = "gohufont 10"
 
-theme.bg_normal     = "#27272e"
-theme.bg_focus      = "#27272e"
-theme.bg_urgent     = "#8D0000"
-theme.bg_minimize   = "#202026"
-theme.fg_normal     = "#b7b7b7"
-theme.fg_focus      = "#c54763"
+theme.bg_normal     = xrdbtheme['background']
+theme.bg_focus      = xrdbtheme['background']
+theme.bg_urgent     = xrdbtheme['color14']
+theme.bg_minimize   = xrdbtheme['color0']
+theme.fg_normal     = xrdbtheme['foreground']
+theme.fg_focus      = xrdbtheme['color14']
 theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#555555"
+theme.fg_minimize   = xrdbtheme['foreground']
 
-theme.border_width  = "7"
-theme.border_normal = "#27272e"
-theme.border_focus  = "#27272e"
-theme.border_marked = "#27272e"
+theme.border_width  = "5"
+theme.border_normal = xrdbtheme['background']
+theme.border_focus  = xrdbtheme['background']
+theme.border_marked = xrdbtheme['background']
 
 theme.taglist_squares_sel   = confdir .. "/yuki/icons/taglist/squarefw.png"
 theme.taglist_squares_unsel = confdir .. "/yuki/icons/taglist/squarew.png"
@@ -52,7 +56,7 @@ theme.layout_uselesspiral   = theme.lain_icons .. "uselesspiralw.png"
 theme.layout_uselesstile    = theme.lain_icons .. "uselesstilew.png"
 
 
-theme.wallpaper = os.getenv("HOME") .. "/images/wallpapers/_CURRENT_.png"
+theme.wallpaper = os.getenv("HOME") .. "/images/wallpapers/_CURRENT_.jpg"
 
 theme.tasklist_disable_icon = true
 
