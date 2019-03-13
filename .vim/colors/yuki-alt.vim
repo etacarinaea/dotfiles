@@ -27,10 +27,10 @@ hi PmenuSel     cterm=NONE          ctermfg=Red         ctermbg=Black
 
 hi Search       cterm=reverse
 hi SpecialKey   ctermfg=238
-hi StatusLine   cterm=bold          ctermfg=yellow      ctermbg=233
-hi StatusLineNC cterm=bold          ctermfg=black       ctermbg=233
+hi StatusLine   cterm=bold          ctermfg=Yellow      ctermbg=233
+hi StatusLineNC cterm=bold          ctermfg=Black       ctermbg=233
 hi Title        ctermfg=DarkMagenta
-hi VertSplit    cterm=reverse
+hi VertSplit    cterm=reverse       ctermfg=Black ctermbg=NONE
 hi Visual       cterm=reverse       ctermbg=NONE
 hi VisualNOS    cterm=underline,bold
 hi WarningMsg   ctermfg=DarkRed     ctermbg=NONE

@@ -2,33 +2,41 @@
 *scrollBar:         false
 
 
-*foreground:        #D9D0CA
-*background:        #181412
-*cursorColor:       #b9b0aa
+*foreground:        #f8f8f2
+*background:        #282a36
+*cursorColor:       #f8f8f2
 
-*color0:            #100b08
-*color8:            #736155
+! black
+*color0:            #3c3e4d
+*color8:            #454757
 
-*color1:            #415C56
-*color9:            #415C56
+! red
+*color1:            #ff5555
+*color9:            #ff5555
 
-*color2:            #537266
-*color10:           #537266
+! green
+*color2:            #5f6b5b
+*color10:           #5f6b5b
 
-*color3:            #87691b
-*color11:           #87691b
+! yellow
+*color3:            #ffffaf
+*color11:           #ffffaf
 
-*color4:            #807c42
-*color12:           #807c42
+! blue
+*color4:            #bd93f9
+*color12:           #bd93f9
 
-*color5:            #c2cf97
-*color13:           #c2cf97
+! magenta
+*color5:            #bd93f9
+*color13:           #bd93f9
 
-*color6:            #ddd08f
-*color14:           #ddd08f
+! cyan
+*color6:            #61d8c2
+*color14:           #61d8c2
 
-*color7:            #b9b0aa
-*color15:           #b9b0aa
+! white
+*color7:            #7e1f41
+*color15:           #7e1f41
 
 *color66:           #100b08
 
@@ -38,9 +46,9 @@
 
 
 *letterSpace:       1
-*lineSpace:         2
+*lineSpace:         4
 
-*internalBorder:    50
+*internalBorder:    35
 
 
 URxvt*perl-ext-common:      default,url-select,keyboard-select,selection-to-clipboard

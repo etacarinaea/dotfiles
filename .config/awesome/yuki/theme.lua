@@ -15,7 +15,7 @@ theme.bg_focus      = xrdbtheme['background']
 theme.bg_urgent     = xrdbtheme['color14']
 theme.bg_minimize   = xrdbtheme['color0']
 theme.fg_normal     = xrdbtheme['foreground']
-theme.fg_focus      = xrdbtheme['color14']
+theme.fg_focus      = xrdbtheme['color9']
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = xrdbtheme['foreground']
 
