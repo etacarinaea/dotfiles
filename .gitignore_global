@@ -1,8 +1,10 @@
 # Temporary files
 *~
 
-# Build directory
+# Build directories
 build/
+release/
+debug/
 
 # YouCompleteMe
 .ycm_extra_conf.py
