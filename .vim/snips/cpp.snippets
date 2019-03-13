@@ -28,7 +28,16 @@ public:
 };
 endsnippet
 
-snippet header "class header"
+snippet header "header"
+#ifndef $1_H
+#define $1_H
+
+$2
+
+#endif
+endsnippet
+
+snippet headerc "class header"
 #ifndef ${1/.*/\U$0\E/}_H
 #define ${1/.*/\U$0\E/}_H
 
@@ -44,7 +53,7 @@ public:
 #endif
 endsnippet
 
-snippet headerns "namespaced class header"
+snippet headercns "namespaced class header"
 #ifndef ${2/.*/\U$0\E/}_${1/.*/\U$0\E/}_H
 #define ${2/.*/\U$0\E/}_${1/.*/\U$0\E/}_H
 
