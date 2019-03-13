@@ -136,6 +136,10 @@ let g:UltiSnipsExpandTrigger = "<c-l>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+" indentLine
+let g:indentLine_char = "¦"
+let g:indentLine_showFirstIndentLevel = 0
+
 " Airline
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
