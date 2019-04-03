@@ -137,7 +137,7 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " indentLine
-let g:indentLine_char = "¦"
+let g:indentLine_char = "┆"
 let g:indentLine_showFirstIndentLevel = 0
 
 " Airline
@@ -178,4 +178,3 @@ let g:tagbar_type_rst = {
 
 " Colorscheme
 colorscheme yuki-alt
-
