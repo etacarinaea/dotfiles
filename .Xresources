@@ -2,17 +2,16 @@
 *scrollBar:         false
 
 
-*foreground:        #f8f8f2
+*foreground:        #c1cadd
 *background:        #282a36
 *cursorColor:       #f8f8f2
 
 ! black
 *color0:            #3c3e4d
 *color8:            #454757
-
 ! red
-*color1:            #ff5555
-*color9:            #ff5555
+*color1:            #e4756b
+*color9:            #e4756b
 
 ! green
 *color2:            #5f6b5b
@@ -23,29 +22,28 @@
 *color11:           #ffffaf
 
 ! blue
-*color4:            #bd93f9
-*color12:           #bd93f9
+*color4:            #9399fe
+*color12:           #9399fe
 
 ! magenta
-*color5:            #bd93f9
-*color13:           #bd93f9
+*color5:            #c37cfe
+*color13:           #c37cfe
 
 ! cyan
-*color6:            #61d8c2
-*color14:           #61d8c2
+*color6:            #396b6f
+*color14:           #396b6f
 
 ! white
 *color7:            #7e1f41
 *color15:           #7e1f41
 
-*color66:           #100b08
 
+*font:              xft:DejaVu Sans Mono:pixelsize=14, xft:DejaVu Sans Mono for Powerline:pixelsize=14
+*boldFont:          xft:DejaVu Sans Mono:pixelsize=14, xft:DejaVu Sans Mono for Powerline:pixelsize=14
+*italicFont:        xft:DejaVu Sans Mono:pixelsize=14:Italic, xft:DejaVu Sans Mono for Powerline:pixelsize=14
+*boldItalicFont:    xft:DejaVu Sans Mono:pixelsize=14:Italic, xft:DejaVu Sans Mono for Powerline:pixelsize=14
 
-*font:              xft:gohufont:pixelsize=14, xft:Anonymous Pro for Powerline:pixelsize=14
-*boldFont:          xft:gohufont:pixelsize=14, xft:Anonymous Pro for Powerline:pixelsize=14
-
-
-*letterSpace:       1
+*letterSpace:       0
 *lineSpace:         4
 
 *internalBorder:    35
