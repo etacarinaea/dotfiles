@@ -24,7 +24,6 @@ set spell spelllang=en_gb
 
 " Enable mouse
 set mouse=a
-let g:NERDTreeMouseMode=3
 
 " Use "+ register by default
 set clipboard=unnamedplus
@@ -102,9 +101,46 @@ command -nargs=+ Retab call Tabtotab(<f-args>)
 " Plugins
 " -------
 
-execute pathogen#infect()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'vim-syntastic/syntastic'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'on': 'YcmGenerateConfig' }
+Plug 'SirVer/ultisnips'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-airline/vim-airline' | Plug 'vim-aivim-airline/vim-airline-themes'
+Plug 'Raimondi/delimitMate'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
+call plug#end()
+
+" -------
+
+" tagbar
 map <F1> :TagbarToggle<CR>
-map <F2> :NERDTreeToggle<CR>
+let g:tagbar_type_rst = {
+  \ 'ctagstype': 'rst',
+  \ 'ctagsbin' : 'rst2ctags',
+  \ 'ctagsargs' : '-f - --sort=yes',
+  \ 'kinds' : [
+    \ 's:sections',
+    \ 'i:images'
+  \ ],
+  \ 'sro' : '|',
+  \ 'kind2scope' : {
+    \ 's' : 'section',
+  \ },
+  \ 'sort': 0,
+\ }
 
 " Syntastic
 map <F3> :lopen<CR>
@@ -124,6 +160,9 @@ let g:syntastic_check_on_wq = 0
 " Disable for rst files
 let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
 
+" NERDTree
+map <F2> :NERDTreeToggle<CR>
+let g:NERDTreeMouseMode=3
 let g:NERDSpaceDelims = 1
 
 " YouCompleteMe
@@ -139,6 +178,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " indentLine
 let g:indentLine_char = "┆"
 let g:indentLine_showFirstIndentLevel = 0
+" let g:indentLine_setConceal = 0
 
 " Airline
 if !exists('g:airline_symbols')
@@ -160,21 +200,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_min_count = 2
 
 let g:airline_symbols.linenr = ''
-
-let g:tagbar_type_rst = {
-  \ 'ctagstype': 'rst',
-  \ 'ctagsbin' : 'rst2ctags',
-  \ 'ctagsargs' : '-f - --sort=yes',
-  \ 'kinds' : [
-    \ 's:sections',
-    \ 'i:images'
-  \ ],
-  \ 'sro' : '|',
-  \ 'kind2scope' : {
-    \ 's' : 'section',
-  \ },
-  \ 'sort': 0,
-\ }
 
 " Colorscheme
 colorscheme yuki-alt
