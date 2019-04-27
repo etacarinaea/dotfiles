@@ -66,7 +66,7 @@ set lbr
 
 " Persistent undo
 set undofile
-set undodir=/home/yuki/.vim/undo/
+set undodir=~/.vim/undo/
 
 " Don't use preview window
 set completeopt="menu"
@@ -94,8 +94,13 @@ function Tabtotab(initial, final)
   setlocal et
   retab
 endfunction
-
 command -nargs=+ Retab call Tabtotab(<f-args>)
+
+function InsRstNew()
+  InstantRst!
+  call system("chromium --app=http://localhost:5676")
+endfunction
+command -nargs=0 InsRst call InsRstNew()
 
 
 " Plugins
@@ -118,9 +123,12 @@ Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline' | Plug 'vim-aivim-airline/vim-airline-themes'
 Plug 'Raimondi/delimitMate'
+Plug 'severin-lemaignan/vim-minimap'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
+Plug 'gu-fan/InstantRst', { 'for': 'rst' }
+" Plug 'lervag/vimtex'
 call plug#end()
 
 " -------
@@ -190,6 +198,7 @@ let g:airline_theme = "yuki"
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
+let g:airline_detect_spell=0
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -201,5 +210,13 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 
 let g:airline_symbols.linenr = ''
 
+" Minimap
+let g:minimap_toggle='<F5>'
+
+" InstantRst
+" Set the browser to true so InstantRst won't open it in an existing browser
+" session (for InsRst)
+let g:instant_rst_browser = 'true'
+
 " Colorscheme
-colorscheme yuki-alt
+colorscheme yuki

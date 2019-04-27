@@ -1,6 +1,6 @@
 set background=dark
 
-let g:colors_name = "yuki-alt"
+let g:colors_name = "yuki"
 
 hi CursorLine   cterm=NONE          ctermbg=Black
 hi ColorColumn  ctermbg=Black
