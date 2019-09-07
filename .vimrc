@@ -19,6 +19,9 @@ noremap <Right> <NOP>
 " Enable filetype plugin
 filetype plugin on
 
+" Automatically change directory to that of current file
+set autochdir
+
 " Enable spellchecking
 set spell spelllang=en_gb
 
@@ -47,6 +50,8 @@ set expandtab
 set list
 set listchars=tab:>-,nbsp:⋄,trail:×
 
+set encoding=UTF-8
+
 syntax on
 
 " Case insensitive search
@@ -57,6 +62,8 @@ set hls
 
 " Highlight current line
 set cursorline
+
+set scrolloff=4
 
 " Highlight column 81
 set colorcolumn=81
@@ -113,6 +120,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'mhinz/vim-startify'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -128,7 +136,8 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 Plug 'gu-fan/InstantRst', { 'for': 'rst' }
-" Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'plaintex' }
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " -------

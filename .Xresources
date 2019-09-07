@@ -38,10 +38,10 @@
 *color15:           #7e1f41
 
 
-*font:              xft:DejaVu Sans Mono:pixelsize=14, xft:DejaVu Sans Mono for Powerline:pixelsize=14
-*boldFont:          xft:DejaVu Sans Mono:pixelsize=14, xft:DejaVu Sans Mono for Powerline:pixelsize=14
-*italicFont:        xft:DejaVu Sans Mono:pixelsize=14:Italic, xft:DejaVu Sans Mono for Powerline:pixelsize=14
-*boldItalicFont:    xft:DejaVu Sans Mono:pixelsize=14:Italic, xft:DejaVu Sans Mono for Powerline:pixelsize=14
+*font:              xft:DejaVuSansMono Nerd Font:pixelsize=14, xft:DejaVu Sans Mono for Powerline:pixelsize=14, xft:Braille:pixelsize=14
+*boldFont:          xft:DejaVuSansMono Nerd Font:pixelsize=14, xft:DejaVu Sans Mono for Powerline:pixelsize=14, xft:Braille:pixelsize=14
+*italicFont:        xft:DejaVuSansMono Nerd Font:pixelsize=14:Italic, xft:DejaVu Sans Mono for Powerline:pixelsize=14:Italic, xft:Braille:pixelsize=14
+*boldItalicFont:    xft:DejaVuSansMono Nerd Font:pixelsize=14:Italic, xft:DejaVu Sans Mono for Powerline:pixelsize=14:Italic, xft:Braille:pixelsize=14
 
 *letterSpace:       0
 *lineSpace:         4

@@ -8,7 +8,7 @@ xrdbtheme = beautiful.xresources.get_current_theme()
 
 theme = {}
 
-theme.font          = "gohufont 10"
+theme.font          = "DejaVu Sans 10"
 
 theme.bg_normal     = xrdbtheme['background']
 theme.bg_focus      = xrdbtheme['background']

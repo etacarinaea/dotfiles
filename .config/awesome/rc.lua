@@ -575,7 +575,12 @@ awful.rules.rules = {
           "AlarmWindow",  -- Thunderbird's calendar.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true }},
+      },
+      properties = { floating = true }
+    },
+    { rule_any = { class = { "Chromium" } },
+      properties = { floating = false }
+    },
 
     -- Add titlebars to dialogs
     { rule_any = {type = { "dialog" }
