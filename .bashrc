@@ -27,6 +27,8 @@ alias sst='maim -s --hidecursor | tee >(xclip -t image/png -selection clipboard)
 
 alias please='sudo $(history -p !!)'
 
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
 export VISUAL=vim
 export EDITOR=vim
 export PATH=$PATH:$HOME/bin:$(ruby -e 'print Gem.user_dir')/bin
