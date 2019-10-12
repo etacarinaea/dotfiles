@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Renames the current i3 workspace while preserving numbers
+currentWS=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name'\
+            | tr -d '"')
+currentWSNumber=$(printf "$currentWS" | sed -E 's/^([0-9]+).*/\1/g')
+if [ "$currentWSNumber" = "" ]; then
+  prefix=""
+else
+  prefix="$currentWSNumber: "
+fi
+newName=$(dmenu -p "New name:" <&-)
+if [ ! "$newName" = "" ]; then
+  i3-msg "rename workspace to \"$(printf "$prefix$newName")\""
+elif [ ! "$currentWSNumber" = "" ]; then
+  i3-msg "rename workspace to \"$(printf "$currentWSNumber")\""
+fi
