@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# step (as factor of base)
+step=0.05
+
+case $1 in
+  m)
+    if [[ $(pactl list sinks | grep Mute | head -1 \
+            | awk -F ': ' '{print $2}') == "no" ]]; then
+      # not muted -> mute
+      pactl set-sink-mute 0 1
+      notify-send "Volume: muted" -h string:x-canonical-private-synchronous:1
+    else
+      pactl set-sink-mute 0 0
+      notify-send "Volume: unmuted" -h string:x-canonical-private-synchronous:1
+    fi
+    ;;
+  -)
+    base=$(pactl list sinks | grep "Base Volume" | head -1 | awk '{print $3}')
+    s=$(awk -v base="$base" -v step="$step" 'BEGIN{printf "%.0f", base*step}')
+    pactl set-sink-volume 0 -$s
+    volume=$(pactl list sinks | grep "^\s*Volume" | head -1 | awk '{print $5}')
+    notify-send "Volume: $volume" -h string:x-canonical-private-synchronous:1
+    ;;
+  +)
+    base=$(pactl list sinks | grep "Base Volume" | head -1 | awk '{print $3}')
+    s=$(awk -v base="$base" -v step="$step" 'BEGIN{printf "%.0f", base*step}')
+    pactl set-sink-volume 0 +$s
+    volume=$(pactl list sinks | grep "^\s*Volume" | head -1 | awk '{print $5}')
+    notify-send "Volume: $volume" -h string:x-canonical-private-synchronous:1
+    ;;
+esac
+

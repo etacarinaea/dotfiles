@@ -1,0 +1,12 @@
+#!/bin/sh
+bl_dev=/sys/class/backlight/intel_backlight
+step=50
+
+user=$(ps aux | grep xinit | head -1 | awk '{print $1}')
+
+case $1 in
+  -) echo $(($(< $bl_dev/brightness) - $step)) >$bl_dev/brightness &&
+     runuser -l $user -c "notify-send 'Brightness: $(< $bl_dev/brightness)/$(< $bl_dev/max_brightness)' -h string:x-canonical-private-synchronous:1";;
+  +) echo $(($(< $bl_dev/brightness) + $step)) >$bl_dev/brightness &&
+     runuser -l $user -c "notify-send 'Brightness: $(< $bl_dev/brightness)/$(< $bl_dev/max_brightness)' -h string:x-canonical-private-synchronous:1";;
+esac

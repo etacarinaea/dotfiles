@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# get the user running pulseaudio
+user=$(ps aux | grep pulseaudio | head -1 | awk '{print $1}')
+
+if [[ -z "$user" ]]; then
+  exit
+fi
+
+runuser -l $user -c "/etc/acpi/handlers/sound-user $1"
