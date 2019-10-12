@@ -1,3 +1,11 @@
 clear Lock
 keycode 66 = Super_L
 add mod4 = Super_L
+
+! Disable sound keys m/+/-
+keycode 121 =
+keycode 122 =
+keycode 123 =
+! Disable +/- brightness
+keycode 232 =
+keycode 233 =
