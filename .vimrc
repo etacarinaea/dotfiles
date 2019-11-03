@@ -1,82 +1,43 @@
 let mapleader = (" ")
+
 " swap files
 set directory=~/.vim/swapfiles//
+" Persistent undo
+set undofile
+set undodir=~/.vim/undo/
 
 " Cycle through buffers
 nnoremap <Tab> :bnext<CR>
 noremap <S-Tab> :bprevious<CR>
 
-" Disable arrow keys
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-" Enable filetype plugin
 filetype plugin on
-
-" Automatically change directory to that of current file
-set autochdir
-
-" Enable spellchecking
-set spell spelllang=en_gb
-
-" Enable mouse
-set mouse=a
-
-" Use "+ register by default
-set clipboard=unnamedplus
-
-" Indent automatically depending on filetype
 filetype indent on
 set autoindent
 
-" Turn on line numbering. Turn it off with "set nonu"
-set number
-
-" Don't force to write buffer when switching
-set hidden
-
-" Indentation
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-set list
-set listchars=tab:>-,nbsp:⋄,trail:×
-
 set encoding=UTF-8
+set hidden " Don't force to write buffer when switching
+set autochdir " Automatically change directory to that of current file
+set mouse=a " Enable mouse
+set clipboard=unnamedplus " Use "+ register by default
 
 syntax on
-
-" Case insensitive search
-" set ic
-
-" Highlight search
-set hls
-
-" Highlight current line
+set spell spelllang=en_gb
+map <F5> :setlocal spell!<CR>
+set number
+set list
+set listchars=tab:>-,nbsp:⋄,trail:×,conceal:·,precedes:‹,extends:›
+set hls " Highlight search
 set cursorline
-
 set scrolloff=4
-
-" Highlight column 81
 set colorcolumn=81
-
-" Wrap text instead of being on one line
-set lbr
-
-" Persistent undo
-set undofile
-set undodir=~/.vim/undo/
-
-" Don't use preview window
-set completeopt="menu"
+set nowrap
+set lbr " Wrap on breakat characters, not used when wrap is off
+set completeopt="menuone, preview"
 
 " Jump to last position on reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -103,11 +64,19 @@ function Tabtotab(initial, final)
 endfunction
 command -nargs=+ Retab call Tabtotab(<f-args>)
 
+" Open InstantRst in chromium's app mode
 function InsRstNew()
   InstantRst!
   call system("chromium --app=http://localhost:5676")
 endfunction
 command -nargs=0 InsRst call InsRstNew()
+
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 
 " Plugins
@@ -121,6 +90,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -128,16 +98,15 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'on': 'YcmGenerateConfig' }
 Plug 'SirVer/ultisnips'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline' | Plug 'vim-aivim-airline/vim-airline-themes'
 Plug 'Raimondi/delimitMate'
-Plug 'severin-lemaignan/vim-minimap'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 Plug 'gu-fan/InstantRst', { 'for': 'rst' }
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'plaintex' }
-Plug 'ryanoasis/vim-devicons'
+" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'plaintex' }
+Plug 'lervag/vimtex', { 'for': 'plaintex' }
 call plug#end()
 
 " -------
@@ -193,21 +162,21 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " indentLine
-let g:indentLine_char = "┆"
-let g:indentLine_showFirstIndentLevel = 0
+" let g:indentLine_char = "┆"
+" let g:indentLine_showFirstIndentLevel = 0
 " let g:indentLine_setConceal = 0
 
 " Airline
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-
 set laststatus=2
 let g:airline_theme = "yuki"
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_detect_spell=0
+let g:airline_symbols.linenr = ''
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -217,15 +186,17 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_min_count = 2
 
-let g:airline_symbols.linenr = ''
-
-" Minimap
-let g:minimap_toggle='<F5>'
-
 " InstantRst
 " Set the browser to true so InstantRst won't open it in an existing browser
 " session (for InsRst)
 let g:instant_rst_browser = 'true'
+
+" vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " Colorscheme
 colorscheme yuki
