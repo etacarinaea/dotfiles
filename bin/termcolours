@@ -1,16 +1,16 @@
 #!/bin/bash
-#
 
+printf "\n      White    Cyan    Magenta   Blue    Yellow    Green     Red     Black\n"
 for num in {15..0}; do
-    if (( $num < 8 )); then
-        f[$num]="\e[4${num}m"
-    else
-        f[$num]="\e[10$((num - 8))m"
-    fi
-    
-    (( $num == 7 )) && printf "\n"
-    hex=$(awk -F":\\\s*" -v num="color$num$" '($1 ~ num){ print $2 }' ~/.Xresources)
-    printf "${f[$num]} $hex \e[0m"
-done
-echo
+  (( $num == 15 )) && printf "  B "
+  if (( $num < 8 )); then
+    f[$num]="\e[4${num}m"
+  else
+    f[$num]="\e[10$((num - 8))m"
+  fi
 
+  (( $num == 7 )) && printf "\n" && printf "  N "
+  hex=$(awk -F":\\\s*" -v num="color$num$" '($1 ~ num){ print $2 }' ~/.Xresources)
+  printf "${f[$num]} $hex \e[0m"
+done
+printf "\n\n"
