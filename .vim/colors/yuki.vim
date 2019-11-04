@@ -4,7 +4,7 @@ let g:colors_name = "yuki"
 
 hi CursorLine   cterm=NONE          ctermbg=Black
 hi ColorColumn  ctermbg=Black
-hi CursorLineNr ctermfg=8           ctermbg=NONE
+hi CursorLineNr cterm=NONE          ctermfg=8           ctermbg=NONE
 
 hi DiffAdd      ctermbg=LightBlue
 hi DiffChange   ctermbg=LightMagenta
