@@ -26,12 +26,13 @@ set mouse=a " Enable mouse
 set clipboard=unnamedplus " Use "+ register by default
 
 syntax on
-set spell spelllang=en_gb
-map <F5> :setlocal spell!<CR>
+set spelllang=en_gb
+map <F4> :setlocal spell!<CR>
 set number
 set list
 set listchars=tab:>-,nbsp:⋄,trail:×,conceal:·,precedes:‹,extends:›
 set hls " Highlight search
+map <F5> :noh<CR>
 set cursorline
 set scrolloff=4
 set colorcolumn=81
@@ -96,7 +97,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'on': 'YcmGenerateConfig' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': 'YcmGenerateConfig' }
 Plug 'SirVer/ultisnips'
 " Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline' | Plug 'vim-aivim-airline/vim-airline-themes'
@@ -129,15 +130,24 @@ let g:tagbar_type_rst = {
 \ }
 
 " Syntastic
-map <F3> :lopen<CR>
-map <F4> :lclose<CR>
+map <F3> <ESC>:call SyntasticToggle()<CR>
+let g:syntastic_is_open = 1
+function! SyntasticToggle()
+  if g:syntastic_is_open == 1
+    lclose
+    let g:syntastic_is_open = 0
+  else
+    lopen
+    let g:syntastic_is_open = 1
+  endif
+endfunction
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_error_symbol = "Δ"
 let g:syntastic_warning_symbol = "!"
-let g:syntastic_style_error_symbol = "Δ"
-let g:syntastic_style_warning_symbol = "!"
+let g:syntastic_style_error_symbol = "Γ"
+let g:syntastic_style_warning_symbol = "γ"
 let g:syntastic_loc_list_height = 4
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -157,7 +167,7 @@ let g:ycm_extra_conf_globlist = ["~/workspace/*"]
 
 " UltiSnips
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
-let g:UltiSnipsExpandTrigger = "<c-l>"
+let g:UltiSnipsExpandTrigger = "<C-l>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
