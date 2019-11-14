@@ -37,7 +37,7 @@ hi VisualNOS    cterm=underline,bold
 hi WarningMsg   ctermfg=DarkRed     ctermbg=NONE
 hi WildMenu     ctermfg=Black       ctermbg=Yellow
 
-hi Conceal      cterm=NONE          ctermfg=Black       ctermbg=NONE
+hi Conceal      cterm=NONE          ctermfg=DarkGrey    ctermbg=NONE
 hi Comment      cterm=italic        ctermfg=8
 hi Constant     cterm=NONE          ctermfg=Yellow
 hi Identifier   cterm=NONE          ctermfg=DarkMagenta
