@@ -1,0 +1,53 @@
+snippet beg "begin{} .. end{}" bA
+\documentclass{article}
+	\usepackage[margin=0.7in]{geometry}
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{bm}
+	\title{$1}
+
+\begin{document}
+\maketitle
+
+$0
+
+\end{document}
+endsnippet
+
+snippet dm "Math" wA
+\[
+$1
+\]$0
+endsnippet
+
+snippet inr "in Real" wA
+\in \mathbb{R}
+endsnippet
+snippet inc "in Complex" wA
+\in \mathbb{C}
+endsnippet
+
+snippet '([A-Za-z])(\.,)' "Vector" riA
+\textrm{\pmb{`!p snip.rv=match.group(1)`}}$0
+endsnippet
+
+snippet ... "Ellipsis" A
+\ldots
+endsnippet
+
+snippet '([A-Za-z(){}])_(.)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
+endsnippet
+
+snippet '([A-Za-z(){}])\^(.)' "auto superscript" wrA
+`!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2)`$1}$0
+endsnippet
+
+snippet sum "Sum"
+\\sum_{${1:i} = ${2:1}}^{${3:\\infty}}$0
+endsnippet
+
+
+snippet frac "Fraction"
+\\frac{$1}{$2}$0
+endsnippet
