@@ -23,4 +23,4 @@ xset m 1 1
 wallpath="$(find ~/images/wallpapers/ -name _CURRENT_* | head -n 1)"
 feh --bg-scale $wallpath &
 
-exec awesome
+exec i3
