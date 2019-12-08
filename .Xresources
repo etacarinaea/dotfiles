@@ -1,9 +1,15 @@
 *geometry:          83x21
-*scrollBar:         false
 
 *foreground:        #c1cadd
 *background:        #282a36
 *cursorColor:       #f8f8f2
+
+*saveLines:         2048
+
+*scrollTtyOutput:   false
+*scrollWithBuffer:  true
+*scrollTtyKeypress: true
+*scrollBar:         false
 
 ! black
 *.color0:       #3c3e4d
