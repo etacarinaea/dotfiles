@@ -1,5 +1,5 @@
 set recolor true
-set recolor-darkcolor "#c1cadd"
-set recolor-lightcolor "#282a36"
+set recolor-darkcolor "#282a36"
+set recolor-lightcolor "#c1cadd"
 set statusbar-bg "#3c3e4d"
 set statusbar-fg "#595c72"
