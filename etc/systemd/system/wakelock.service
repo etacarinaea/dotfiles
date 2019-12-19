@@ -1,0 +1,17 @@
+[Unit]
+Description=Lock the screen on resume from suspend
+Before=sleep.target
+Before=suspend.target
+
+[Service]
+User=emily
+Type=forking
+Environment=DISPLAY=:0
+ExecStartPre=/usr/bin/import -window root /home/emily/images/lock.png
+ExecStartPre=/usr/bin/convert /home/emily/images/lock.png -blur 0x40 /home/emily/images/lock.png
+ExecStartPre=/usr/bin/convert /home/emily/images/lock.png -gravity Center -fill "#0008" -draw "rectangle 0,515,1920,565" -font Arial -fill white -pointsize 30 -annotate +0+5 "Enter password to unlock" /home/emily/images/lock.png
+ExecStart=/usr/bin/i3lock -i /home/emily/images/lock.png
+
+[Install]
+WantedBy=sleep.target
+WantedBy=suspend.target
