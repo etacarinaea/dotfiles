@@ -4,6 +4,25 @@ Linux config files and scripts
 
 The main branch is `desktop`
 
+I'm using a slightly modified version of the method described by *StreakyCobra*
+and others in
+[this Hacker News thread](https://news.ycombinator.com/item?id=11070797).
+
+## Installation
+
+```
+curl -sL https://raw.githubusercontent.com/etacarinaea/dotfiles/desktop/dotfiles-install.sh | bash
+```
+
+..or if you want to do it manually you can also enter the following commands in
+a shell:
+
+```
+git clone --mirror git@github.com:etacarinaea/dotfiles.git $HOME/.dotfiles
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config \
+  --local status.showUntrackedFiles no
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+```
 
 ## General
 
