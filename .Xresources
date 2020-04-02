@@ -12,41 +12,41 @@
 *scrollBar:         false
 
 ! black
-*.color0:       #3c3e4d
-*.color8:       #595c72
+*.color0:           #3c3e4d
+*.color8:           #595c72
 ! red
-*.color1:       #e4756b
-*.color9:       #e4756b
+*.color1:           #e4756b
+*.color9:           #e4756b
 ! green
-*.color2:       #5f6b5b
-*.color10:      #82a775
+*.color2:           #5f6b5b
+*.color10:          #82a775
 ! yellow
-*.color3:       #ffffaf
-*.color11:      #ffffaf
+*.color3:           #ffffaf
+*.color11:          #ffffaf
 ! blue
-*.color4:       #9399fe
-*.color12:      #9399fe
+*.color4:           #9399fe
+*.color12:          #9399fe
 ! magenta
-*.color5:       #c37cfe
-*.color13:      #c37cfe
+*.color5:           #c37cfe
+*.color13:          #c37cfe
 ! cyan
-*.color6:       #396b6f
-*.color14:      #72abb0
+*.color6:           #396b6f
+*.color14:          #72abb0
 ! white
-*.color7:       #7e1f41
-*.color15:      #7e1f41
+*.color7:           #7e1f41
+*.color15:          #7e1f41
 
-*font:              xft:DejaVuSansMono Nerd Font:pixelsize=14,        xft:DejaVu Sans Mono for Powerline:pixelsize=14,        xft:Braille:pixelsize=14
-*boldFont:          xft:DejaVuSansMono Nerd Font:pixelsize=14,        xft:DejaVu Sans Mono for Powerline:pixelsize=14,        xft:Braille:pixelsize=14
-*italicFont:        xft:DejaVuSansMono Nerd Font:pixelsize=14:Italic, xft:DejaVu Sans Mono for Powerline:pixelsize=14:Italic, xft:Braille:pixelsize=14
-*boldItalicFont:    xft:DejaVuSansMono Nerd Font:pixelsize=14:Italic, xft:DejaVu Sans Mono for Powerline:pixelsize=14:Italic, xft:Braille:pixelsize=14
+*font:              xft:Hack Nerd Font:pixelsize=14,        xft:Braille:pixelsize=14
+*boldFont:          xft:Hack Nerd Font:pixelsize=14,        xft:Braille:pixelsize=14
+*italicFont:        xft:Hack Nerd Font:pixelsize=14:Italic, xft:Braille:pixelsize=14
+*boldItalicFont:    xft:Hack Nerd Font:pixelsize=14:Italic, xft:Braille:pixelsize=14
 
 *letterSpace:       0
 *lineSpace:         4
 
 *internalBorder:    35
 
-URxvt*perl-ext-common:      default,url-select,keyboard-select,selection-to-clipboard
-URxvt*url-select.launcher:  /usr/bin/xdg-open
+URxvt*perl-ext-common: default,url-select,keyboard-select,selection-to-clipboard
+URxvt*url-select.launcher: /usr/bin/xdg-open
 URxvt*url-select.underline: true
 
