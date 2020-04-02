@@ -8,40 +8,46 @@
 
 general {
   output_format = i3bar
-  colors = true
-  color_good = "#9399fe"
-  color_degraded = "#ff0000"
-  color_bad = "#e4756b"
+  colors = false
+  markup = pango
   interval = 5
 }
 
-order += "wireless _first_"
+# order += "wireless _first_"
 order += "ethernet _first_"
-order += "battery all"
+# order += "battery all"
 order += "load"
 order += "tztime local"
 
 wireless _first_ {
-  format_up = "W: %quality - %essid %ip"
-  format_down = "W: down"
+  format_up = "<span color='#9399fe'>直 %essid - %quality</span>"
+  format_down = "<span color='#e4756b'>睊 down</span>"
 }
 
 ethernet _first_ {
   # if you use %speed, i3status requires root privileges
-  format_up = "E: %ip (%speed)"
-  format_down = "E: down"
+  format_up = "<span color='#9399fe'> %ip</span>"
+  format_down = "<span color='#e4756b'> down</span>"
 }
 
 battery all {
-  format = "%status %percentage %remaining"
+  format = "<span color='#9399fe'>%status %percentage %remaining</span>"
+  status_chr = ""
+  status_bat = ""
+  status_full = ""
+  status_unk = ""
+  format_down = "<span color='#e4756b'> no battery</span>"
 }
 
 tztime local {
-  format = "%Y-%m-%d %H:%M"
+  format = " %time"
+  format_time = "%a %-d %b %H:%M"
 }
 
 load {
-  format = "%1min"
+  format = "<span color='#c37cfe'> %1min</span>"
+  max_threshold = "6"
+  format_above_threshold = "<span color='#e4756b'> %1min</span>"
 }
 
 disk "/" {

@@ -5,10 +5,11 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-set_from_resource $bg i3wm.background #000000
-set_from_resource $fg i3wm.foreground #ffffff
-set_from_resource $black i3wm.color0 #000000
-set_from_resource $red i3wm.color1 #ff0000
+set_from_resource $bg i3wm.background
+set_from_resource $fg i3wm.foreground
+set_from_resource $black i3wm.color0
+set_from_resource $grey i3wm.color8
+set_from_resource $red i3wm.color1
 
 # i3 config file (v4)
 #
@@ -228,9 +229,11 @@ client.background         $bg
 bar {
   status_command i3status
   position top
+  font pango:Hack Nerd Font Regular 9
+  separator_symbol "·"
   colors {
     background $bg
-    separator $fg
+    separator $grey
     statusline $fg
     focused_workspace $black $black $fg
     active_workspace $bg $bg $fg
