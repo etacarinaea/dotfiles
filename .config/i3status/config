@@ -14,9 +14,9 @@ general {
 }
 
 order += "read_file SPOTIFY"
-# order += "wireless _first_"
-order += "ethernet _first_"
-# order += "battery all"
+order += "wireless _first_"
+# order += "ethernet _first_"
+order += "battery all"
 order += "load"
 order += "cpu_usage"
 order += "memory"
