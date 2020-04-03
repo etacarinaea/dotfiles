@@ -194,8 +194,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-set $gapSize 20
-set $gapSizeOuter 20
+set $gapSize 40
+set $gapSizeOuter 0
 set $gapStep 10
 
 bindsym $mod+b gaps inner all minus $gapStep
