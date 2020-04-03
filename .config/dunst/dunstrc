@@ -411,4 +411,12 @@
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
 #
+
+[spotify]
+    appname = Spotify
+    urgency = low
+#    skip_display = yes
+    timeout = 3
+    script = ~/.config/i3status/spotifylog.sh
+
 # vim: ft=cfg

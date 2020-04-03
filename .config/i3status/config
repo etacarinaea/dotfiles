@@ -13,6 +13,7 @@ general {
   interval = 5
 }
 
+order += "read_file SPOTIFY"
 # order += "wireless _first_"
 order += "ethernet _first_"
 # order += "battery all"
@@ -52,4 +53,10 @@ load {
 
 disk "/" {
   format = "%avail"
+}
+
+read_file SPOTIFY {
+  path = "/tmp/spotifylog"
+  format = "<span color='#c37cfe'> %content</span>"
+  format_bad = ""
 }
