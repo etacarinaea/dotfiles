@@ -27,7 +27,7 @@ wireless _first_ {
 
 ethernet _first_ {
   # if you use %speed, i3status requires root privileges
-  format_up = "<span color='#9399fe'> %ip</span>"
+  format_up = "<span color='#9399fe'> up</span>"
   format_down = "<span color='#e4756b'> down</span>"
 }
 
