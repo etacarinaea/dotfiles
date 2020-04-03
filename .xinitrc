@@ -10,8 +10,6 @@ fi
 [[ -s ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 [[ -s ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-xrandr --output HDMI-1 --right-of DVI-D-1
-
 xset +fp ~/.fonts
 xset fp rehash
 
