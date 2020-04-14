@@ -93,6 +93,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'tpope/vim-fugitive'
 Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
@@ -183,10 +184,14 @@ endif
 set laststatus=2
 let g:airline_theme = "yuki"
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ""
-let g:airline_right_sep = ""
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 let g:airline_detect_spell=0
-let g:airline_symbols.linenr = ''
+let g:airline_symbols.linenr = '並'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:webdevicons_enable_airline_statusline_fileformat_symbols = 0
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
