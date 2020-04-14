@@ -28,8 +28,8 @@ hi PmenuSel     cterm=NONE          ctermfg=Red         ctermbg=Black
 
 hi Search       cterm=reverse       ctermfg=NONE        ctermbg=Black
 hi SpecialKey   ctermfg=238
-hi StatusLine   cterm=reverse          ctermbg=NONE ctermfg=Black
-hi StatusLineNC cterm=reverse          ctermbg=NONE ctermfg=Black
+hi StatusLine   cterm=reverse       ctermbg=NONE ctermfg=Black
+hi StatusLineNC cterm=reverse       ctermbg=Red ctermfg=Black
 hi Title        ctermfg=DarkMagenta
 hi VertSplit    cterm=reverse       ctermfg=Black       ctermbg=NONE
 hi Visual       cterm=reverse       ctermbg=NONE
