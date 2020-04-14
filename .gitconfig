@@ -9,4 +9,4 @@
   lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(red)%h%C(reset) - %s%C(blue) - %an%C(reset)%d' --all
   alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [core]
-  excludesfile = /home/yuki/.gitignore_global
+  excludesfile = ~/.gitignore_global
