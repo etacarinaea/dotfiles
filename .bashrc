@@ -31,7 +31,7 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 export VISUAL=vim
 export EDITOR=vim
-export PATH=$PATH:$HOME/bin:$(ruby -e 'print Gem.user_dir')/bin
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$(ruby -e 'print Gem.user_dir')/bin
 
 PS1='\W\[\e[0;34m\]$(__git_ps1 " (%s)") \[\e[0;31m\]»\[\e[0m\] '
 
