@@ -41,9 +41,6 @@
 *italicFont:        xft:Hack Nerd Font:pixelsize=14:Italic, xft:Braille:pixelsize=14
 *boldItalicFont:    xft:Hack Nerd Font:pixelsize=14:Italic, xft:Braille:pixelsize=14
 
-*letterSpace:       0
-*lineSpace:         4
-
 *internalBorder:    35
 
 URxvt*perl-ext-common: default,url-select,keyboard-select,selection-to-clipboard
