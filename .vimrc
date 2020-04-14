@@ -91,11 +91,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
-Plug 'ryanoasis/vim-devicons'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'vim-syntastic/syntastic'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': 'YcmGenerateConfig' }
@@ -109,6 +108,7 @@ Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 Plug 'gu-fan/InstantRst', { 'for': 'rst' }
 " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'plaintex' }
 Plug 'lervag/vimtex', { 'for': 'plaintex' }
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " -------
@@ -159,7 +159,14 @@ let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
 
 " NERDTree
 map <F2> :NERDTreeToggle<CR>
-let g:NERDTreeMouseMode=3
+let g:NERDTreeMouseMode = 3
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeSortHiddenFirst = 0
+let g:NERDTreeIgnore = ["\.git$[[dir]]"]
+" Make dir icon same color as dir text
+highlight! link NERDTreeFlags NERDTreeDir
+
+" NERD Commenter
 let g:NERDSpaceDelims = 1
 
 " YouCompleteMe
