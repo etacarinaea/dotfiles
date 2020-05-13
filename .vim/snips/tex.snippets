@@ -1,10 +1,8 @@
-snippet beg "begin{} .. end{}" bA
+snippet bega "Article" bA
 \documentclass{article}
-	\usepackage[margin=0.7in]{geometry}
-	\usepackage{amsmath}
-	\usepackage{amssymb}
-	\usepackage{bm}
-	\title{$1}
+	\usepackage[paper=a4paper,margin=1in]{geometry}
+	\title{$1\vspace{-2ex}}
+	\date{$2}
 
 \begin{document}
 \maketitle
@@ -14,16 +12,53 @@ $0
 \end{document}
 endsnippet
 
+snippet begem "Math exercise sheet" bA
+\documentclass[fleqn]{article}
+	\usepackage[paper=a4paper,margin=1in]{geometry}
+	\usepackage{enumitem}
+	\usepackage{listings}
+	\usepackage{amsmath}
+	%\usepackage{mathtools}
+	\usepackage{amssymb}
+	%\usepackage{tikz}
+	\title{$1 --- $2\vspace{-2ex}}
+	\date{$3}
+
+\begin{document}
+\maketitle
+\hspace*{-\parindent}
+\begin{minipage}[t]{0.5\textwidth}
+	\begin{tabular}{@{}ll}
+		Name:& $4
+	\end{tabular}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+	\begin{tabular}{@{}ll}
+		Tutor:& $5
+	\end{tabular}
+\end{minipage}
+\vspace{1em}
+
+\section*{$6}
+\begin{enumerate}[label=\alph*)]
+	\item $0
+\end{enumerate}
+
+\end{document}
+endsnippet
+
+
 snippet dm "Math" wA
 \[
-$1
+	$1
 \]$0
 endsnippet
+
 
 snippet inr "in Real" wA
 \in \mathbb{R}
 endsnippet
-snippet inc "in Complex" wA
+snippet incx "in Complex" wA
 \in \mathbb{C}
 endsnippet
 
@@ -50,4 +85,44 @@ endsnippet
 
 snippet frac "Fraction"
 \\frac{$1}{$2}$0
+endsnippet
+
+
+global !p
+def matrix(snip):
+	currentLine = re.match(r'([pvb])?mat(rix)?(\d+)x(\d+)', snip.buffer[snip.line].strip())
+	t = currentLine.group(1)
+	m = currentLine.group(3)
+	n = currentLine.group(4)
+	snip.buffer[snip.line] = ""
+	result = "\\begin{" + t + "matrix}\n"
+	for i in range(int(m)):
+		row = ""
+		for j in range(int(n)):
+			row += "$" + str((j+1)+i*int(n))
+			if ((j+1) % int(n)) == 0 :
+				if (i+1) == int(m):
+					row += "\n"
+				else:
+					row += " \\\\\\\\\n"
+			else:
+				row += " & "
+		result += row
+	result += "\\end{" + t + "matrix}$0"
+	snip.expand_anon(result)
+endglobal
+pre_expand "matrix(snip)"
+snippet "([pvb])?mat(rix)?(\d+)x(\d+)" "Generate matrix" r
+endsnippet
+
+
+snippet lp( "Parentheses"
+\left($1\right)$0
+endsnippet
+snippet langle "Angle brackets"
+\langle $1 \rangle$0
+endsnippet
+
+snippet => "Implication" wA
+\implies
 endsnippet
