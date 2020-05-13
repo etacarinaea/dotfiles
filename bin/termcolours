@@ -10,7 +10,7 @@ for num in {15..0}; do
   fi
 
   (( $num == 7 )) && printf "\n" && printf "  N "
-  hex=$(awk -F":\\\s*" -v num="color$num$" '($1 ~ num){ print $2 }' ~/.Xresources)
+  hex=$(awk -F" " -v num="color$num$" '($1 ~ num){ print $2 }' ~/.config/kitty/kitty.conf)
   printf "${f[$num]} $hex \e[0m"
 done
 printf "\n\n"

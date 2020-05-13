@@ -7,6 +7,8 @@
 
 set -o vi
 
+source <(kitty + complete setup bash)
+
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 
