@@ -28,53 +28,55 @@ let g:airline#themes#yuki#palette = {}
 " to the dictionary.  The array is in the format:
 " [ guifg, guibg, ctermfg, ctermbg, opts ]. See "help attr-list" for valid
 " values for the "opt" value.
-let s:N1 = [ '#00005f' , '#dfff00' , 8 , 12 ]
-let s:N2 = [ '#ffffff' , '#444444' , 0 , 8 ]
-let s:N3 = [ '#9cffd3' , '#202020' , 8 , 0 ]
-let g:airline#themes#yuki#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
-
-" Here we define overrides for when the buffer is modified.  This will be
-" applied after g:airline#themes#yuki#palette.normal, hence why only certain keys are
-" declared.
+let s:N1 = ['', '', 8, 4]
+let s:N2 = ['', '', 0, 8]
+let s:N3 = ['', '', 8, 0]
+let s:W1 = ['', '', 0, 1]
+let s:W2 = ['', '', 0, 9]
+let g:airline#themes#yuki#palette.normal =
+      \ airline#themes#generate_color_map(s:N1, s:N2, s:N3)
+let g:airline#themes#yuki#palette.normal.airline_warning = s:W1
+let g:airline#themes#yuki#palette.normal.airline_error = s:W2
 let g:airline#themes#yuki#palette.normal_modified = {
-      \ 'airline_c': [ '#ffffff' , '#5f005f' , 12 , 0 , ''     ] ,
-      \ }
+      \ 'airline_c': ['#ffffff', '#5f005f', 12, 0, ''] }
 
 
 let s:I1 = [ '#00005f' , '#00dfff' , 0 , 5 ]
 let s:I2 = s:N2
 let s:I3 = s:N3
-let g:airline#themes#yuki#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
+let g:airline#themes#yuki#palette.insert =
+      \ airline#themes#generate_color_map(s:I1, s:I2, s:I3)
 let g:airline#themes#yuki#palette.insert_modified = {
-      \ 'airline_c': [ '#ffffff' , '#5f005f' , 1 , 0, ''     ] ,
-      \ }
+      \ 'airline_c': ['#ffffff', '#5f005f', 1, 0, ''] }
 
 
 let s:R1 = s:I1
 let s:R2 = s:N2
 let s:R3 = s:N3
-let g:airline#themes#yuki#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
+let g:airline#themes#yuki#palette.replace =
+      \ airline#themes#generate_color_map(s:R1, s:R2, s:R3)
 let g:airline#themes#yuki#palette.replace_modified = {
-      \ 'airline_c': [ '#ffffff' , '#5f005f' , 255     , 0, ''     ] ,
-      \ }
+      \ 'airline_c': ['#ffffff', '#5f005f', 255, 0, ''] }
 
 
-let s:V1 = [ '#000000' , '#ffaf00' , 8 , 14 ]
+let s:V1 = ['#000000', '#ffaf00', 8, 14]
 let s:V2 = s:N2
 let s:V3 = s:N3
-let g:airline#themes#yuki#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
+let g:airline#themes#yuki#palette.visual =
+      \ airline#themes#generate_color_map(s:V1, s:V2, s:V3)
 let g:airline#themes#yuki#palette.visual_modified = {
-      \ 'airline_c': [ '#ffffff' , '#5f005f' , 255     , 234      , ''     ] ,
-      \ }
+      \ 'airline_c': ['#ffffff', '#5f005f', 255, 234, ''] }
 
 
-let s:IA1 = [ '#4e4e4e' , '#1c1c1c' , 0 , 8 , '' ]
+let s:IA1 = ['#4e4e4e', '#1c1c1c', 0, 8, '']
 let s:IA2 = s:N2
 let s:IA3 = s:N3
-let g:airline#themes#yuki#palette.inactive = airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
+let g:airline#themes#yuki#palette.inactive =
+      \ airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
+let g:airline#themes#yuki#palette.inactive.airline_warning = s:IA1
+let g:airline#themes#yuki#palette.inactive.airline_error = s:IA1
 let g:airline#themes#yuki#palette.inactive_modified = {
-      \ 'airline_c': [ '#875faf' , '' , 8 , '' , '' ] ,
-      \ }
+      \ 'airline_c': ['#875faf', '', 8, '', ''] }
 
 
 " Accents are used to give parts within a section a slightly different look or
@@ -85,8 +87,7 @@ let g:airline#themes#yuki#palette.inactive_modified = {
 " will be red instead of the section's foreground color. You can also have
 " multiple parts with accents within a section.
 let g:airline#themes#yuki#palette.accents = {
-      \ 'red': [ '#ff0000' , '' , 160 , ''  ]
-      \ }
+      \ 'red': ['#ff0000', '', 160, ''] }
 
 
 " Here we define the color map for ctrlp.  We check for the g:loaded_ctrlp
@@ -96,8 +97,9 @@ let g:airline#themes#yuki#palette.accents = {
 if !get(g:, 'loaded_ctrlp', 0)
   finish
 endif
-let g:airline#themes#yuki#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
-      \ [ '#d7d7ff' , '#5f00af' , 189 , 55  , ''     ],
-      \ [ '#ffffff' , '#875fd7' , 231 , 8 , ''     ],
-      \ [ '#5f00af' , '#ffffff' , 55  , 0 , 'bold'   ])
+let g:airline#themes#yuki#palette.ctrlp =
+      \ airline#extensions#ctrlp#generate_color_map(
+      \ ['#d7d7ff', '#5f00af', 189, 55, ''],
+      \ ['#ffffff', '#875fd7', 231, 8, ''],
+      \ ['#5f00af', '#ffffff', 55, 0, 'bold'])
 
