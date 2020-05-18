@@ -6,10 +6,10 @@ hi CursorLine   cterm=NONE          ctermbg=Black
 hi ColorColumn  ctermbg=Black
 hi CursorLineNr cterm=NONE          ctermfg=8           ctermbg=NONE
 
-hi DiffAdd      ctermbg=LightBlue
-hi DiffChange   ctermbg=LightMagenta
-hi DiffDelete   ctermfg=Blue        ctermbg=LightCyan
-hi DiffText     cterm=bold          ctermbg=Red
+hi DiffAdd      ctermfg=LightGreen  ctermbg=NONE
+hi DiffChange   ctermfg=LightBlue   ctermbg=NONE
+hi DiffDelete   ctermfg=LightRed    ctermbg=NONE
+hi DiffText     ctermfg=LightBlue   ctermbg=NONE
 hi Directory    ctermfg=DarkBlue
 hi Error        cterm=reverse       ctermbg=Black       ctermfg=DarkRed
 hi ErrorMsg     cterm=reverse       ctermbg=Black       ctermfg=DarkRed
