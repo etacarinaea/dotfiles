@@ -39,6 +39,7 @@ set colorcolumn=81
 set nowrap
 set lbr " Wrap on breakat characters, not used when wrap is off
 set completeopt="menuone, preview"
+set signcolumn=yes
 
 " Jump to last position on reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -93,7 +94,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'tpope/vim-fugitive'
-Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Valloric/YouCompleteMe'
@@ -130,33 +130,6 @@ let g:tagbar_type_rst = {
   \ 'sort': 0,
 \ }
 
-" Syntastic
-map <F3> <ESC>:call SyntasticToggle()<CR>
-let g:syntastic_is_open = 1
-function! SyntasticToggle()
-  if g:syntastic_is_open == 1
-    lclose
-    let g:syntastic_is_open = 0
-  else
-    lopen
-    let g:syntastic_is_open = 1
-  endif
-endfunction
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_error_symbol = "Δ"
-let g:syntastic_warning_symbol = "!"
-let g:syntastic_style_error_symbol = "Γ"
-let g:syntastic_style_warning_symbol = "γ"
-let g:syntastic_loc_list_height = 4
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" Disable for rst files
-let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["rst"]}
-
 " NERDTree
 map <F2> :NERDTreeToggle<CR>
 let g:NERDTreeMouseMode = 3
@@ -172,6 +145,8 @@ let g:NERDSpaceDelims = 1
 " YouCompleteMe
 let g:ycm_server_python_interpreter = "/bin/python"
 let g:ycm_extra_conf_globlist = ["~/workspace/*"]
+let g:ycm_error_symbol = ""
+let g:ycm_warning_symbol = ""
 
 " UltiSnips
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]

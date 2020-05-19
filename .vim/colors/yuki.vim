@@ -48,11 +48,9 @@ hi Type         cterm=NONE          ctermfg=Magenta
 hi String       cterm=NONE          ctermfg=10
 hi Function     cterm=NONE          ctermfg=Blue
 
-hi SignColumn                       ctermbg=Black
-hi SyntasticErrorSign               ctermbg=Black
-hi SyntasticWarningSign             ctermbg=Black
-hi SyntasticStyleErrorSign          ctermbg=Black
-hi SyntasticStyleWarningSign        ctermbg=Black
+hi SignColumn     ctermfg=Black     ctermbg=NONE
+hi YcmErrorSign   ctermfg=Red       ctermbg=NONE
+hi YcmWarningSign ctermfg=Black     ctermbg=NONE
 
 hi SpellBad     cterm=underline ctermbg=NONE ctermfg=NONE
 hi SpellCap     cterm=underline ctermbg=NONE ctermfg=NONE
