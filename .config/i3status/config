@@ -18,6 +18,8 @@ order += "read_file SPOTIFY"
 order += "ethernet _first_"
 # order += "battery all"
 order += "load"
+order += "cpu_usage"
+order += "memory"
 order += "tztime local"
 
 wireless _first_ {
@@ -49,6 +51,24 @@ load {
   format = "<span color='#c37cfe'> %1min</span>"
   max_threshold = "6"
   format_above_threshold = "<span color='#e4756b'> %1min</span>"
+}
+
+cpu_usage {
+  format = "<span color='#c37cfe'>%usage</span>"
+}
+
+# cpu_temperature 0 {
+#   format = "%degress °C"
+#   max_threshold = "42"
+#   format_above_threshold = "%degress °C"
+#   path = "/"
+# }
+
+memory {
+  memory_used_method = "memavailable"
+  format = "<span color='#c37cfe'> %percentage_used</span>"
+  threshold_degraded = "10%"
+  format_degraded = "<span color='#e4756b'> %percentage_used</span>"
 }
 
 disk "/" {
