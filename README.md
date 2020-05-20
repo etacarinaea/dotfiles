@@ -39,6 +39,12 @@ Example screenshot:
 
 ![i3bar screenshot](https://raw.githubusercontent.com/etacarinaea/dotfiles/screenshots/i3bar.png)
 
+### `.config/i3status/spotifylog.sh`
+
+Gets called by `dunst` when Spotify sends a new notification (see
+`.config/dunst/dunstrc`). Writes the current title and artist from the
+notification into `/tmp/spotifylog` which then gets read by i3status (see
+`.config/i3status/config`).
 
 ## t440s
 
