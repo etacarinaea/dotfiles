@@ -24,7 +24,9 @@ hi NonText      ctermfg=Magenta
 hi Question     ctermfg=DarkGreen
 
 hi Pmenu        cterm=NONE          ctermfg=NONE        ctermbg=Black
-hi PmenuSel     cterm=NONE          ctermfg=Red         ctermbg=Black
+hi PmenuSel     cterm=NONE          ctermfg=Magenta     ctermbg=Black
+hi PmenuSbar    cterm=NONE          ctermfg=Magenta     ctermbg=Black
+hi PmenuThumb   cterm=reverse       ctermfg=NONE        ctermbg=Black
 
 hi Search       cterm=reverse       ctermfg=NONE        ctermbg=Black
 hi SpecialKey   ctermfg=238
