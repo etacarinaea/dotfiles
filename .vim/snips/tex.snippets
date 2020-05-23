@@ -18,10 +18,11 @@ snippet begem "Math exercise sheet" bA
 	\usepackage{enumitem}
 	\usepackage{listings}
 	\usepackage{amsmath}
-	%\usepackage{mathtools}
+	\usepackage{amsthm}
 	\usepackage{amssymb}
+	%\usepackage{mathtools}
 	%\usepackage{tikz}
-	\title{$1 --- $2\vspace{-2ex}}
+	\title{\vspace{-4ex}$1 --- $2}
 	\date{$3}
 
 \begin{document}
@@ -55,6 +56,15 @@ snippet dm "Math" wA
 endsnippet
 
 
+snippet inna "in Natural" wA
+\in \mathbb{N}
+endsnippet
+snippet inz "in Integers" wA
+\in \mathbb{Z}
+endsnippet
+snippet inq "in Rational" wA
+\in \mathbb{Q}
+endsnippet
 snippet inr "in Real" wA
 \in \mathbb{R}
 endsnippet
@@ -62,31 +72,30 @@ snippet incx "in Complex" wA
 \in \mathbb{C}
 endsnippet
 
-snippet '([A-Za-z])(\.,)' "Vector" riA
-\textrm{\pmb{`!p snip.rv=match.group(1)`}}$0
-endsnippet
-
-snippet ... "Ellipsis" A
+snippet ... "Ellipsis" iA
 \ldots
 endsnippet
 
-snippet '([A-Za-z(){}])_(.)' "auto subscript" wrA
+snippet '([A-Za-z(){}])_(.)' "auto subscript" rA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
-snippet '([A-Za-z(){}])\^(.)' "auto superscript" wrA
+snippet '([A-Za-z(){}])\^(.)' "auto superscript" rA
 `!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
-snippet sum "Sum"
+snippet sum "Sum" i
 \\sum_{${1:i} = ${2:1}}^{${3:\\infty}}$0
 endsnippet
 
-
-snippet frac "Fraction"
+snippet frac "Fraction" i
 \\frac{$1}{$2}$0
 endsnippet
 
+
+snippet '([A-Za-z])(\.,)' "Vector" riA
+\textrm{\pmb{`!p snip.rv=match.group(1)`}}$0
+endsnippet
 
 global !p
 def matrix(snip):
@@ -112,17 +121,28 @@ def matrix(snip):
 	snip.expand_anon(result)
 endglobal
 pre_expand "matrix(snip)"
-snippet "([pvb])?mat(rix)?(\d+)x(\d+)" "Generate matrix" r
+snippet "([pvb])?mat(rix)?(\d+)x(\d+)" "Generate matrix" br
 endsnippet
 
 
-snippet lp( "Parentheses"
+snippet lp( "Parentheses" i
 \left($1\right)$0
 endsnippet
-snippet langle "Angle brackets"
+snippet langle "Angle brackets" i
 \langle $1 \rangle$0
 endsnippet
 
-snippet => "Implication" wA
+snippet => "Implication" iA
 \implies
+endsnippet
+snippet <=> "Equivalence" iA
+\iff
+endsnippet
+
+snippet norm "Norm" i
+\left\lVert $1 \right\rVert$0
+endsnippet
+
+snippet innerp "Inner product" iA
+\langle $1, $2 \rangle$0
 endsnippet
