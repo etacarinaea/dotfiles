@@ -44,11 +44,11 @@ set signcolumn=yes
 " Jump to last position on reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" Enable automatic folds
+" Folds
 set foldmethod=syntax
 set foldlevelstart=20
-" set foldcolumn=3
-
+nnoremap <leader>f za
+vnoremap <leader>f za
 
 " Custom commands
 " ---------------

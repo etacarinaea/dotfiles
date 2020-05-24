@@ -13,8 +13,8 @@ hi DiffText     ctermfg=LightBlue   ctermbg=NONE
 hi Directory    ctermfg=DarkBlue
 hi Error        cterm=reverse       ctermbg=Black       ctermfg=DarkRed
 hi ErrorMsg     cterm=reverse       ctermbg=Black       ctermfg=DarkRed
-hi FoldColumn   ctermfg=240         ctermbg=Black
-hi Folded       ctermfg=240         ctermbg=Black
+hi FoldColumn   ctermfg=black       ctermbg=NONE
+hi Folded       ctermfg=black       ctermbg=NONE
 hi IncSearch    cterm=reverse
 hi LineNr       cterm=NONE          ctermfg=Black       ctermbg=NONE
 hi EndOfBuffer  cterm=NONE          ctermfg=Black       ctermbg=NONE
