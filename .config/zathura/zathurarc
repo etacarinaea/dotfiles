@@ -6,3 +6,6 @@ set statusbar-bg "#282a36"
 set statusbar-fg "#595c72"
 set notification-bg "#282a36"
 set notification-fg "#595c72"
+
+map <C-c> feedkeys ':set recolor-darkcolor "#c1cadd"<Return>:set recolor-lightcolor "#282a36"<Return>:set recolor-keephue false<Return>'
+map <C-v> feedkeys ':set recolor-darkcolor "#282a36"<Return>:set recolor-lightcolor "#f1ebd9"<Return>:set recolor-keephue true<Return>'
