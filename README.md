@@ -26,6 +26,23 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 ## General
 
+### Anki
+
+Uses [MathJax](https://github.com/mathjax/MathJax) for LaTeX and
+[Marked](https://github.com/markedjs/marked) for markdown support.
+
+I adapted my configuration from Niklas Korz' version [here](https://niklaskorz.de/2017/06/studying-mathematics-with-anki-and-mathjax.html),
+which is based on [this reddit post](https://www.reddit.com/r/Anki/comments/54c967/how_to_use_mathjax_in_anki_ankidroid_online_and/).
+
+Additionally, I'm using vim to write cards, because it's a lot easier and more
+efficient to use than Anki's integrated text editor.
+
+* `.anki/` contains "config" files (front/back templates and styles) for Anki
+  cards
+* `.vim/ftdetect/ankicard.vim` adds a new filetype to vim for anki cards
+* `.vim/snips/ankicard.snippets` uses the aforementioned filetype to define
+  snippets for anki, extending the already existing tex snippets
+
 ### `.Xmodmap`
 
 Rebinds caps lock to `Super_L`

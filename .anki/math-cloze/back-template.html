@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="content">
+    {{cloze:Text}}
+  </div>
+  <div class="tags">
+    {{Tags}}
+  </div>
+</div>
+
+<!-- https://niklaskorz.de/2017/06/studying-mathematics-with-anki-and-mathjax.html -->
+<script type="text/javascript">
+(function() {
+  function markdown() {
+    if(window.marked == null) {
+      let script = document.createElement("script");
+      script.onload = markdown;
+      script.type = "text/javascript";
+      script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
+      document.head.appendChild(script);
+      return;
+    }
+    let inlineRenderer = new marked.Renderer();
+    inlineRenderer.paragraph = (text) => { return text; };
+    marked.setOptions({
+      renderer: inlineRenderer,
+      gfm: true
+    });
+    const content = document.querySelector(".content");
+    const it = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    let nodeArray = []
+    // Create an array first so the iterator doesn't get messed up when we edit
+    // things
+    while(node = it.nextNode()) {
+      nodeArray.push(node);
+    }
+    for(let i = 0; i < nodeArray.length; ++i) {
+      node = nodeArray[i];
+      if(node.textContent.substring(0, 2) === "\\(" ||
+         node.textContent === "" || node.textContent === " ") continue;
+      let newNode = document.createElement("span");
+      // Some text nodes have a lot of unecessary whitespace which the markdown
+      // parser interprets as a code block. I don't really use code blocks so I
+      // just ditch them completely by replacing whitespace at the beggining of
+      // the line with one space
+      newNode.innerHTML = marked(node.textContent.replace(/^\s+/g," "));
+      node.parentNode.insertBefore(newNode, node);
+      node.parentNode.removeChild(node);
+    }
+  }
+  function initMathJax() {
+    MathJax.Hub.processSectionDelay = 0;
+    MathJax.Hub.Config({
+      messageStyle: "none",
+      showProcessingMessages: false,
+      tex2jax: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]],
+        processEscapes: true
+      }
+    });
+    const card = document.querySelector(".card");
+    // Parse markdown after MathJax has finished rendering
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, card], markdown);
+  }
+  if(window.MathJax != null) {
+    initMathJax();
+  } else {
+    let script = document.createElement("script");
+    script.onload = initMathJax;
+    script.type = "text/javascript";
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    document.head.appendChild(script);
+  }
+})();
+</script>
