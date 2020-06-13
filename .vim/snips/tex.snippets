@@ -1,7 +1,7 @@
 snippet bega "Article" bA
 \documentclass{article}
 	\usepackage[paper=a4paper,margin=1in]{geometry}
-	\title{$1\vspace{-2ex}}
+	\title{$1}
 	\date{$2}
 
 \begin{document}
@@ -27,7 +27,7 @@ snippet begem "Math exercise sheet" bA
 
 \begin{document}
 \maketitle
-\hspace*{-\parindent}
+\noindent
 \begin{minipage}[t]{0.5\textwidth}
 	\begin{tabular}{@{}ll}
 		Name:& $4
@@ -76,11 +76,11 @@ snippet ... "Ellipsis" iA
 \ldots
 endsnippet
 
-snippet '([A-Za-z(){}])_(.)' "auto subscript" rA
+snippet '([A-Za-z(){}])_([^{}][^\^_\s{}])' "auto subscript" rA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
-snippet '([A-Za-z(){}])\^(.)' "auto superscript" rA
+snippet '([A-Za-z(){}])\^([^{}][^\^_\s{}])' "auto superscript" rA
 `!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
@@ -139,10 +139,24 @@ snippet <=> "Equivalence" iA
 \iff
 endsnippet
 
+snippet != "not equal" iA
+\neq
+endsnippet
+snippet >= "greater than or equal" iA
+\geq
+endsnippet
+snippet <= "less than or equal" iA
+\leq
+endsnippet
+
 snippet norm "Norm" i
 \left\lVert $1 \right\rVert$0
 endsnippet
 
 snippet innerp "Inner product" iA
 \langle $1, $2 \rangle$0
+endsnippet
+
+snippet argdot "Operator argument dot" iA
+\,\cdot\,
 endsnippet
