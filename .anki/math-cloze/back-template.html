@@ -37,7 +37,8 @@
     for(let i = 0; i < nodeArray.length; ++i) {
       node = nodeArray[i];
       if(node.textContent.substring(0, 2) === "\\(" ||
-         node.textContent === "" || node.textContent === " ") continue;
+         node.textContent === "" || node.textContent === " " ||
+         node.textContent === ">")) continue;
       let newNode = document.createElement("span");
       // Some text nodes have a lot of unecessary whitespace which the markdown
       // parser interprets as a code block. I don't really use code blocks so I
