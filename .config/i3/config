@@ -158,7 +158,6 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # rename workspace
 bindsym $mod+Shift+d exec ~/.config/i3/rename-workspace
 
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -192,6 +191,9 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+l move workspace to output right
 
 
 set $gapSize 40
