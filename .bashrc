@@ -35,6 +35,7 @@ export VISUAL=vim
 export EDITOR=vim
 export PATH=$PATH:$HOME/scripts:$HOME/.local/bin:$(ruby -e 'print Gem.user_dir')/bin
 
+PS1=''
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   PS1='\[\e[0;35m\]\u@\h\[\e[0m\] '
 fi
