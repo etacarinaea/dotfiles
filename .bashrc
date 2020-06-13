@@ -35,5 +35,8 @@ export VISUAL=vim
 export EDITOR=vim
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$(ruby -e 'print Gem.user_dir')/bin
 
-PS1='\W\[\e[0;34m\]$(__git_ps1 " (%s)") \[\e[0;31m\]»\[\e[0m\] '
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  PS1='\[\e[0;35m\]\u@\h\[\e[0m\] '
+fi
+PS1+='\W\[\e[0;34m\]$(__git_ps1 " (%s)") \[\e[0;35m\]»\[\e[0m\] '
 
