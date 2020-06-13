@@ -109,6 +109,8 @@ Plug 'gu-fan/InstantRst', { 'for': 'rst' }
 " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'plaintex' }
 Plug 'lervag/vimtex', { 'for': 'plaintex' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/vim-easy-align'
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 
 " -------
@@ -204,3 +206,19 @@ let g:tex_conceal='abdmg'
 
 " Colorscheme
 colorscheme yuki
+
+" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Hexokinase
+let g:Hexokinase_optInPatterns = [
+  \ "full_hex",
+  \ "triple_hex",
+  \ "rgb",
+  \ "rgba",
+  \ "hsl",
+  \ "hsla"
+\]
