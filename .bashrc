@@ -33,7 +33,7 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 export VISUAL=vim
 export EDITOR=vim
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$(ruby -e 'print Gem.user_dir')/bin
+export PATH=$PATH:$HOME/scripts:$HOME/.local/bin:$(ruby -e 'print Gem.user_dir')/bin
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   PS1='\[\e[0;35m\]\u@\h\[\e[0m\] '
