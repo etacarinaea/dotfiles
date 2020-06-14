@@ -1,3 +1,6 @@
+syntax on
+colorscheme untitled_cs-24bit
+
 let mapleader = (" ")
 
 " swap files
@@ -25,7 +28,6 @@ set autochdir " Automatically change directory to that of current file
 set mouse=a " Enable mouse
 set clipboard=unnamedplus " Use "+ register by default
 
-syntax on
 set spelllang=en_gb
 map <F4> :setlocal spell!<CR>
 set number
@@ -166,7 +168,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 set laststatus=2
-let g:airline_theme = "yuki"
+let g:airline_theme = "untitled_cs24bit"
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -203,9 +205,6 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
-
-" Colorscheme
-colorscheme yuki
 
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
