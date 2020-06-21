@@ -31,6 +31,8 @@ set clipboard=unnamedplus " Use "+ register by default
 set spelllang=en_gb
 map <F4> :setlocal spell!<CR>
 set number
+set relativenumber
+nnoremap <leader>r :set relativenumber!<CR>
 set list
 set listchars=tab:>-,nbsp:⋄,trail:×,conceal:·,precedes:‹,extends:›
 set hls " Highlight search
