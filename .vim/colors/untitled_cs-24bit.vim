@@ -216,14 +216,12 @@ call s:hi(
 \})
 " }}}
 " Other groups {{{
-call s:hi("Conceal", {
-  \ "fg": g:untitled_cs#bg_light
-\})
-call s:hi("SpecialKey", {
-  \ "fg": g:untitled_cs#bg_light
-\})
-call s:hi("NonText", {
-  \ "fg": g:untitled_cs#bg_lighter
+call s:hi(
+  \ "Conceal",
+  \ "SpecialKey",
+  \ "NonText",
+  \ {
+    \ "fg": g:untitled_cs#bg_lighter
 \})
 call s:hi("Directory", {
   \ "fg": g:untitled_cs#yellow
