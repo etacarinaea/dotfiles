@@ -34,7 +34,7 @@
 
 strong {
   color: #9399fe;
-  font-weight: 400;
+  font-weight: 600;
 }
 em {
   font-family: DejaVu Serif, serif;
@@ -46,10 +46,23 @@ hr {
   margin: 1em 0;
 }
 
+.notes {
+  align-self: center;
+  font-size: 0.7em;
+  color: #595c72;
+  max-width: 700px;
+}
+.notes hr {
+  height: 1px;
+  background-color: #595c72;
+  border: none;
+}
+
 .tags {
   align-self: center;
   font-size: 0.7em;
   color: #595c72;
+  max-width: 700px;
 }
 
 img {
