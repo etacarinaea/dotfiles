@@ -1,14 +1,5 @@
-<div class="container">
-  <div class="content">
-    {{Front}}
-  </div>
-  <div class="tags">
-    {{Tags}}
-  </div>
-</div>
-
 <script type="text/javascript">
-(function markdown() {
+(function() {
   if(window.marked == null) {
     let script = document.createElement("script");
     script.onload = markdown;
@@ -35,11 +26,14 @@
   for(let i = 0; i < nodeArray.length; ++i) {
     node = nodeArray[i];
     if(node.textContent.substring(0, 2) === "\\(" ||
-       node.textContent === "" || node.textContent === " ") continue;
+       node.textContent === "" || node.textContent === " " ||
+       node.textContent === ">")) continue;
     let newNode = document.createElement("span");
-    // We need trim() here because Anki apparently likes to randomly add
-    // whitespace sometimes, which the parser interprets as a code block
-    newNode.innerHTML = marked(node.textContent.trim());
+    // Some text nodes have a lot of unecessary whitespace which the markdown
+    // parser interprets as a code block. I don't really use code blocks so I
+    // just ditch them completely by replacing whitespace at the beggining of
+    // the line with one space
+    newNode.innerHTML = marked(node.textContent.replace(/^\s+/g," "));
     node.parentNode.insertBefore(newNode, node);
     node.parentNode.removeChild(node);
   }

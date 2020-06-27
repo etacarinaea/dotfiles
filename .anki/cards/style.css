@@ -28,6 +28,10 @@
   max-width: 700px;
 }
 
+.cloze {
+  color: #c37cfe;
+}
+
 strong {
   color: #9399fe;
   font-weight: 400;
