@@ -156,7 +156,7 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # rename workspace
-bindsym $mod+Shift+d exec ~/.config/i3/rename-workspace
+bindsym $mod+Shift+d exec ~/.config/i3/rename-workspace "$bg" "$fg" "$black" "$fg"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

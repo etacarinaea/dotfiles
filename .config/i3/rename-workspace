@@ -9,7 +9,7 @@ if [ "$currentWSNumber" = "" ]; then
 else
   prefix="$currentWSNumber: "
 fi
-newName=$(dmenu -p "New name:" <&-)
+newName=$(dmenu -p "New name:" -nb "$1" -nf "$2" -sb "$3" -sf "$2" <&-)
 if [ ! "$newName" = "" ]; then
   i3-msg "rename workspace to \"$(printf "$prefix$newName")\""
 elif [ ! "$currentWSNumber" = "" ]; then
