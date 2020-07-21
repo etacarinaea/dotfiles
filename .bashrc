@@ -25,7 +25,7 @@ alias ctx='grep -TnrC 1'
 
 alias screenfetch='screenfetch -D "Arch Linux"'
 alias scrot='scrot -e "xclip -t image/png -selection clipboard \$f && mv \$f ~/images/screenshots/"'
-alias sst='maim -s --hidecursor | tee >(xclip -t image/png -selection clipboard) >~/images/screenshots/$(date +%F-%N)_maim.png'
+alias sst='maim -s --noopengl --hidecursor | tee >(xclip -t image/png -selection clipboard) >~/images/screenshots/$(date +%F-%N)_maim.png'
 
 alias please='sudo $(history -p !!)'
 
@@ -33,7 +33,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 export VISUAL=vim
 export EDITOR=vim
-export PATH=$PATH:$HOME/scripts:$HOME/.local/bin:$(ruby -e 'print Gem.user_dir')/bin
+export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
 
 PS1=''
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
