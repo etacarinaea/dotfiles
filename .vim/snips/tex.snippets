@@ -99,18 +99,43 @@ endsnippet
 
 global !p
 def matrix(snip):
-	currentLine = re.match(r'([pvb])?mat(rix)?(\d+)x(\d+)', snip.buffer[snip.line].strip())
-	t = currentLine.group(1)
-	m = currentLine.group(3)
-	n = currentLine.group(4)
+	# Generates a [pvb]matrix of size mxn. If id is specified, an indetity matrix
+	# is generated. If -\d is speicifed then the matrix is broken up by dots
+	currentLine = re.match(r'([pvb])?(id?)?mat(rix)?(\d+)x(\d+)(-(\d))?', snip.buffer[snip.line].strip())
+	t = currentLine.group(1) if currentLine.group(1) is not None else "b"
+	isIdMat = True if currentLine.group(2) is not None else False
+	brkPoint = int(currentLine.group(7))+1 if currentLine.group(7) is not None else False
+	m = int(currentLine.group(4))
+	n = int(currentLine.group(5))
 	snip.buffer[snip.line] = ""
 	result = "\\begin{" + t + "matrix}\n"
-	for i in range(int(m)):
+	for i in range(m):
 		row = ""
-		for j in range(int(n)):
-			row += "$" + str((j+1)+i*int(n))
-			if ((j+1) % int(n)) == 0 :
-				if (i+1) == int(m):
+		for j in range(n):
+			if isIdMat:
+				if i == j:
+					row += "${" + str(i+1)
+					if brkPoint and i == (m - brkPoint):
+						row += ":\\ddots}"
+					else:
+						row += ":1}"
+				else:
+					row += " "
+			elif brkPoint:
+				row += "${" + str((j+1)+i*n)
+				if j == (n - brkPoint):
+					if i == (m - brkPoint):
+						row += ":\\ddots}"
+					else:
+						row += ":\\cdots}"
+				elif i == (m - brkPoint):
+					row += ":\\vdots}"
+				else:
+					row += "}"
+			else:
+				row += "$" + str((j+1)+i*n)
+			if ((j+1) % n) == 0 :
+				if (i+1) == m:
 					row += "\n"
 				else:
 					row += " \\\\\\\\\n"
@@ -121,7 +146,7 @@ def matrix(snip):
 	snip.expand_anon(result)
 endglobal
 pre_expand "matrix(snip)"
-snippet "([pvb])?mat(rix)?(\d+)x(\d+)" "Generate matrix" br
+snippet "([pvb])?(id?)?mat(rix)?(\d+)x(\d+)(-(\d))?" "Generate matrix" br
 endsnippet
 
 
