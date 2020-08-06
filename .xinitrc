@@ -19,6 +19,7 @@ xset m 1 1
 # get _CURRENT_ wallpaper from ~/images/wallpapers independent of file ending
 # if _CURRENT_ matches more than one file the first match is used
 wallpath="$(find ~/images/wallpapers/ -name _CURRENT_* | head -n 1)"
-feh --bg-scale $wallpath &
+feh --bg-fill $wallpath &
 
+picom --experimental-backends -b
 exec i3
