@@ -76,11 +76,11 @@ snippet ... "Ellipsis" iA
 \ldots
 endsnippet
 
-snippet '([A-Za-z(){}])_([^{}][^\^_\s{}])' "auto subscript" rA
+snippet '([A-Za-z(){}])_([^{}][^\^_\s{},])' "auto subscript" rA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
-snippet '([A-Za-z(){}])\^([^{}][^\^_\s{}])' "auto superscript" rA
+snippet '([A-Za-z(){}])\^([^{}][^\^_\s{},])' "auto superscript" rA
 `!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
