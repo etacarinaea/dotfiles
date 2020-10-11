@@ -1,0 +1,20 @@
+#!/bin/sh
+tmp=$(mktemp /tmp/vim-everything-XXXXXXXX)
+focusedwindow=$(xdotool getwindowfocus)
+windowclass=$(xprop -id $focusedwindow | grep "WM_CLASS" | awk 'BEGIN {FS=", "} {gsub(/"/, "", $2)} {print $2}')
+
+filetype=""
+case $windowclass in
+  Anki)
+    filetype="ankicard"
+    ;;
+esac
+
+i3msgcmd='WINID=$(xdotool getactivewindow); xdotool windowactivate ${WINID}; i3-msg "[id=${WINID}] floating enable, resize set 800 600, move position center"'
+vimcmd="vim -c 'startinsert | set noeol binary filetype=${filetype}' ${tmp}"
+kitty --single-instance --wait-for-single-instance-window-close -- bash -c "${i3msgcmd} & ${vimcmd}"
+
+xclip -selection clipboard -i ${tmp}
+xdotool windowfocus ${focusedwindow}
+xdotool key ctrl+v
+rm ${tmp}
