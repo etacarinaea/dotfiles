@@ -98,15 +98,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': 'YcmGenerateConfig' }
 Plug 'SirVer/ultisnips'
 " Plug 'Yggdroot/indentLine'
-Plug 'vim-airline/vim-airline' | Plug 'vim-aivim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
 Plug 'Raimondi/delimitMate'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 Plug 'gu-fan/InstantRst', { 'for': 'rst' }
@@ -157,8 +157,8 @@ let g:ycm_warning_symbol = ""
 " UltiSnips
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
 let g:UltiSnipsExpandTrigger = "<C-l>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-l>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-h>"
 
 " indentLine
 " let g:indentLine_char = "┆"
@@ -207,6 +207,9 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+let g:vimtex_compiler_latexmk = {
+  \ 'build_dir' : '/home/emily/.vim/latex-build/'
+\ }
 
 " vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
