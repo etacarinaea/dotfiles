@@ -101,10 +101,10 @@ global !p
 def matrix(snip):
 	# Generates a [pvb]matrix of size mxn. If id is specified, an indetity matrix
 	# is generated. If -\d is speicifed then the matrix is broken up by dots
-	currentLine = re.match(r'([pvb])?(id?)?mat(rix)?(\d+)x(\d+)(-(\d))?', snip.buffer[snip.line].strip())
-	t = currentLine.group(1) if currentLine.group(1) is not None else "b"
+	currentLine = re.match(r'([pvVbB])?(id)?mat(rix)?(\d+)x(\d+)(-(\d))?', snip.buffer[snip.line].strip())
+	t = currentLine.group(1) if currentLine.group(1) is not None else ""
 	isIdMat = True if currentLine.group(2) is not None else False
-	brkPoint = int(currentLine.group(7))+1 if currentLine.group(7) is not None else False
+	brkPoint = int(currentLine.group(7)) if currentLine.group(7) is not None else False
 	m = int(currentLine.group(4))
 	n = int(currentLine.group(5))
 	snip.buffer[snip.line] = ""
@@ -146,7 +146,7 @@ def matrix(snip):
 	snip.expand_anon(result)
 endglobal
 pre_expand "matrix(snip)"
-snippet "([pvb])?(id?)?mat(rix)?(\d+)x(\d+)(-(\d))?" "Generate matrix" br
+snippet "([pvVbB])?(id)?mat(rix)?(\d+)x(\d+)(-(\d))?" "Generate matrix" br
 endsnippet
 
 
