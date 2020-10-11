@@ -121,7 +121,7 @@ call s:hi("VisualNOS", {
 " Syntax {{{
 " See :h group-name
 call s:hi("Comment", {
-  \ "fg": g:untitled_cs#bg_lighter,
+  \ "fg": g:untitled_cs#bg_lightest,
   \ "tr": "italic"
 \})
 " Constants {{{
