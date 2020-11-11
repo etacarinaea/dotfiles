@@ -35,9 +35,30 @@ export VISUAL=vim
 export EDITOR=vim
 export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
 
-PS1=''
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  PS1='\[\e[0;35m\]\u@\h\[\e[0m\] '
-fi
-PS1+='\W\[\e[0;34m\]$(__git_ps1 " (%s)") \[\e[0;35m\]»\[\e[0m\] '
+
+PS1=' '
+EMPS1='\[\e[48;2;46;47;61m\] \W\[\e[0;34m\e[48;2;46;47;61m\]$(__git_ps1 " - %s")'
+PROMPT_EVEN=true
+mode_string () {
+  SEPARATOR=' '
+  if [ "$PROMPT_EVEN" = true ]; then
+    SEPARATOR=''
+    PROMPT_EVEN=false
+  else
+    SEPARATOR=''
+    PROMPT_EVEN=true
+  fi
+  PROMPT_COUNTER=$((PROMPT_COUNTER + 1))
+  INSCOL='\[\e[1;35m\]'
+  CMDCOL='\[\e[1;34m\]'
+  BGCOL='\[\e[0m\e[38;2;46;47;61m\]'
+  RESETCOL='\[\e[0m\]'
+  bind "set vi-ins-mode-string \"${INSCOL@P}${EMPS1@P}${INSCOL@P} » ${BGCOL@P}${SEPARATOR}${RESETCOL@P}\""
+  bind "set vi-cmd-mode-string \"${CMDCOL@P}${EMPS1@P}${CMDCOL@P} » ${BGCOL@P}${SEPARATOR}${RESETCOL@P}\""
+}
+PROMPT_COMMAND=mode_string
+# if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+#   PS1='\[\e[0;35m\]\u@\h\[\e[0m\] '
+# fi
+# PS1+='\W\[\e[0;34m\]$(__git_ps1 " (%s)") \[\e[0;35m\]»\[\e[0m\] '
 
