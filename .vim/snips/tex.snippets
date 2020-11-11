@@ -25,22 +25,29 @@ snippet begem "Math exercise sheet" bA
 	\title{\vspace{-4ex}$1 --- $2}
 	\date{$3}
 
+	\renewcommand{\thesection}{Aufgabe \arabic{section}}
+	\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
 \begin{document}
 \maketitle
 \noindent
-\begin{minipage}[t]{0.5\textwidth}
+\begin{minipage}[c]{0.5\textwidth}
 	\begin{tabular}{@{}ll}
-		Name:& $4
+		Name:& $4\\
+		Tutor:& $5\\
+		Gruppe:& $6
 	\end{tabular}
 \end{minipage}
-\begin{minipage}[t]{0.5\textwidth}
-	\begin{tabular}{@{}ll}
-		Tutor:& $5
-	\end{tabular}
+\begin{minipage}[c]{0.5\textwidth}
+	\renewcommand{\arraystretch}{2}
+	\begin{tabularx}{\textwidth}{YYYYYY||Y}
+		1 & 2 & 3 & 4 & 5 & 6 & $\Sigma$\\\hline
+		  &   &   &   &   &   &
+	\end{tabularx}
 \end{minipage}
 \vspace{1em}
 
-\section*{$6}
+\section*{$7}
 \begin{enumerate}[label=\alph*)]
 	\item $0
 \end{enumerate}
@@ -150,8 +157,11 @@ snippet "([pvVbB])?(id)?mat(rix)?(\d+)x(\d+)(-(\d))?" "Generate matrix" br
 endsnippet
 
 
-snippet lp( "Parentheses" i
+snippet pp( "Parentheses" i
 \left($1\right)$0
+endsnippet
+snippet pc{ "Curly parentheses" i
+\left\{$1\right\}$0
 endsnippet
 snippet langle "Angle brackets" i
 \langle $1 \rangle$0
