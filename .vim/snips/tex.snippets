@@ -26,7 +26,21 @@ snippet begem "Math exercise sheet" bA
 	\date{$3}
 
 	\renewcommand{\thesection}{Aufgabe \arabic{section}}
-	\newcolumntype{Y}{>{\centering\arraybackslash}X}
+	\renewenvironment{proof}{{\itshape Beweis.}}{\nolinebreak\hfill$\square$}
+	\newenvironment{proof*}{}{\nolinebreak\hfill$\square$}
+	\newenvironment{induction}{{\itshape Beweis durch Induktion.}}{\nolinebreak\hfill$\square$}
+	\NewEnviron{annotation}{%
+		\begin{center}
+		\setlength\fboxsep{1em}
+		\noindent\fbox{%
+			\parbox{.8\textwidth}{%
+				\small
+				\BODY
+			}
+		}
+		\end{center}
+	}
+
 
 \begin{document}
 \maketitle
@@ -42,7 +56,7 @@ snippet begem "Math exercise sheet" bA
 	\renewcommand{\arraystretch}{2}
 	\begin{tabularx}{\textwidth}{YYYYYY||Y}
 		1 & 2 & 3 & 4 & 5 & 6 & $\Sigma$\\\hline
-		  &   &   &   &   &   &
+			&   &   &   &   &   &
 	\end{tabularx}
 \end{minipage}
 \vspace{1em}
