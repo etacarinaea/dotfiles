@@ -15,53 +15,40 @@ endsnippet
 snippet begem "Math exercise sheet" bA
 \documentclass[fleqn]{article}
 	\usepackage[paper=a4paper,margin=1in]{geometry}
+	\usepackage[utf8]{inputenc}
+	\usepackage[german]{babel}
+
 	\usepackage{enumitem}
-	\usepackage{listings}
 	\usepackage{amsmath}
 	\usepackage{amsthm}
 	\usepackage{amssymb}
-	%\usepackage{mathtools}
-	%\usepackage{tikz}
-	\title{\vspace{-4ex}$1 --- $2}
-	\date{$3}
+	\usepackage{aligned-overset}
+	\usepackage{nccmath}
 
+	\title{\vspace{-4ex}$1 --- $2}
+	\author{$3}
+	\date{$4}
+
+	\setlength{\parindent}{0pt}
 	\renewcommand{\thesection}{Aufgabe \arabic{section}}
-	\renewenvironment{proof}{{\itshape Beweis.}}{\nolinebreak\hfill$\square$}
+
+	\newcommand{\qtq}[1]{\quad\text{#1}\quad}
+	\newcommand{\qt}[1]{\quad\text{#1}}
+	\newcommand{\tq}[1]{\text{#1}\quad}
+
+	\newenvironment{zz}{{\itshape Zu zeigen:}}{\medskip\\\\}
+	\newenvironment{kproof}{{\itshape Beweis durch Kontraposition.}}{\nolinebreak\hfill$\square$}
+	\newenvironment{cproof}{{\itshape Beweis durch Widerspruch.}}{\nolinebreak\hfill$\square$}
 	\newenvironment{proof*}{}{\nolinebreak\hfill$\square$}
 	\newenvironment{induction}{{\itshape Beweis durch Induktion.}}{\nolinebreak\hfill$\square$}
-	\NewEnviron{annotation}{%
-		\begin{center}
-		\setlength\fboxsep{1em}
-		\noindent\fbox{%
-			\parbox{.8\textwidth}{%
-				\small
-				\BODY
-			}
-		}
-		\end{center}
-	}
-
+	\newcommand{\IA}{\underline{\itshape Induktionsanfang:} }
+	\newcommand{\IV}{\underline{\itshape Induktionsvoraussetzung:} }
+	\newcommand{\IS}{\underline{\itshape Induktionsschritt:} }
 
 \begin{document}
 \maketitle
-\noindent
-\begin{minipage}[c]{0.5\textwidth}
-	\begin{tabular}{@{}ll}
-		Name:& $4\\
-		Tutor:& $5\\
-		Gruppe:& $6
-	\end{tabular}
-\end{minipage}
-\begin{minipage}[c]{0.5\textwidth}
-	\renewcommand{\arraystretch}{2}
-	\begin{tabularx}{\textwidth}{YYYYYY||Y}
-		1 & 2 & 3 & 4 & 5 & 6 & $\Sigma$\\\hline
-			&   &   &   &   &   &
-	\end{tabularx}
-\end{minipage}
-\vspace{1em}
 
-\section*{$7}
+\section{}
 \begin{enumerate}[label=\alph*)]
 	\item $0
 \end{enumerate}
@@ -76,6 +63,17 @@ snippet dm "Math" wA
 \]$0
 endsnippet
 
+snippet lgn "Align" wA
+\begin{align${1:*}}
+	$2
+\end{align${1:*}}
+endsnippet
+
+snippet clgn "Centered align" wA
+\begin{ceqn${1:*}}
+	$2
+\end{ceqn${1:*}}
+endsnippet
 
 snippet inna "in Natural" wA
 \in \mathbb{N}
@@ -110,7 +108,12 @@ snippet sum "Sum" i
 endsnippet
 
 snippet frac "Fraction" i
-\\frac{$1}{$2}$0
+\\frac{
+	$1
+}{
+	$2
+}
+$0
 endsnippet
 
 
